@@ -3,9 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>حاسبة المعدل العام 1AC - خطوة للنجاح</title>
-<meta name="description" content="احسب معدلك العام للدورة الأولى أو الثانية للسنة الأولى إعدادي مسار دولي وإعداديات الريادة بدقة مع المعاملات الرسمية." />
-
+<title>محاكي أحسب معدلك 1AC رائدة - خطوة للنجاح</title>
 <link rel="preconnect" href="https://googleapis.com">
 <link rel="preconnect" href="https://gstatic.com" crossorigin>
 <link href="https://googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
@@ -17,345 +15,225 @@
     --primary: #38bdf8;
     --secondary: #818cf8;
     --accent: #34d399;
+    --warning: #fbbf24;
     --danger: #f87171;
     --text-main: #f8fafc;
     --text-muted: #94a3b8;
   }
 
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Cairo', sans-serif;
-  }
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
+  body { background-color: var(--bg-dark); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; }
 
-  body {
-    background-color: var(--bg-dark);
-    color: var(--text-main);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
+  .top-nav { background: #0f172a; padding: 14px 20px; border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+  .back-btn { background: rgba(56, 189, 248, 0.15); color: #38bdf8; text-decoration: none; padding: 6px 14px; border-radius: 10px; font-size: 14px; font-weight: 700; border: 1px solid rgba(56, 189, 248, 0.3); }
 
-  /* الشريط العلوي */
-  .top-nav {
-    background: #0f172a;
-    padding: 14px 20px;
-    border-bottom: 1px solid #1e293b;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
+  /* أزرار الدورات الثلاثة */
+  .sem-tabs { display: grid; grid-template-columns: 1fr 1fr 1fr; max-width: 920px; width: 100%; margin: 15px auto 0; padding: 0 12px; gap: 8px; }
+  .sem-btn { padding: 12px 8px; background: #1e293b; border: 2px solid #334155; border-radius: 12px; color: #94a3b8; font-size: 14px; font-weight: 800; cursor: pointer; transition: 0.2s; }
+  .sem-btn.active { background: rgba(56, 189, 248, 0.15); border-color: #38bdf8; color: #38bdf8; }
 
-  .back-btn {
-    background: rgba(56, 189, 248, 0.15);
-    color: #38bdf8;
-    text-decoration: none;
-    padding: 6px 14px;
-    border-radius: 10px;
-    font-size: 14px;
-    font-weight: 700;
-    border: 1px solid rgba(56, 189, 248, 0.3);
-    transition: 0.2s;
-  }
+  .container { width: 100%; max-width: 920px; margin: 15px auto; padding: 0 12px; flex: 1; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; animation: fadeIn 0.25s ease; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-  .back-btn:hover {
-    background: #38bdf8;
-    color: #090d16;
-  }
+  .section-badge { background: rgba(52, 211, 153, 0.12); border-right: 4px solid #34d399; color: #34d399; padding: 8px 14px; border-radius: 8px; font-weight: 800; font-size: 14px; margin: 14px 0 10px; }
+  .table-wrap { background: var(--card-bg); border: 1px solid #334155; border-radius: 16px; padding: 12px; overflow-x: auto; margin-bottom: 16px; }
 
-  .container {
-    width: 100%;
-    max-width: 750px;
-    margin: 22px auto;
-    padding: 0 15px;
-    flex: 1;
-  }
+  table { width: 100%; border-collapse: collapse; min-width: 600px; }
+  th { background: #0f172a; color: #38bdf8; padding: 10px 6px; font-size: 13px; font-weight: 800; text-align: center; border-bottom: 2px solid #334155; }
+  th:first-child { text-align: right; padding-right: 12px; }
+  td { padding: 9px 5px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); text-align: center; font-size: 14px; }
+  td:first-child { text-align: right; padding-right: 12px; font-weight: 700; white-space: nowrap; }
 
-  .header-box {
-    background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(129, 140, 248, 0.15));
-    border: 1px solid rgba(56, 189, 248, 0.4);
-    border-radius: 18px;
-    padding: 20px;
-    text-align: center;
-    margin-bottom: 20px;
-  }
+  input[type="number"] { width: 62px; padding: 7px 4px; border-radius: 8px; border: 1px solid #475569; background: #0f172a; color: #f8fafc; font-size: 14px; font-weight: 700; text-align: center; outline: none; }
+  input[type="number"]:focus { border-color: #38bdf8; }
+  input.remed-input { border-color: rgba(52, 211, 153, 0.5); }
 
-  .header-box h1 {
-    font-size: 21px;
-    font-weight: 900;
-    color: #38bdf8;
-    margin-bottom: 4px;
-  }
+  .coef-pill { background: rgba(56, 189, 248, 0.15); color: #38bdf8; padding: 3px 10px; border-radius: 8px; font-weight: 800; font-size: 13px; }
+  select.coef-sel { background: #0f172a; color: #38bdf8; border: 1px solid #38bdf8; border-radius: 7px; padding: 4px 6px; font-weight: 800; font-size: 12px; }
+  .moy-cell { font-weight: 900; color: #fbbf24; direction: ltr; font-size: 15px; }
 
-  .header-box p {
-    font-size: 14px;
-    color: var(--text-muted);
-  }
+  .actions { display: flex; gap: 12px; margin: 16px 0; }
+  .btn-calc { flex: 2; padding: 14px; border: none; border-radius: 14px; background: linear-gradient(90deg, #38bdf8, #818cf8); color: #090d16; font-size: 16px; font-weight: 900; cursor: pointer; }
+  .btn-reset { flex: 1; padding: 14px; border: 1px solid #475569; border-radius: 14px; background: #0f172a; color: #cbd5e1; font-size: 15px; font-weight: 700; cursor: pointer; }
 
-  /* جدول المواد */
-  .calc-card {
-    background: var(--card-bg);
-    border: 1px solid #334155;
-    border-radius: 18px;
-    padding: 16px;
-    overflow-x: auto;
-  }
+  .result-box { display: none; background: #0f172a; border: 2px solid #34d399; border-radius: 18px; padding: 20px; text-align: center; margin-bottom: 20px; }
+  .stats-row { display: flex; justify-content: space-around; background: #1e293b; padding: 10px; border-radius: 12px; margin-bottom: 10px; font-size: 14px; }
+  .final-score { font-size: 36px; font-weight: 900; color: #34d399; direction: ltr; }
+  .mention-text { font-size: 16px; font-weight: 800; margin-top: 6px; }
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 480px;
-  }
+  /* بطاقة المعدل السنوي */
+  .annual-card { background: var(--card-bg); border: 1px solid #334155; border-radius: 18px; padding: 22px; text-align: center; }
+  .annual-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 18px 0; }
+  .annual-box { background: #0f172a; padding: 15px; border-radius: 14px; border: 1px solid #334155; }
+  .annual-box label { display: block; font-size: 14px; font-weight: 700; color: #38bdf8; margin-bottom: 8px; }
+  .annual-box input { width: 120px; font-size: 18px; padding: 10px; }
 
-  th {
-    background: #0f172a;
-    color: #38bdf8;
-    padding: 12px 10px;
-    font-size: 14px;
-    font-weight: 800;
-    text-align: right;
-    border-bottom: 2px solid #334155;
-  }
-
-  th:nth-child(2), th:nth-child(3), th:nth-child(4) {
-    text-align: center;
-  }
-
-  td {
-    padding: 11px 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    font-size: 14px;
-  }
-
-  .subj-name {
-    font-weight: 700;
-    color: #f8fafc;
-  }
-
-  .remed-tag {
-    display: inline-block;
-    background: rgba(52, 211, 153, 0.15);
-    color: #34d399;
-    font-size: 11px;
-    padding: 1px 7px;
-    border-radius: 6px;
-    margin-right: 4px;
-  }
-
-  input[type="number"] {
-    width: 85px;
-    padding: 8px;
-    border-radius: 10px;
-    border: 2px solid #334155;
-    background: #0f172a;
-    color: #f8fafc;
-    font-size: 15px;
-    font-weight: 700;
-    text-align: center;
-    outline: none;
-    transition: 0.2s;
-  }
-
-  input[type="number"]:focus {
-    border-color: #38bdf8;
-  }
-
-  select.coef-select {
-    background: #0f172a;
-    color: #38bdf8;
-    border: 1px solid #38bdf8;
-    border-radius: 8px;
-    padding: 5px 8px;
-    font-weight: 800;
-    font-size: 13px;
-    cursor: pointer;
-  }
-
-  .coef-badge {
-    display: inline-block;
-    background: rgba(56, 189, 248, 0.15);
-    color: #38bdf8;
-    font-weight: 800;
-    padding: 4px 12px;
-    border-radius: 8px;
-    font-size: 14px;
-  }
-
-  .total-cell {
-    text-align: center;
-    font-weight: 800;
-    color: #cbd5e1;
-    direction: ltr;
-  }
-
-  /* الأزرار */
-  .actions {
-    display: flex;
-    gap: 12px;
-    margin-top: 20px;
-  }
-
-  .btn-calc {
-    flex: 2;
-    padding: 15px;
-    border: none;
-    border-radius: 14px;
-    background: linear-gradient(90deg, #38bdf8, #818cf8);
-    color: #090d16;
-    font-size: 17px;
-    font-weight: 900;
-    cursor: pointer;
-    transition: 0.2s;
-  }
-
-  .btn-calc:hover {
-    opacity: 0.92;
-  }
-
-  .btn-reset {
-    flex: 1;
-    padding: 15px;
-    border: 1px solid #475569;
-    border-radius: 14px;
-    background: #0f172a;
-    color: #cbd5e1;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-  }
-
-  /* صندوق النتيجة */
-  .result-box {
-    display: none;
-    margin-top: 22px;
-    background: #0f172a;
-    border: 2px solid #34d399;
-    border-radius: 18px;
-    padding: 22px;
-    text-align: center;
-  }
-
-  .result-stats {
-    display: flex;
-    justify-content: space-around;
-    background: #1e293b;
-    padding: 12px;
-    border-radius: 12px;
-    margin-bottom: 14px;
-    font-size: 14px;
-  }
-
-  .result-stats strong {
-    color: #38bdf8;
-    font-size: 16px;
-  }
-
-  .final-moy {
-    font-size: 36px;
-    font-weight: 900;
-    color: #34d399;
-    direction: ltr;
-    margin: 6px 0;
-  }
-
-  .mention {
-    font-size: 17px;
-    font-weight: 800;
-    margin-top: 6px;
-  }
-
-  footer {
-    text-align: center;
-    padding: 20px;
-    color: var(--text-muted);
-    font-size: 13px;
-  }
+  footer { text-align: center; padding: 20px; color: var(--text-muted); font-size: 13px; }
 </style>
 </head>
 <body>
 
   <nav class="top-nav">
     <a href="index.html" class="back-btn">➡ الرئيسية</a>
-    <span style="font-weight: 800; color: #38bdf8;">🧮 حاسبة المعدل 1AC</span>
+    <span style="font-weight: 800; color: #38bdf8;">📱 محاكي أحسب معدلك 1AC</span>
     <div style="width: 65px;"></div>
   </nav>
 
+  <!-- أزرار اختيار الدورة -->
+  <div class="sem-tabs">
+    <button class="sem-btn active" onclick="openSem('sem1', this)">📘 الدورة الأولى</button>
+    <button class="sem-btn" onclick="openSem('sem2', this)">📗 الدورة الثانية</button>
+    <button class="sem-btn" onclick="openSem('annual', this)">🎓 المعدل السنوي</button>
+  </div>
+
   <main class="container">
-    <div class="header-box">
-      <h1>حاسبة المعدل العام للدورة (الأولى إعدادي)</h1>
-      <p>أدخل معدل كل مادة على 20 لحساب مجموع النقط والمعدل العام بدقة</p>
+
+    <!-- ================= الدورة الأولى (SEMESTRE 1) ================= -->
+    <div id="sem1" class="tab-panel active">
+      <div class="section-badge">📘 الدورة الأولى — مواد المعالجة (العربية، الفرنسية، الرياضيات)</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>المادة</th><th>المعامل</th><th>الفرض 1</th><th>الفرض 2</th><th>الأنشطة</th><th>المعالجة</th><th>معدل المادة</th></tr></thead>
+          <tbody>
+            <tr class="row-s1" data-coef="5"><td>اللغة العربية</td><td><span class="coef-pill">5</span></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in remed-input" placeholder="-" oninput="calcRow(this)"></td><td class="moy-cell">--</td></tr>
+            <tr class="row-s1" data-coef="5"><td>اللغة الفرنسية</td><td><span class="coef-pill">5</span></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in remed-input" placeholder="-" oninput="calcRow(this)"></td><td class="moy-cell">--</td></tr>
+            <tr class="row-s1" data-coef="5"><td>الرياضيات</td><td><span class="coef-pill">5</span></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in remed-input" placeholder="-" oninput="calcRow(this)"></td><td class="moy-cell">--</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-badge">📚 الدورة الأولى — باقي المواد الدراسية</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>المادة</th><th>المعامل</th><th>الفرض 1</th><th>الفرض 2</th><th>الأنشطة</th><th>معدل المادة</th></tr></thead>
+          <tbody>
+            <tr class="row-s1" data-coef="3"><td>علوم الحياة والأرض (SVT)</td><td><span class="coef-pill">3</span></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td class="moy-cell">--</td></tr>
+            <tr class="row-s1" data-coef="3"><td>الاجتماعيات</td><td><span class="coef-pill">3</span></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td class="moy-cell">--</td></tr>
+            <tr class="row-s1" data-coef="2"><td>الفيزياء والكيمياء (PC)</td><td><span class="coef-pill">2</span></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td class="moy-cell">--</td></tr>
+    <!-- ================= الدورة الثانية (SEMESTRE 2) ================= -->
+    <div id="sem2" class="tab-panel">
+      <div class="section-badge">📗 الدورة الثانية — مواد المعالجة (العربية، الفرنسية، الرياضيات)</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>المادة</th><th>المعامل</th><th>الفرض 1</th><th>الفرض 2</th><th>الأنشطة</th><th>المعالجة</th><th>معدل المادة</th></tr></thead>
+          <tbody>
+            <tr class="row-s2" data-coef="5"><td>اللغة العربية</td><td><span class="coef-pill">5</span></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in remed-input" placeholder="-" oninput="calcRow(this)"></td><td class="moy-cell">--</td></tr>
+            <tr class="row-s2" data-coef="5"><td>اللغة الفرنسية</td><td><span class="coef-pill">5</span></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in remed-input" placeholder="-" oninput="calcRow(this)"></td><td class="moy-cell">--</td></tr>
+            <tr class="row-s2" data-coef="5"><td>الرياضيات</td><td><span class="coef-pill">5</span></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in remed-input" placeholder="-" oninput="calcRow(this)"></td><td class="moy-cell">--</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section-badge">📚 الدورة الثانية — باقي المواد الدراسية</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>المادة</th><th>المعامل</th><th>الفرض 1</th><th>الفرض 2</th><th>الأنشطة</th><th>معدل المادة</th></tr></thead>
+          <tbody>
+            <tr class="row-s2" data-coef="3"><td>علوم الحياة والأرض (SVT)</td><td><span class="coef-pill">3</span></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td class="moy-cell">--</td></tr>
+            <tr class="row-s2" data-coef="3"><td>الاجتماعيات</td><td><span class="coef-pill">3</span></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td class="moy-cell">--</td></tr>
+            <tr class="row-s2" data-coef="2"><td>الفيزياء والكيمياء (PC)</td><td><span class="coef-pill">2</span></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td class="moy-cell">--</td></tr>
+            <tr class="row-s2" data-coef="2"><td>التربية الإسلامية</td><td><span class="coef-pill">2</span></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td class="moy-cell">--</td></tr>
+            <tr class="row-s2" data-coef="2"><td>التربية البدنية</td><td><span class="coef-pill">2</span></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td class="moy-cell">--</td></tr>
+            <tr class="row-s2" data-coef="2"><td>التربية التشكيلية</td><td><select class="coef-sel" onchange="updateCoef(this)"><option value="2" selected>2</option><option value="1">1</option><option value="0">غير موجودة</option></select></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td class="moy-cell">--</td></tr>
+            <tr class="row-s2" data-coef="1"><td>المعلوميات</td><td><select class="coef-sel" onchange="updateCoef(this)"><option value="1" selected>1</option><option value="0">غير موجودة</option></select></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td><input type="number" step="0.25" min="0" max="20" class="g-in" placeholder="-" oninput="calcRow(this)"></td><td class="moy-cell">--</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="actions">
+        <button type="button" class="btn-calc" onclick="calcSem('row-s2', 'res-s2', 's2MoyInput')">احسب معدل الدورة الثانية 📗</button>
+        <button type="button" class="btn-reset" onclick="resetSem('sem2', 'res-s2')">مسح 🗑️</button>
+      </div>
+      <div class="result-box" id="res-s2"></div>
     </div>
 
-    <div class="calc-card">
-      <table>
-        <thead>
-          <tr>
-            <th>المادة الدراسية</th>
-            <th>معدل المادة (/20)</th>
-            <th>المعامل</th>
-            <th>النقطة × المعامل</th>
-          </tr>
-        </thead>
-        <tbody id="subjectsTable">
-          <tr>
-            <td class="subj-name">اللغة العربية <span class="remed-tag">معالجة</span></td>
-            <td style="text-align:center;"><input type="number" step="0.01" min="0" max="20" class="note-input" data-coef="5" placeholder="0.00" oninput="updateRow(this)"></td>
-            <td style="text-align:center;"><span class="coef-badge">5</span></td>
-            <td class="total-cell">0.00</td>
-          </tr>
-          <tr>
-            <td class="subj-name">اللغة الفرنسية <span class="remed-tag">معالجة</span></td>
-            <td style="text-align:center;"><input type="number" step="0.01" min="0" max="20" class="note-input" data-coef="5" placeholder="0.00" oninput="updateRow(this)"></td>
-            <td style="text-align:center;"><span class="coef-badge">5</span></td>
-            <td class="total-cell">0.00</td>
-          </tr>
-          <tr>
-            <td class="subj-name">الرياضيات <span class="remed-tag">معالجة</span></td>
-            <td style="text-align:center;"><input type="number" step="0.01" min="0" max="20" class="note-input" data-coef="5" placeholder="0.00" oninput="updateRow(this)"></td>
-            <td style="text-align:center;"><span class="coef-badge">5</span></td>
-            <td class="total-cell">0.00</td>
-          </tr>
-          <tr>
-            <td class="subj-name">علوم الحياة والأرض (SVT)</td>
-            <td style="text-align:center;"><input type="number" step="0.01" min="0" max="20" class="note-input" data-coef="3" placeholder="0.00" oninput="updateRow(this)"></td>
-            <td style="text-align:center;"><span class="coef-badge">3</span></td>
-            <td class="total-cell">0.00</td>
-          </tr>
-          <tr>
-            <td class="subj-name">الاجتماعيات</td>
-            <td style="text-align:center;"><input type="number" step="0.01" min="0" max="20" class="note-input" data-coef="3" placeholder="0.00" oninput="updateRow(this)"></td>
-            <td style="text-align:center;"><span class="coef-badge">3</span></td>
-            <td class="total-cell">0.00</td>
-          </tr>
-          <tr>
-            <td class="subj-name">الفيزياء والكيمياء (PC)</td>
-            <td style="text-align:center;"><input type="number" step="0.01" min="0" max="20" class="note-input" data-coef="2" placeholder="0.00" oninput="updateRow(this)"></td>
-            <td style="text-align:center;"><span class="coef-badge">2</span></td>
-            <td class="total-cell">0.00</td>
-          </tr>
-          <tr>
-            <td class="subj-name">التربية الإسلامية</td>
-            <td style="text-align:center;"><input type="number" step="0.01" min="0" max="20" class="note-input" data-coef="2" placeholder="0.00" oninput="updateRow(this)"></td>
-            <td style="text-align:center;"><span class="coef-badge">2</span></td>
-            <td class="total-cell">0.00</td>
-          </tr>
-          <tr>
-            <td class="subj-name">التربية البدنية</td>
-            <td style="text-align:center;"><input type="number" step="0.01" min="0" max="20" class="note-input" data-coef="2" placeholder="0.00" oninput="updateRow(this)"></td>
-            <td style="text-align:center;"><span class="coef-badge">2</span></td>
-            <td class="total-cell">0.00</td>
-          </tr>
-          <tr>
-            <td class="subj-name">التربية التشكيلية / الموسيقية</td>
-            <td style="text-align:center;"><input type="number" step="0.01" min="0" max="20" class="note-input" data-coef="2" placeholder="0.00" oninput="updateRow(this)"></td>
-            <td style="text-align:center;">
-              <select class="coef-select" onchange="changeCoef(this)">
-                <option value="2" selected>2</option>
-                <option value="1">1</option>
-                <option value="0">غير موجودة</option>
-              </select>
-            </td>
+    <!-- ================= المعدل السنوي (ANNUAL) ================= -->
+    <div id="annual" class="tab-panel">
+      <div class="annual-card">
+        <h2 style="color:#38bdf8; font-size:20px; margin-bottom:6px;">🎓 حساب المعدل السنوي العام للنجاح</h2>
+        <p style="color:#94a3b8; font-size:13px;">يتم ملء المعدلين تلقائياً بعد حسابهما، أو يمكنك إدخالهما يدوياً</p>
+        
+        <div class="annual-inputs">
+          <div class="annual-box">
+            <label>📘 معدل الدورة الأولى</label>
+            <input type="number" id="s1MoyInput" step="0.01" min="0" max="20" placeholder="0.00">
+          </div>
+          <div class="annual-box">
+            <label>📗 معدل الدورة الثانية</label>
+            <input type="number" id="s2MoyInput" step="0.01" min="0" max="20" placeholder="0.00">
+          </div>
+        </div>
+
+        <button type="button" class="btn-calc" style="width:100%;" onclick="calcAnnual()">احسب المعدل السنوي النهائي 🎓</button>
+        <div class="result-box" id="res-annual" style="margin-top:18px; margin-bottom:0;"></div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>منصة <strong>خطوة للنجاح (Khatwa 1AC BIOF)</strong> © 2026</footer>
+
+  <script>
+    function openSem(id, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.sem-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      btn.classList.add('active');
+    }
+
+    function calcRow(input) {
+      let val = parseFloat(input.value);
+      if (val > 20) input.value = 20;
+      if (val < 0) input.value = 0;
+
+      const row = input.closest('tr');
+      const inputs = row.querySelectorAll('.g-in');
+      let sum = 0, count = 0;
+
+      inputs.forEach(inp => {
+        if (inp.value !== "" && !isNaN(parseFloat(inp.value))) {
+          sum += parseFloat(inp.value);
+          count++;
+        }
+      });
+
+      const cell = row.querySelector('.moy-cell');
+      cell.textContent = count > 0 ? (sum / count).toFixed(2) : "--";
+    }
+
+    function updateCoef(sel) {
+      const row = sel.closest('tr');
+      row.setAttribute('data-coef', sel.value);
+      const inputs = row.querySelectorAll('.g-in');
+      inputs.forEach(inp => {
+        inp.disabled = (sel.value === "0");
+        if (sel.value === "0") inp.value = "";
+      });
+      if (inputs.length > 0) calcRow(inputs[0]);
+    }
+
+    function getMention(moy) {
+      if (moy >= 16) return { text: "🌟 ميزة حسن جداً (Très Bien)", color: "#34d399" };
+      if (moy >= 14) return { text: "👏 ميزة حسن (Bien)", color: "#38bdf8" };
+      if (moy >= 12) return { text: "👍 ميزة مستحسن (Assez Bien)", color: "#818cf8" };
+      if (moy >= 10) return { text: "✅ مقبول — ناجح (Passable)", color: "#fbbf24" };
+      return { text: "💪 غير مستوفٍ — يحتاج لمزيد من الاجتهاد", color: "#f87171" };
+    }
+
+    function calcSem(rowClass, resId, targetInputId) {
+      const rows = document.querySelectorAll('.' + rowClass);
+      let totalPts = 0, totalCoefs = 0, hasGrade = false;
+
+      rows.forEach(row => {
+        const coef = parseFloat(row.getAttribute('data-coef'));
+        if (coef === 0) return;
+        const moyText = row.querySelector('.moy-cell').textContent;
+        if (moyText !== "--") {
+          totalPts += parseFloat(moyText) * coef;
+          totalCoefs += coef;
+          hasGrade = true;
+        }
+      });
+
