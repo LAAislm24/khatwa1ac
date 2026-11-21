@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Leçon 3 : Multiplication et division des nombres</title>
+<style>
+  body { background: #0f172a; color: white; font-family: Arial, sans-serif; max-width: 900px; margin: 20px auto; padding: 15px; line-height: 1.9; }
+  .back { display: inline-block; background: #ef4444; color: white; padding: 10px 20px; border-radius: 10px; text-decoration: none; margin-bottom: 15px; font-weight: bold; }
+  .card { background: #1e293b; border: 2px solid #38bdf8; border-radius: 15px; padding: 22px; margin-bottom: 20px; }
+  .rule { background: #0f172a; padding: 18px; border-radius: 10px; border-left: 5px solid #22c55e; margin: 15px 0; font-size: 16px; }
+  .q { background: #0f172a; padding: 18px; border-radius: 10px; border-left: 5px solid #eab308; margin: 15px 0; font-size: 16px; }
+  select { padding: 6px 10px; border-radius: 6px; border: 2px solid #38bdf8; background: #1e293b; color: #fde047; font-weight: bold; font-size: 15px; cursor: pointer; margin: 3px 0; }
+  .t-page { display: none; }
+  .btn-verif { background: #22c55e; color: #0f172a; border: none; padding: 14px 30px; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 15px; }
+  .btn-verif:hover { background: #16a34a; color: white; }
+  #note { font-size: 22px; font-weight: bold; color: #fde047; margin-top: 15px; }
+  h1 { color: #38bdf8; font-size: 22px; border-bottom: 1px solid #334155; padding-bottom: 10px; }
+</style>
+<script>
+  function showT() {
+    document.querySelectorAll('.t-page').forEach(p => p.style.display = 'none');
+    var noteEl = document.getElementById('note');
+    if (noteEl) noteEl.innerText = "";
+    var hash = window.location.hash.replace('#', '');
+    var el = document.getElementById(hash) || document.getElementById('t1');
+    if (el) el.style.display = 'block';
+  }
+  function verifier() {
+    var ok = 0, total = 0;
+    document.querySelectorAll('.t-page').forEach(function(page) {
+      if (page.style.display === 'block') {
+        page.querySelectorAll('select[data-rep]').forEach(function(sel) {
+          total++;
+          if (sel.value === sel.getAttribute('data-rep')) { sel.style.borderColor = "#22c55e"; sel.style.background = "#14532d"; ok++; }
+          else { sel.style.borderColor = "#ef4444"; sel.style.background = "#7f1d1d"; }
+        });
+      }
+    });
+    document.getElementById('note').innerText = "🎯 نتيجتك : " + ok + " / " + total;
+  }
+  window.addEventListener('DOMContentLoaded', showT);
+  window.addEventListener('hashchange', showT);
+</script>
+</head>
+<body>
+  <a class="back" href="math.html">🔙 Retour aux Mathématiques</a>
+
+  <!-- Tâche 1 -->
+  <div id="t1" class="t-page card" dir="rtl" style="text-align:right;">
+    <h1>📐 Tâche 1 : Multiplier des nombres entiers de signes différents (p. 32)</h1>
+    <div class="rule">
+      <b>📌 القاعدة والأمثلة :</b><br>
+      • جداء عددين لهما <b>إشارتان مختلفتان</b> (موجب × سالب أو سالب × موجب) يكون <b>دائماً سالباً (-)</b>.<br>
+      • نضع الإشارة <span dir="ltr">(-)</span> أولاً ثم نضرب العددين بدون إشارة.<br>
+      • أمثلة : <span dir="ltr"><b>(+5) × (-6) = -30</b></span> | <span dir="ltr"><b>(-8) × (+4) = -32</b></span> | <span dir="ltr"><b>(+19) × (-1) = -19</b></span>.
+    </div>
+    <div class="q">
+      <b>✍️ تمارين للمراجعة :</b><br><br>
+      1. <span dir="ltr">(+7) × (-4) =</span> <select data-rep="-28"><option value="">?</option><option value="-28">-28</option><option value="+28">+28</option></select> &nbsp;|&nbsp;
+      <span dir="ltr">(-9) × (+5) =</span> <select data-rep="-45"><option value="">?</option><option value="-45">-45</option><option value="+45">+45</option></select><br><br>
+      2. <span dir="ltr">(-6) × ( ... ) = -42</span> ⬅️ <select data-rep="+7"><option value="">?</option><option value="+7">+7</option><option value="-7">-7</option></select> &nbsp;|&nbsp;
+      <span dir="ltr">( ... ) × (+8) = -64</span> ⬅️ <select data-rep="-8"><option value="">?</option><option value="-8">-8</option><option value="+8">+8</option></select><br><br>
+      3. ينخفض الماء بـ <span dir="ltr">-3 cm</span> كل ساعة. التغير بعد 6 ساعات : <select data-rep="-18 cm"><option value="">?</option><option value="-18 cm">-18 cm</option><option value="+18 cm">+18 cm</option></select>
+    </div>
+  </div>
+
+
+  <!-- Tâche 2 -->
+  <div id="t2" class="t-page card" dir="rtl" style="text-align:right;">
+    <h1>📐 Tâche 2 : Multiplier des nombres entiers de même signe (p. 35)</h1>
+    <div class="rule">
+      <b>📌 القاعدة والأمثلة :</b><br>
+      • جداء عددين لهما <b>نفس الإشارة</b> (موجب × موجب أو سالب × سالب) يكون <b>دائماً موجباً (+)</b>.<br>
+      • أمثلة : <span dir="ltr"><b>(-7) × (-4) = +28</b></span> | <span dir="ltr"><b>(-10) × (-10) = +100</b></span>.
+    </div>
+    <div class="q">
+      1. <span dir="ltr">(-6) × (-8) =</span> <select data-rep="+48"><option value="">?</option><option value="+48">+48</option><option value="-48">-48</option></select> &nbsp;|&nbsp;
+      <span dir="ltr">(-9) × (-9) =</span> <select data-rep="+81"><option value="">?</option><option value="+81">+81</option><option value="-81">-81</option></select><br><br>
+      2. <span dir="ltr">(-4) × ( ... ) = +36</span> ⬅️ <select data-rep="-9"><option value="">?</option><option value="-9">-9</option><option value="+9">+9</option></select> &nbsp;|&nbsp;
+      مربع <span dir="ltr">-12</span> : <select data-rep="+144"><option value="">?</option><option value="+144">+144</option><option value="-144">-144</option></select>
+    </div>
+  </div>
+
+  <!-- Tâche 3 -->
+  <div id="t3" class="t-page card" dir="rtl" style="text-align:right;">
+    <h1>📐 Tâche 3 : Effectuer la division de nombres entiers (p. 37)</h1>
+    <div class="rule">
+      <b>📌 القاعدة والأمثلة :</b><br>
+      • نفس قاعدة الإشارات في الضرب : نفس الإشارة ⬅️ <span dir="ltr">(+)</span> | إشارتان مختلفتان ⬅️ <span dir="ltr">(-)</span>.<br>
+      • القسمة على 0 مستحيلة، و <span dir="ltr">0 ÷ (-7) = 0</span>. أمثلة : <span dir="ltr"><b>(-36) ÷ (-6) = +6</b></span> | <span dir="ltr"><b>(-45) ÷ (+9) = -5</b></span>.
+    </div>
+    <div class="q">
+      1. <span dir="ltr">(-42) ÷ (+7) =</span> <select data-rep="-6"><option value="">?</option><option value="-6">-6</option><option value="+6">+6</option></select> &nbsp;|&nbsp;
+      <span dir="ltr">(-56) ÷ (-8) =</span> <select data-rep="+7"><option value="">?</option><option value="+7">+7</option><option value="-7">-7</option></select><br><br>
+      2. <span dir="ltr">(-30) ÷ ( ... ) = +5</span> ⬅️ <select data-rep="-6"><option value="">?</option><option value="-6">-6</option><option value="+6">+6</option></select> &nbsp;|&nbsp;
+      <span dir="ltr">0 ÷ (-15) =</span> <select data-rep="0"><option value="">?</option><option value="0">0</option><option value="-15">-15</option></select>
+    </div>
+  </div>
+
+  <!-- Tâche 4 -->
+  <div id="t4" class="t-page card" dir="rtl" style="text-align:right;">
+    <h1>📐 Tâche 4 : Commutativité et associativité de la multiplication (p. 39)</h1>
+    <div class="rule">
+      <b>📌 القاعدة :</b> نعدّ العوامل السالبة <span dir="ltr">(-)</span> : عدد زوجي ⬅️ <span dir="ltr">(+)</span> | عدد فردي ⬅️ <span dir="ltr">(-)</span>. ثم نجمع الأعداد السهلة مثل <span dir="ltr">2×5=10</span> و <span dir="ltr">4×25=100</span>.
+    </div>
+    <div class="q">
+      1. إشارة <span dir="ltr">(-3)×(+4)×(-5)×(-2)</span> : <select data-rep="-"><option value="">?</option><option value="-">سالبة (-)</option><option value="+">موجبة (+)</option></select><br><br>
+      2. <span dir="ltr">(-5) × (+13) × (-2) =</span> <select data-rep="+130"><option value="">?</option><option value="+130">+130</option><option value="-130">-130</option></select> &nbsp;|&nbsp;
+      <span dir="ltr">(-25) × (-7) × (+4) =</span> <select data-rep="-700"><option value="">?</option><option value="-700">-700</option><option value="+700">+700</option></select>
+    </div>
+  </div>
+
+  <!-- Tâche 5 -->
+  <div id="t5" class="t-page card" dir="rtl" style="text-align:right;">
+    <h1>📐 Tâche 5 : Appliquer les règles aux nombres décimaux et aux fractions (p. 41)</h1>
+    <div class="rule">
+      <b>📌 1. الشرح الشامل والمفصل (الضرب والقسمة للأعداد العشرية والكسور) :</b><br>
+      • <b>نفس قواعد الإشارات تطبق 100% على الأعداد العشرية (Décimaux) والكسور (Fractions) :</b><br>
+      &nbsp;&nbsp;- إذا كان للعددين <b>نفس الإشارة</b> ⬅️ فالنتيجة <b>موجبة (<span dir="ltr">+</span>)</b>.<br>
+      &nbsp;&nbsp;- إذا كان للعددين <b>إشارتان مختلفتان</b> ⬅️ فالنتيجة <b>سالبة (<span dir="ltr">-</span>)</b>.<br>
+      • <b>قاعدة ضرب الكسور (La multiplication des fractions) :</b><br>
+      &nbsp;&nbsp;نضرب البسط في البسط، والمقام في المقام (ولا نحتاج لتوحيد المقامات في الضرب!) :<br>
+      &nbsp;&nbsp;<span dir="ltr"><b>(a / b) × (c / d) = (a × c) / (b × d)</b></span>.<br>
+      • <b>قاعدة قسمة الكسور (La division des fractions) :</b><br>
+      &nbsp;&nbsp;نحتفظ بالكسر الأول كما هو، ونحول القسمة إلى ضرب، ونضرب في <b>مقلوب الكسر الثاني (L'inverse)</b> :<br>
+      &nbsp;&nbsp;<span dir="ltr"><b>(a / b) ÷ (c / d) = (a / b) × (d / c)</b></span>.<br>
+      • <b>تنبيه حول مكان الإشارة السالبة في الكسر :</b><br>
+      &nbsp;&nbsp;<span dir="ltr">(-a) / b = a / (-b) = - (a / b)</span> (إشارة سالبة واحدة تعني الكسر سالب)، أما <span dir="ltr">(-a) / (-b) = + (a / b)</span> (إشارتان سالبتان تعني الكسر موجب).<br><br>
+      <b>أمثلة تطبيقية مفصلة (Exemples) :</b><br>
+      1. <span dir="ltr"><b>(-2,5) × (-4) = +10</b></span> (سالب × سالب = موجب، و <span dir="ltr">2,5 × 4 = 10</span>).<br>
+      2. <span dir="ltr"><b>(-3/5) × (+2/7) = - (3 × 2) / (5 × 7) = -6/35</b></span>.<br>
+      3. <span dir="ltr"><b>(-2/3) ÷ (-5/4) = (-2/3) × (-4/5) = + (2 × 4) / (3 × 5) = +8/15</b></span>.
+    </div>
+    <div class="q">
+      <b>✍️ 2. تمارين للمراجعة والتدريب المكثف :</b><br><br>
+      <b>1. احسب جداء وقسمة الأعداد العشرية التالية :</b><br>
+      • <span dir="ltr">(-1,5) × (+4) =</span> <select data-rep="-6"><option value="">?</option><option value="-6">-6</option><option value="+6">+6</option><option value="-4,5">-4,5</option></select> &nbsp;|&nbsp;
+      • <span dir="ltr">(-8,4) ÷ (-2) =</span> <select data-rep="+4,2"><option value="">?</option><option value="+4,2">+4,2</option><option value="-4,2">-4,2</option></select><br><br>
+      <b>2. احسب جداء الكسرين التاليين : <span dir="ltr">(-4/5) × (+3/7)</span></b><br>
+      <select data-rep="-12/35"><option value="">-- اختر النتيجة --</option><option value="-12/35">-12/35</option><option value="+12/35">+12/35</option><option value="-7/12">-7/12</option></select><br><br>
+      <b>3. احسب جداء الكسرين التاليين : <span dir="ltr">(-2/9) × (-5/3)</span></b><br>
+      <select data-rep="+10/27"><option value="">-- اختر النتيجة --</option><option value="+10/27">+10/27</option><option value="-10/27">-10/27</option></select><br><br>
+      <b>4. لقسمة <span dir="ltr">(-3/4) ÷ (+2/5)</span>، نضرب <span dir="ltr">(-3/4)</span> في مقلوب <span dir="ltr">(+2/5)</span>. ما هي النتيجة؟</b><br>
+      <select data-rep="-15/8"><option value="">-- اختر النتيجة --</option><option value="-15/8">-15/8</option><option value="-6/20">-6/20</option><option value="+15/8">+15/8</option></select><br><br>
+      <b>5. بسط إشارة الكسر التالي : <span dir="ltr">(-14) / (-2)</span></b><br>
+      <select data-rep="+7"><option value="">-- اختر --</option><option value="+7">+7</option><option value="-7">-7</option></select>
+    </div>
+  </div>
+
+  <!-- Tâche 6 -->
+  <div id="t6" class="t-page card" dir="rtl" style="text-align:right;">
+    <h1>📐 Tâche 6 : Priorité des opérations dans des expressions sans parenthèses (p. 44)</h1>
+    <div class="rule">
+      <b>📌 1. الشرح الشامل والمفصل (أسبقية العمليات بدون أقواس) :</b><br>
+      عندما نجد تعبيراً رياضياً يحتوي على عدة عمليات مختلطة (جمع، طرح، ضرب، قسمة) <b>بدون أقواس (Sans parenthèses)</b>، نطبق قانون <b>الأولويات (Les priorités opératoires)</b> :<br><br>
+      • <b>القاعدة 1 (الأقوى يبدأ أولاً) :</b> عمليتا <b>الضرب (<span dir="ltr">×</span>) والقسمة (<span dir="ltr">÷</span>)</b> لهما الأولوية المطلقة على الجمع (<span dir="ltr">+</span>) والطرح (<span dir="ltr">-</span>).<br>
+      • <b>القاعدة 2 (تساوي القوة) :</b> إذا اجتمع الضرب والقسمة معاً في نفس التعبير (أو اجتمع الجمع والطرح فقط)، نحسب <b>بالترتيب من اليسار إلى اليمين (De gauche à droite)</b>.<br>
+      • <b>فخ خطير يجب الحذر منه :</b> في <span dir="ltr">20 - 5 × (-2)</span>، لا نطرح <span dir="ltr">20 - 5</span> أولاً! بل نحسب الضرب <span dir="ltr">5 × (-2) = -10</span>، ثم <span dir="ltr">20 - (-10) = 20 + 10 = +30</span>.<br><br>
+      <b>أمثلة تطبيقية مفصلة (Exemples) :</b><br>
+      1. <span dir="ltr"><b>A = (-6) + 4 × (-5) - (-12) ÷ 3 = (-6) + (-20) - (-4) = -6 - 20 + 4 = -22</b></span>.<br>
+      2. <span dir="ltr"><b>B = (-30) ÷ 5 × (-2) = (-6) × (-2) = +12</b></span> (من اليسار إلى اليمين).
+    </div>
+    <div class="q">
+      <b>✍️ 2. تمارين للمراجعة والتدريب المكثف :</b><br><br>
+      <b>1. في التعبير <span dir="ltr">E = 15 - 6 × (-4)</span>، ما هي الخطوة الأولى الصحيحة؟</b><br>
+      <select data-rep="ok"><option value="">-- اختر الخطوة الصحيحة --</option><option value="ok">نحسب الضرب أولاً : 6 × (-4) = -24</option><option value="no1">نحسب الطرح أولاً : 15 - 6 = 9</option></select><br><br>
+      <b>2. أكمل حساب التعبير السابق : <span dir="ltr">E = 15 - 6 × (-4)</span></b><br>
+      <select data-rep="+39"><option value="">-- اختر النتيجة --</option><option value="+39">+39</option><option value="-9">-9</option><option value="-36">-36</option></select><br><br>
+      <b>3. احسب : <span dir="ltr">F = (-28) ÷ (-7) + (-3) × (+5)</span></b><br>
+      <select data-rep="-11"><option value="">-- اختر النتيجة --</option><option value="-11">-11</option><option value="+19">+19</option><option value="-19">-19</option></select><br><br>
+      <b>4. انتبه للترتيب من اليسار إلى اليمين : <span dir="ltr">G = (-40) ÷ 8 × (-3)</span></b><br>
+      <select data-rep="+15"><option value="">-- اختر النتيجة --</option><option value="+15">+15</option><option value="-15">-15</option><option value="+1,6">+1,6</option></select><br><br>
+      <b>5. تحدي التركيز : <span dir="ltr">H = (-2) × (-9) - 24 ÷ (-6) + (-10)</span></b><br>
+      <select data-rep="+12"><option value="">-- اختر النتيجة --</option><option value="+12">+12</option><option value="+4">+4</option><option value="-32">-32</option></select>
+    </div>
+  </div>
+
+  <!-- Tâche 7 -->
+  <div id="t7" class="t-page card" dir="rtl" style="text-align:right;">
+    <h1>📐 Tâche 7 : Priorité des opérations dans des expressions avec parenthèses (p. 46)</h1>
+    <div class="rule">
+      <b>📌 1. الشرح الشامل والمفصل (أسبقية العمليات مع الأقواس) :</b><br>
+      الأقواس <span dir="ltr">( )</span> والمعقوفات <span dir="ltr">[ ]</span> تكسر قاعدة الأولوية العادية وتفرض علينا البدء بها أولاً مهما كانت العملية بداخلها :<br><br>
+      • <b>القاعدة 1 (الأقواس أولاً) :</b> نحسب دائماً ما بداخل <b>الأقواس أولاً (Les parenthèses d'abord)</b> قبل ضربه أو قسمته على ما خارجه.<br>
+      • <b>القاعدة 2 (الأقواس المتداخلة) :</b> إذا وجدنا أقواساً صغيرة داخل معقوفات كبيرة مثل <span dir="ltr">[ ... ( ... ) ... ]</span>، نبدأ دائماً بـ <b>الأقواس الداخلية (Les plus intérieures)</b>، ثم المعقوفات، وأخيراً ما خارجها.<br>
+      • <b>القاعدة 3 (داخل القوس نفسه) :</b> إذا كان بداخل القوس أكثر من عملية، نبدأ بالضرب والقسمة داخل القوس قبل الجمع والطرح.<br>
+      • <b>القاعدة 4 (تعبير على شكل كسر كبير) :</b> نحسب البسط كاملاً كأنه محصور بين قوسين، ونحسب المقام كاملاً كأنه محصور بين قوسين، ثم نقسم البسط على المقام.<br><br>
+      <b>أمثلة تطبيقية مفصلة (Exemples) :</b><br>
+      1. <span dir="ltr"><b>A = (-3) × [ (-8) + 2 × (-5) ] = (-3) × [ -8 - 10 ] = (-3) × (-18) = +54</b></span>.<br>
+      2. <span dir="ltr"><b>B = [ 15 - (-9) ] ÷ [ (-2) × 4 ] = 24 ÷ (-8) = -3</b></span>.
+    </div>
+    <div class="q">
+      <b>✍️ 2. تمارين للمراجعة والتدريب المكثف :</b><br><br>
+      <b>1. احسب على مرحلتين : <span dir="ltr">A = (-6) × ( -9 + 4 )</span></b><br>
+      • قيمة القوس <span dir="ltr">(-9 + 4)</span> هي : <select data-rep="-5"><option value="">?</option><option value="-5">-5</option><option value="+5">+5</option><option value="-13">-13</option></select> &nbsp;|&nbsp;
+      • النتيجة النهائية : <select data-rep="+30"><option value="">?</option><option value="+30">+30</option><option value="-30">-30</option></select><br><br>
+      <b>2. احسب باحترام الأولوية داخل القوس : <span dir="ltr">B = 50 - ( 12 + 4 × (-7) )</span></b><br>
+      <select data-rep="+66"><option value="">-- اختر النتيجة --</option><option value="+66">+66</option><option value="+34">+34</option><option value="+162">+162</option></select><br><br>
+      <b>3. أقواس متداخلة (ابدأ من الداخل إلى الخارج) : <span dir="ltr">C = (-4) × [ 15 - ( 7 - 12 ) ]</span></b><br>
+      <select data-rep="-80"><option value="">-- اختر النتيجة --</option><option value="-80">-80</option><option value="-40">-40</option><option value="+80">+80</option></select><br><br>
+      <b>4. تعبير كسري (البسط أولاً ثم المقام) : <span dir="ltr">D = [ (-18) - (+12) ] / [ (-3) × (-2) ]</span></b><br>
+      <select data-rep="-5"><option value="">-- اختر النتيجة --</option><option value="-5">-5</option><option value="+5">+5</option><option value="-1">-1</option></select>
+    </div>
+  </div>
+
+  <!-- Tâche 8 -->
+  <div id="t8" class="t-page card" dir="rtl" style="text-align:right;">
+    <h1>📐 Tâche 8 : Appliquer la règle de distributivité (p. 48)</h1>
+    <div class="rule">
+      <b>📌 1. الشرح الشامل والمفصل (النشر والتعميل - La distributivité) :</b><br>
+      خاصية توزيعية الضرب على الجمع والطرح تعمل في اتجاهين :<br><br>
+      • <b>الاتجاه الأول : النشر (Développer) — تحويل الجداء إلى مجموع أو فرق :</b><br>
+      &nbsp;&nbsp;<span dir="ltr"><b>k × (a + b) = k × a + k × b</b></span> &nbsp;|&nbsp; <span dir="ltr"><b>k × (a - b) = k × a - k × b</b></span><br>
+      • <b>الاتجاه الثاني : التعميل (Factoriser) — تحويل المجموع أو الفرق إلى جداء :</b><br>
+      &nbsp;&nbsp;نبحث عن <b>العامل المشترك (Le facteur commun)</b> ونخرجه خارج القوس لتسهيل الحساب الذهني :<br>
+      &nbsp;&nbsp;<span dir="ltr"><b>k × a + k × b = k × (a + b)</b></span> &nbsp;|&nbsp; <span dir="ltr"><b>k × a - k × b = k × (a - b)</b></span><br><br>
+      <b>أمثلة تطبيقية مفصلة (Exemples) :</b><br>
+      1. <b>الحساب بالنشر :</b> <span dir="ltr"><b>(-5) × 99 = (-5) × (100 - 1) = (-5) × 100 - (-5) × 1 = -500 + 5 = -495</b></span>.<br>
+      2. <b>الحساب بالتعميل :</b> <span dir="ltr"><b>(-8) × 17 + (-8) × (-7) = (-8) × [ 17 + (-7) ] = (-8) × 10 = -80</b></span>.
+    </div>
+    <div class="q">
+      <b>✍️ 2. تمارين للمراجعة والتدريب المكثف :</b><br><br>
+      <b>1. ما هي الكتابة المنشورة الصحيحة للتعبير : <span dir="ltr">(-4) × ( 10 + (-3) )</span> ؟</b><br>
+      <select data-rep="ok"><option value="">-- اختر النشر الصحيح --</option><option value="ok">(-4) × 10 + (-4) × (-3)</option><option value="no1">(-4) × 10 + (-3)</option></select><br><br>
+      <b>2. احسب ذهنياً باستعمال النشر : <span dir="ltr">(-6) × 98 = (-6) × (100 - 2)</span></b><br>
+      <select data-rep="-588"><option value="">-- اختر النتيجة --</option><option value="-588">-588</option><option value="-612">-612</option></select><br><br>
+      <b>3. عمل ثم احسب بذكاء : <span dir="ltr">(-12) × 23 + (-12) × (-13)</span></b><br>
+      <select data-rep="-120"><option value="">-- اختر النتيجة --</option><option value="-120">-120</option><option value="+120">+120</option></select><br><br>
+      <b>4. عمل ثم احسب : <span dir="ltr">25 × (-14) - 25 × (-4)</span></b><br>
+      <select data-rep="-250"><option value="">-- اختر النتيجة --</option><option value="-250">-250</option><option value="+250">+250</option></select><br><br>
+           <b>5. انتبه! عمل التعبير التالي (<span dir="ltr">-7 = (-7) × 1</span>) : <span dir="ltr">(-7) × 9 + (-7)</span></b><br>
+      <select data-rep="-70"><option value="">-- اختر النتيجة --</option><option value="-70">-70</option><option value="-63">-63</option></select>
+    </div>
+  </div>
+
+  <!-- Tâche 9 -->
+  <div id="t9" class="t-page card" dir="rtl" style="text-align:right;">
+    <h1>📐 Tâche 9 : Résoudre un problème en utilisant la multiplication et la division (p. 50)</h1>
+    <div class="rule">
+      <b>📌 1. الشرح الشامل ومنهجية حل المسائل (الضرب والقسمة) :</b><br>
+      لحل مسألة رياضية بنجاح في الفرض أو الامتحان، نتبع دائماً <b>4 خطوات ذهبية</b> :<br><br>
+      • <b>الخطوة 1 (تحديد الإشارات) :</b> النزول، الخسارة، السحب، الانخفاض ⬅️ <b>إشارة سالبة (<span dir="ltr">-</span>)</b> | الصعود، الربح، الإيداع، الارتفاع ⬅️ <b>إشارة موجبة (<span dir="ltr">+</span>)</b>.<br>
+      • <b>الخطوة 2 (اختيار العملية) :</b> نختار <b>الضرب (<span dir="ltr">×</span>)</b> عند تكرار نفس التغير، و<b>القسمة (<span dir="ltr">÷</span>)</b> عند التوزيع بالتساوي أو حساب المعدل.<br>
+      • <b>الخطوة 3 (كتابة تعبير واحد جامع) :</b> نجمع معطيات المسألة في تعبير عددي واحد باستعمال الأقواس عند الحاجة.<br>
+      • <b>الخطوة 4 (الحساب والجواب بجملة مفيدة) :</b> نحسب التعبير باحترام الأولويات ثم نكتب الوحدة (<span dir="ltr">DH, °C, m...</span>).<br><br>
+      <b>مثال تطبيقي مفصل (Exemple) :</b><br>
+      في اختبار من <span dir="ltr">10</span> أسئلة، يُمنح <span dir="ltr">+3</span> نقط لكل جواب صحيح، وتُخصم <span dir="ltr">-2</span> نقط لكل جواب خاطئ.<br>
+      أجاب كريم عن <span dir="ltr">6</span> أسئلة صحيحة و <span dir="ltr">4</span> خاطئة. نقطته النهائية هي : <span dir="ltr"><b>N = 6 × (+3) + 4 × (-2) = (+18) + (-8) = +10</b></span> نقط.
+    </div>
+    <div class="q">
+      <b>✍️ 2. مسائل تطبيقية للمراجعة والتدريب المكثف :</b><br><br>
+      <b>1. (مسألة الغوص) :</b> ينزل غواص تحت سطح البحر بسرعة <span dir="ltr">-4 m</span> في كل دقيقة. كم سيكون عمقه بعد <span dir="ltr">9</span> دقائق من النزول؟<br>
+      <select data-rep="-36 m"><option value="">-- اختر العمق --</option><option value="-36 m">-36 m</option><option value="+36 m">+36 m</option><option value="-13 m">-13 m</option></select><br><br>
+      <b>2. (مسألة التجارة) :</b> سجلت شركة خسارة إجمالية قدرها <span dir="ltr">-4500 DH</span> خلال <span dir="ltr">5</span> أشهر متتالية بالتساوي. ما هو معدل الربح أو الخسارة في الشهر الواحد؟<br>
+      <select data-rep="-900 DH"><option value="">-- اختر المعدل الشهري --</option><option value="-900 DH">-900 DH</option><option value="+900 DH">+900 DH</option><option value="-22500 DH">-22500 DH</option></select><br><br>
+      <b>3. (مسألة المسابقة) :</b> في مسابقة ثقافية: كل جواب صحيح بـ <span dir="ltr">+5</span> نقط، وكل جواب خاطئ بـ <span dir="ltr">-3</span> نقط، وعدم الإجابة بـ <span dir="ltr">-1</span> نقطة.<br>
+      أجابت سارة على <span dir="ltr">7</span> أسئلة صحيحة، و <span dir="ltr">4</span> خاطئة، وتركت <span dir="ltr">2</span> بدون جواب. ما هو مجموع نقطها؟<br>
+      <select data-rep="+21"><option value="">-- اختر المجموع --</option><option value="+21">+21 نقطة</option><option value="+35">+35 نقطة</option><option value="+23">+23 نقطة</option></select><br><br>
+      <b>4. (مسألة الطقس) :</b> كانت درجة الحرارة صباحاً <span dir="ltr">+4°C</span>، ثم انخفضت بمقدار <span dir="ltr">3°C</span> كل ساعة لمدة <span dir="ltr">5</span> ساعات. كم أصبحت درجة الحرارة؟<br>
+      <select data-rep="-11°C"><option value="">-- اختر الحرارة --</option><option value="-11°C">-11°C</option><option value="-15°C">-15°C</option><option value="+19°C">+19°C</option></select><br><br>
+      <b>5. (مسألة الحساب البنكي) :</b> في رصيد عمر <span dir="ltr">200 DH</span>. قام بـ <span dir="ltr">4</span> عمليات سحب متساوية بقيمة <span dir="ltr">80 DH</span> لكل عملية. كم أصبح رصيده؟<br>
+      <select data-rep="-120 DH"><option value="">-- اختر الرصيد --</option><option value="-120 DH">-120 DH</option><option value="+120 DH">+120 DH</option><option value="-320 DH">-320 DH</option></select>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <button class="btn-verif" onclick="verifier()">✅ Vérifier / تصحيح</button>
+    <div id="note"></div>
+  </div>
+
+</body>
+</html>
+
+
+
+

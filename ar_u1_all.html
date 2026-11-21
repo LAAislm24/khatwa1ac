@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<style>
+  body { background: #0f172a; color: white; font-family: Arial; max-width: 850px; margin: 20px auto; padding: 15px; text-align: right; line-height: 1.8; }
+  .back { display: inline-block; background: #ef4444; color: white; padding: 10px 20px; border-radius: 10px; text-decoration: none; margin-bottom: 15px; font-weight: bold; }
+  h1, h2 { color: #38bdf8; }
+  .card { background: #1e293b; border: 2px solid #38bdf8; border-radius: 15px; padding: 20px; margin-bottom: 20px; }
+  .sum-box { background: #0f172a; padding: 15px; border-radius: 10px; margin-top: 12px; border-right: 5px solid #22c55e; }
+  .rule { background: #172554; padding: 12px; border-radius: 8px; margin-top: 10px; border: 1px dashed #38bdf8; }
+  .quiz-box { background: #0f172a; padding: 15px; border-radius: 10px; margin-top: 15px; border-right: 5px solid #eab308; }
+  button { background: #1e293b; color: #38bdf8; border: 2px solid #38bdf8; padding: 10px 15px; margin: 6px 0; border-radius: 8px; cursor: pointer; font-size: 15px; display: block; width: 100%; text-align: right; }
+  button:hover:not(:disabled) { background: #38bdf8; color: #0f172a; font-weight: bold; }
+  .lesson-page { display: none; }
+</style>
+<script>
+  function ans(btn, ok) {
+    btn.parentElement.querySelectorAll('button').forEach(function(b) { b.disabled = true; });
+    btn.style.background = ok ? "#22c55e" : "#ef4444";
+    btn.style.color = ok ? "#0f172a" : "white";
+    btn.innerText += ok ? " ✅ (إجابة صحيحة!)" : " ❌ (إجابة خاطئة)";
+  }
+  window.onload = function() {
+    var hash = window.location.hash.replace('#', '') || 'd4';
+    var el = document.getElementById(hash);
+    if (el) el.style.display = 'block';
+  };
+</script>
+</head>
+<body>
+  <a class="back" href="arabic.html">🔙 الرجوع لدروس الوحدة</a>
+
+  <!-- الدرس 1 -->
+  <div id="d1" class="lesson-page card">
+    <h1>📘 أغني معجمي وأغني تعابيري : الاهتمامات الثقافية (ص 6 - 8)</h1>
+    <div class="sum-box">
+      <b>📌 ملخص الدرس :</b><br>
+      • <b>مفهوم الثقافة :</b> هي مجموع المعارف والعلوم والفنون والآداب التي تنمي عقل الإنسان وشخصيته.<br>
+      • <b>مجالاتها :</b> المطالعة، زيارة المعارض والمتاحف، المسرح الهادف، والموسيقى.<br>
+      • <b>أساليب التعبير :</b> <i>أهوى...، أجد متعة في...، تستهويني...، أواظب على...</i>
+    </div>
+    <div class="quiz-box"><b>🏆 تحدي :</b> ما العبارة الأنسب للتعبير عن الاهتمام الثقافي؟
+      <button onclick="ans(this, true)">تستهويني مطالعة الكتب العلمية والقصص التاريخية.</button>
+      <button onclick="ans(this, false)">أقضي كل وقتي في الألعاب الإلكترونية.</button>
+    </div>
+  </div>
+
+  <!-- الدرس 2 -->
+  <div id="d2" class="lesson-page card">
+    <h1>📘 أستمع بتركيز وأفهم : الأديب الناشئ (ص 10)</h1>
+    <div class="sum-box">
+      <b>📌 ملخص النص :</b><br>
+      • يتحدث النص عن طفل شغوف بالمطالعة والكتابة، يواظب على زيارة المكتبة وتدوين أفكاره في دفتر خاص، مما صقل موهبته الأدبية وجعله أديباً ناشئاً متميزاً.<br>
+      • <b>القيمة المستخلصة :</b> حب المعرفة والمثابرة في تطوير الموهبة.
+    </div>
+    <div class="quiz-box"><b>🏆 تحدي :</b> كيف صقل الطفل موهبته الأدبية؟
+      <button onclick="ans(this, true)">بالمواظبة على القراءة وتدوين الأفكار في دفتره.</button>
+      <button onclick="ans(this, false)">بإهمال المطالعة والاكتفاء باللعب.</button>
+    </div>
+  </div>
+
+  <!-- الدرس 3 -->
+  <div id="d3" class="lesson-page card">
+    <h1>📘 أتحدث : أعبر عن اهتماماتي الثقافية المفضلة (ص 12)</h1>
+    <div class="sum-box">
+      <b>📌 منهجية التحدث :</b><br>
+      • للتعبير الشفهي عن اهتمامك الثقافي، نظم كلامك في 3 خطوات : <b>1. تحديد الهواية</b> ➔ <b>2. ذكر أسباب اختيارها وفوائدها</b> ➔ <b>3. بيان أوقات ممارستها</b>.
+    </div>
+    <div class="quiz-box"><b>🏆 تحدي :</b> من الفوائد الأساسية للمطالعة :
+      <button onclick="ans(this, true)">إغناء الرصيد اللغوي وتوسيع المدارك الفكرية.</button>
+      <button onclick="ans(this, false)">إضاعة الوقت دون فائدة.</button>
+    </div>
+  </div>
+
+  <!-- الدرس 4 : الجملة الفعلية -->
+  <div id="d4" class="lesson-page card">
+    <h1>📘 الظاهرة اللغوية : الجملة الفعلية (ص 13)</h1>
+    <div class="sum-box">
+      <b>📌 القاعدة الذهبية :</b><br>
+      • <b>الجملة الفعلية :</b> هي كل جملة تبتدئ بـ <b>فعل</b> (ماضٍ، مضارع، أو أمر).<br>
+      • <b>أركانها :</b> <b>الفعل + الفاعل</b> (وقد تحتاج إلى <b>مفعول به</b>).
+      <div class="rule">
+        <b>⚖️ الفرق بين الفعل اللازم والمتعدي :</b><br>
+        1. <b>الفعل اللازم :</b> يكتفي بفاعله ويتم به المعنى. مثال : <u>عادَ المسافرُ</u>.<br>
+        2. <b>الفعل المتعدي :</b> يتعدى الفاعل لينصب <b>مفعولاً به</b>. مثال : <u>قرأَ التلميذُ القصةَ</u>.<br>
+        <b>💡 حيلة الامتحان :</b> أدخل حرف <b>(الهاء: ـهُ)</b> على الفعل؛ إذا قبلها فهو <b>متعدٍ</b> (قرأَهُ ✅)، وإذا لم يقبلها فهو <b>لازم</b> (نامَهُ ❌).
+      </div>
+    </div>
+    <div class="quiz-box">
+      <b>🎯 سؤال 1 :</b> حدد الجملة التي تتضمن فعلاً <b>لازماً</b> :
+      <button onclick="ans(this, true)">استيقظَ الطفلُ باكراً بنشاطٍ.</button>
+      <button onclick="ans(this, false)">نظّمتْ المدرسةُ معرضاً للكتابِ.</button>
+      <b>🎯 سؤال 2 :</b> ما إعراب كلمة <b>(معرضاً)</b> في جملة "نظّمتْ المدرسةُ معرضاً"؟
+      <button onclick="ans(this, false)">فاعل مرفوع بالضمة.</button>
+      <button onclick="ans(this, true)">مفعول به منصوب وعلامة نصبه الفتحة الظاهرة.</button>
+    </div>
+  </div>
+
+  <!-- الدرس 5 -->
+  <div id="d5" class="lesson-page card">
+    <h1>📘 الطلاقة والفهم : كيف أحببت القراءة؟ (ص 15)</h1>
+    <div class="sum-box">
+      <b>📌 ملخص النص :</b><br>
+      • يحكي الكاتب تجربته مع القراءة وكيف تحولت من مجرد واجب مدرسي ممل إلى متعة يومية بفضل اختيار الكتب المشوقة والمناسبة لعمره واهتماماته.
+    </div>
+    <div class="quiz-box"><b>🏆 تحدي :</b> ما السر في حب القراءة حسب النص؟
+      <button onclick="ans(this, true)">اختيار الكتب المشوقة والمناسبة لمستوى القارئ.</button>
+      <button onclick="ans(this, false)">قراءة الكتب الصعبة والمعقدة فقط.</button>
+    </div>
+  </div>
+
+  <!-- الدرس 6 -->
+  <div id="d6" class="lesson-page card">
+    <h1>📘 الإنتاج الكتابي : إنتاج نص سردي (ص 19 - 22)</h1>
+    <div class="sum-box">
+      <b>📌 خطوات كتابة نص سردي في الفرض :</b><br>
+      • <b>التعريف :</b> السرد هو نقل أحداث مترابطة وقعت لشخصيات في زمان ومكان محددين.<br>
+      • <b>تصميم النص السردي (3 مراحل) :</b><br>
+        1. <b>وضعية البداية :</b> تقديم الشخصيات والزمان والمكان في حالة هدوء.<br>
+        2. <b>وضعية الوسط (العقدة) :</b> وقوع حدث مفاجئ يخلق مشكلاً.<br>
+        3. <b>وضعية النهاية :</b> حل المشكل وعودة الاستقرار واستخلاص العبرة.
+    </div>
+    <div class="quiz-box"><b>🏆 تحدي :</b> في أي مرحلة من النص السردي يقع المشكل (العقدة)؟
+      <button onclick="ans(this, false)">في وضعية البداية.</button>
+      <button onclick="ans(this, true)">في وضعية الوسط (التحول).</button>
+    </div>
+  </div>
+  <!-- الدرس 7 : دعم وتقويم شامل للوحدة 1 -->
+  <div id="d7" class="lesson-page card" style="border-color: #eab308;">
+    <h1 style="color: #eab308;">🏆 دعم وتقويم الوحدة 1 الشامل (محاكاة الفرض المحروس - ص 23)</h1>
+    
+    <div class="sum-box">
+      <b>📌 خلاصة شاملة للوحدة الأولى (للمراجعة قبل الفرض) :</b><br>
+      • <b>1. المجال المعجمي :</b> تدور الوحدة حول <i>الاهتمامات الثقافية</i> (القراءة، زيارة المعارض، المسرح، الموسيقى، إغناء الرصيد المعرفي).<br>
+      • <b>2. الظاهرة اللغوية (الجملة الفعلية) :</b> تبتدئ بفعل وتتكون من <b>فعل + فاعل</b> (إذا كان الفعل <b>لازماً</b> مثل: <i>نجحَ المجتهدُ</i>)، أو <b>فعل + فاعل + مفعول به</b> (إذا كان الفعل <b>متعدياً</b> مثل: <i>طالعَ التلميذُ كتاباً</i>).<br>
+      • <b>3. الإنتاج الكتابي (النص السردي) :</b> حكي أحداث متسلسلة لشخصيات في زمان ومكان محددين، ويمر عبر 3 مراحل : <b>البداية</b> (الاستقرار) ➔ <b>الوسط</b> (المشكل والعقدة) ➔ <b>النهاية</b> (الحل والعبرة).
+    </div>
+
+    <div class="quiz-box">
+      <h2 style="color: #eab308;">✍️ اختبار الدعم الشامل (5 أسئلة) :</h2>
+
+      <p><b>1. (الفهم والمعجم) ما المقصود بـ "إغناء الرصيد المعرفي" من خلال المطالعة؟</b></p>
+      <button onclick="ans(this, true)">اكتساب معلومات وأفكار ومفردات لغوية جديدة.</button>
+      <button onclick="ans(this, false)">شراء الكتب وتركها فوق الرفوف للزينة فقط.</button>
+
+      <p><b>2. (الظاهرة اللغوية) حدد الجملة التي تتضمن فعلاً متعدياً :</b></p>
+      <button onclick="ans(this, false)">جلسَ القارئُ في ركنٍ هادئٍ بالمكتبةِ.</button>
+      <button onclick="ans(this, true)">استعارَ التلميذُ روايةً مشوقةً من الخزانةِ.</button>
+
+      <p><b>3. (الإعراب) ما إعراب كلمة (روايةً) في الجملة السابقة؟</b></p>
+      <button onclick="ans(this, true)">مفعول به منصوب وعلامة نصبه الفتحة الظاهرة على آخره.</button>
+      <button onclick="ans(this, false)">فاعل مرفوع وعلامة رفعه الضمة الظاهرة.</button>
+
+      <p><b>4. (التحويل) حوّل الجملة الاسمية إلى فعلية : "المثقفُ ينشرُ الوعيَ في المجتمعِ" :</b></p>
+      <button onclick="ans(this, true)">ينشرُ المثقفُ الوعيَ في المجتمعِ.</button>
+      <button onclick="ans(this, false)">الوعيُ ينشرهُ المثقفُ في المجتمعِ.</button>
+
+      <p><b>5. (الإنتاج الكتابي) في أي مرحلة من مراحل النص السردي نقدم الشخصيات والزمان والمكان في هدوء؟</b></p>
+      <button onclick="ans(this, true)">في وضعية البداية (الاستهلال).</button>
+      <button onclick="ans(this, false)">في وضعية النهاية (الحل).</button>
+    </div>
+  </div>
+</body>
+</html>
+
+
+
+</html>
+

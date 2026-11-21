@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leçon 10 : Plans et droites dans l'espace - Math 1AC</title>
+<link rel="preconnect" href="https://googleapis.com">
+<link rel="preconnect" href="https://gstatic.com" crossorigin>
+<link href="https://googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root { --bg-dark: #090d16; --card-bg: #1e293b; --primary: #38bdf8; --secondary: #818cf8; --accent: #34d399; --text-main: #f8fafc; --text-muted: #94a3b8; }
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
+  body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.85; }
+  .top-nav { background: #0f172a; padding: 14px 20px; border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+  .nav-btn { background: rgba(56, 189, 248, 0.15); color: #38bdf8; text-decoration: none; padding: 6px 14px; border-radius: 10px; font-size: 14px; font-weight: 700; border: 1px solid rgba(56, 189, 248, 0.3); }
+  .container { max-width: 880px; margin: 25px auto; padding: 0 15px; }
+  .lesson-header { background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(129, 140, 248, 0.15)); border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 18px; padding: 25px; text-align: center; margin-bottom: 25px; }
+  .period-tag { display: inline-block; background: #0284c7; color: white; padding: 4px 14px; border-radius: 12px; font-size: 12px; font-weight: 700; margin-bottom: 8px; }
+  .lesson-header h1 { font-size: 22px; font-weight: 900; color: #38bdf8; direction: ltr; }
+  .card { background: var(--card-bg); border: 1px solid #334155; border-radius: 16px; padding: 22px; margin-bottom: 20px; }
+  .task-badge { display: inline-block; background: rgba(52, 211, 153, 0.15); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.4); padding: 4px 12px; border-radius: 8px; font-size: 13px; font-weight: 800; margin-bottom: 12px; direction: ltr; }
+  .card h2 { font-size: 18px; color: #f8fafc; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 8px; }
+  .card ul { padding-right: 20px; margin-bottom: 10px; }
+  .card li { margin-bottom: 8px; }
+  .math-formula { direction: ltr; text-align: center; font-size: 16px; font-weight: 800; color: #38bdf8; background: #0f172a; padding: 12px; border-radius: 10px; margin: 10px 0; font-family: 'Courier New', monospace; border: 1px solid rgba(56, 189, 248, 0.25); }
+  .example-box { background: rgba(129, 140, 248, 0.1); border: 1px solid rgba(129, 140, 248, 0.3); padding: 14px; border-radius: 10px; margin-top: 12px; direction: ltr; text-align: left; font-size: 15px; }
+  footer { text-align: center; padding: 25px; color: var(--text-muted); font-size: 13px; }
+</style>
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a href="math.html" class="nav-btn">➡ دروس الرياضيات</a>
+    <span style="font-weight: 800;">Leçon 10</span>
+    <a href="math_l11.html" class="nav-btn">الدرس 11 ⬅</a>
+  </nav>
+
+  <main class="container">
+    <div class="lesson-header">
+      <span class="period-tag">SEMESTRE 2 - PÉRIODE 4</span>
+      <h1>Leçon 10 : Plans et droites dans l'espace</h1>
+      <p>المستويات والمستقيمات في الفضاء (كل Tâche في بطاقة مستقلة)</p>
+    </div>
+
+    <!-- Tâche 1 -->
+    <div class="card">
+      <span class="task-badge">Tâche 1 : Reconnaître deux droites coplanaires et non coplanaires dans l'espace</span>
+      <h2>1. المستقيمات المستوائية وغير المستوائية في الفضاء</h2>
+      <p>في الفضاء، يتحدد المستوى <span dir="ltr">(P)</span> بثلاث نقط غير مستقيمية، أو بمستقيم ونقطة خارجة عنه، أو بمستقيمين متقاطعين أو متوازيين قطعاً.</p>
+      <ul>
+        <li><strong>مستقيمان مستوائيان (Droites coplanaires) :</strong> هما مستقيمان ينتميان إلى نفس المستوى (يوجد مستوى يحويهما معاً).</li>
+        <li><strong>مستقيمان غير مستوائيين (Droites non coplanaires) :</strong> هما مستقيمان لا يوجد أي مستوى يحويهما معاً (لا يتقاطعان وليسا متوازيين).</li>
+      </ul>
+      <div class="example-box">
+        <strong>Exemple (Cube ABCDEFGH) :</strong><br>
+        • (AB) et (CD) sont <strong>coplanaires</strong> (dans le plan ABCD).<br>
+        • (AB) et (CG) sont <strong>non coplanaires</strong>.
+      </div>
+    </div>
+
+    <!-- Tâche 2 -->
+    <div class="card">
+      <span class="task-badge">Tâche 2 : Reconnaître les positions relatives de deux droites et d'une droite et un plan</span>
+      <h2>2. الأوضاع النسبية لمستقيمين ولمستقيم ومستوى</h2>
+      <p><strong>أ) بالنسبة لمستقيمين <span dir="ltr">(D1)</span> و <span dir="ltr">(D2)</span> :</strong> إما أن يكونا مستوائيين (متقاطعين في نقطة أو متوازيين) أو غير مستوائيين.</p>
+      <p><strong>ب) بالنسبة لمستقيم <span dir="ltr">(D)</span> ومستوى <span dir="ltr">(P)</span> :</strong></p>
+      <ul>
+        <li><strong>المستقيم محتوى في المستوى (<span dir="ltr">(D) ⊂ (P)</span>) :</strong> جميع نقط <span dir="ltr">(D)</span> تنتمي إلى <span dir="ltr">(P)</span>.</li>
+        <li><strong>المستقيم يقطع المستوى :</strong> يشتركان في نقطة وحيدة <span dir="ltr">I</span> (<span dir="ltr">(D) ∩ (P) = {I}</span>).</li>
+        <li><strong>المستقيم يوازي المستوى قطعاً (<span dir="ltr">(D) // (P)</span>) :</strong> لا يشتركان في أي نقطة (<span dir="ltr">(D) ∩ (P) = ∅</span>).</li>
+      </ul>
+    </div>
+
+    <!-- Tâche 3 -->
+    <div class="card">
+      <span class="task-badge">Tâche 3 : Déterminer la distance d'un point à un plan</span>
+      <h2>3. مسافة نقطة عن مستوى</h2>
+      <p>يكون مستقيم <span dir="ltr">(D)</span> عمودياً على مستوى <span dir="ltr">(P)</span> في نقطة <span dir="ltr">H</span> إذا كان عمودياً على مستقيمين متقاطعين في <span dir="ltr">H</span> ومحتويين في <span dir="ltr">(P)</span>.</p>
+      <div class="math-formula">Distance du point A au plan (P) = AH (avec H projeté orthogonal de A sur (P))</div>
+      <div class="example-box">
+        <strong>Exemple :</strong> Dans un pavé droit ABCDEFGH, [AE] ⊥ (ABCD), donc la distance de E au plan (ABCD) est <strong>AE</strong>.
+      </div>
+    </div>
+
+    <!-- Tâche 4 -->
+    <div class="card">
+      <span class="task-badge">Tâche 4 : Reconnaître les positions relatives de deux plans dans l'espace</span>
+      <h2>4. الأوضاع النسبية لمستويين في الفضاء</h2>
+      <ul>
+        <li><strong>مستويان منطبقان (Confondus) :</strong> يشتركان في جميع النقط (<span dir="ltr">(P) = (Q)</span>).</li>
+        <li><strong>مستويان متوازيان قطعاً (Strictement parallèles) :</strong> لا توجد أي نقطة مشتركة بينهما (<span dir="ltr">(P) ∩ (Q) = ∅</span>).</li>
+        <li><strong>مستويان متقاطعان (Sécants) :</strong> يتقاطعان وفق <strong>مستقيم وحيد <span dir="ltr">(Δ)</span></strong>.</li>
+      </ul>
+    </div>
+
+    <!-- Tâche 5 -->
+    <div class="card">
+      <span class="task-badge">Tâche 5 : Engendrer un solide par le mouvement d'une figure plane</span>
+      <h2>5. توليد مجسم بحركة شكل مستوٍ</h2>
+      <ul>
+        <li><strong>بالإزاحة (Translation) :</strong> إزاحة مربع تعطي مكعباً، إزاحة مثلث تعطي موشوراً قائماً، وإزاحة قرص تعطي أسطوانة قائمة.</li>
+        <li><strong>بالدوران (Rotation) :</strong> دوران مستطيل حول أحد أضلاعه يعطي أسطوانة، دوران مثلث قائم الزاوية يعطي مخروطاً دورانياً، ودوران نصف قرص يعطي كرة.</li>
+      </ul>
+    </div>
+
+  </main>
+  <footer>منصة <strong>خطوة للنجاح (Khatwa 1AC BIOF)</strong> © 2026</footer>
+</body>
+</html>

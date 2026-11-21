@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>خطوة للنجاح - الأولى إعدادي (1AC BIOF)</title>
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="خطوة للنجاح">
+<link rel="apple-touch-icon" href="https://flaticon.com">
+<meta name="description" content="منصة خطوة للنجاح (Khatwa 1AC BIOF) : دروس، فروض محروسة مع التصحيح، تحديات تفاعلية، وحاسبة المعدل العام للأولى إعدادي مسار دولي بالمغرب." />
+<meta name="keywords" content="khatwa1ac, خطوة للنجاح, 1AC BIOF, دروس الأولى إعدادي مسار دولي, فروض الأولى إعدادي, حاسبة المعدل الأولى إعدادي" />
+<meta name="robots" content="index, follow" />
+<meta name="google-site-verification" content="nx-tBeb4wDFZEe6dq081o7vJUVF5wOI9tTPt8744RTo" />
+
+<!-- خط Cairo الاحترافي -->
+<link rel="preconnect" href="https://googleapis.com">
+<link rel="preconnect" href="https://gstatic.com" crossorigin>
+<link href="https://googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg-dark: #090d16;
+    --card-bg: #1e293b;
+    --primary: #38bdf8;
+    --secondary: #818cf8;
+    --accent: #34d399;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Cairo', sans-serif;
+  }
+
+  body {
+    background-color: var(--bg-dark);
+    background-image: radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.12) 0%, transparent 50%);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* الهيدر العلوي */
+  .header {
+    background: #0f172a;
+    padding: 14px 20px;
+    text-align: center;
+    border-bottom: 1px solid #1e293b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo {
+    font-size: 21px;
+    font-weight: 900;
+    background: linear-gradient(90deg, #38bdf8, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .badge-biof {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  /* شريط التقسيم الرباعي بحال يلا شوت */
+  .yalla-tabs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+    background: #0f172a;
+    border-bottom: 2px solid #1e293b;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  .tab-btn {
+    padding: 14px 6px;
+    background: transparent;
+    border: none;
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border-bottom: 4px solid transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .tab-btn:last-child {
+    border-left: none;
+  }
+
+  .tab-btn .tab-icon {
+    font-size: 20px;
+  }
+
+  .tab-btn:hover {
+    color: white;
+    background: rgba(56, 189, 248, 0.06);
+  }
+
+  /* التبويب النشط */
+  .tab-btn.active {
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.12);
+    border-bottom: 4px solid #38bdf8;
+  }
+
+  /* حاوية الوسط */
+  .main-container {
+    width: 100%;
+    max-width: 850px;
+    margin: 20px auto;
+    padding: 0 15px;
+    flex: 1;
+  }
+
+  /* شريط البحث */
+  .search-container {
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  #lessonSearch {
+    width: 100%;
+    padding: 13px 18px;
+    font-size: 15px;
+    border-radius: 14px;
+    border: 1px solid #334155;
+    background: #1e293b;
+    color: white;
+    outline: none;
+    transition: 0.2s;
+  }
+
+  #lessonSearch:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+  }
+
+  .search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #1e293b;
+    border: 1px solid #38bdf8;
+    border-radius: 12px;
+    margin-top: 6px;
+    max-height: 250px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+  }
+
+  .search-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid #334155;
+    font-size: 14px;
+  }
+
+  .search-item:hover {
+    background: #334155;
+    color: #38bdf8;
+  }
+
+  .search-badge {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 6px;
+    background: #0284c7;
+  }
+
+  /* محتوى التبويبات */
+  .tab-content {
+    display: none;
+    animation: fadeIn 0.25s ease;
+  }
+
+  .tab-content.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* البطاقات المرتبة عمودياً */
+  .list-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #1e293b;
+    border: 1px solid #334155;
+    padding: 15px 18px;
+    border-radius: 15px;
+    margin-bottom: 12px;
+    text-decoration: none;
+    color: white;
+    transition: all 0.2s ease;
+  }
+
+  .list-card:hover {
+    border-color: #38bdf8;
+    background: #263449;
+    transform: translateX(-4px);
+  }
+
+  .card-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .card-icon {
+    font-size: 26px;
+    background: rgba(56, 189, 248, 0.12);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 13px;
+    flex-shrink: 0;
+  }
+
+  .card-info h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 3px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .card-info p {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .pill-tag {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 6px;
+    background: rgba(52, 211, 153, 0.15);
+    color: #34d399;
+    border: 1px solid rgba(52, 211, 153, 0.3);
+  }
+
+  .card-arrow {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    padding: 6px 12px;
+    border-radius: 9px;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* التذييل */
+  footer {
+    text-align: center;
+    padding: 20px;
+    color: var(--text-muted);
+    font-size: 13px;
+    border-top: 1px solid #1e293b;
+    margin-top: 30px;
+  }
+
+  @media (min-width: 600px) {
+    .tab-btn {
+      flex-direction: row;
+      font-size: 15px;
+      gap: 8px;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <!-- العنوان الفوقاني -->
+  <header class="header">
+    <div class="logo">🎓 خطوة للنجاح</div>
+    <span class="badge-biof">1AC BIOF</span>
+  </header>
+
+  <!-- التقسيم الرباعي الفوقاني (بحال يلا شوت) -->
+  <div class="yalla-tabs">
+    <button class="tab-btn active" onclick="openTab('tab-courses', this)">
+      <span class="tab-icon">📚</span>
+      <span>الدروس</span>
+    </button>
+    <button class="tab-btn" onclick="openTab('tab-exams', this)">
+      <span class="tab-icon">📝</span>
+      <span>الفروض</span>
+    </button>
+    <button class="tab-btn" onclick="openTab('tab-quiz', this)">
+      <span class="tab-icon">🏆</span>
+      <span>التحديات</span>
+    </button>
+    <button class="tab-btn" onclick="openTab('tab-tools', this)">
+      <span class="tab-icon">🧮</span>
+      <span>المعدل</span>
+    </button>
+  </div>
+
+  <!-- الوسط (كيتبدل حسب التبويب المختار) -->
+  <main class="main-container">
+
+    <!-- شريط البحث الذكي -->
+    <div class="search-container">
+      <input type="text" id="lessonSearch" placeholder="🔍 ابحث عن درس، فرض، أو حاسبة المعدل..." autocomplete="off">
+      <div id="searchResults" class="search-results"></div>
+    </div>
+
+    <!-- القسم 1: الدروس -->
+    <div id="tab-courses" class="tab-content active">
+      <a href="math.html" class="list-card">
+        <div class="card-right">
+          <div class="card-icon">📐</div>
+          <div class="card-info">
+            <h3>Mathématiques <span class="pill-tag">تفاعلي</span></h3>
+            <p>دروس وتمارين الرياضيات مع التصحيح الفوري</p>
+          </div>
+        </div>
+        <div class="card-arrow">دخول ⬅</div>
+      </a>
+
+      <a href="pc.html" class="list-card">
+        <div class="card-right">
+          <div class="card-icon">⚡</div>
+          <div class="card-info">
+            <h3>Physique-Chimie <span class="pill-tag">12 درس</span></h3>
+            <p>ملخصات مزدوجة اللغة + تمارين بالفرنسية</p>
+          </div>
+        </div>
+        <div class="card-arrow">دخول ⬅</div>
+      </a>
+
+      <a href="svt.html" class="list-card">
+        <div class="card-right">
+          <div class="card-icon">🌿</div>
+          <div class="card-info">
+            <h3>SVT</h3>
+            <p>علوم الحياة والأرض (مسار دولي)</p>
+          </div>
+        </div>
+        <div class="card-arrow">دخول ⬅</div>
+      </a>
+
+      <a href="francais.html" class="list-card">
+        <div class="card-right">
+          <div class="card-icon">🇫🇷</div>
+          <div class="card-info">
+            <h3>Langue Française</h3>
+            <p>دروس اللغة الفرنسية والإنشاء</p>
+          </div>
+        </div>
+        <div class="card-arrow">دخول ⬅</div>
+      </a>
+
+      <a href="arabic.html" class="list-card">
+        <div class="card-right">
+          <div class="card-icon">📖</div>
+          <div class="card-info">
+            <h3>اللغة العربية</h3>
+            <p>النصوص القرائية، الدرس اللغوي، والتعبير</p>
+          </div>
+        </div>
+        <div class="card-arrow">دخول ⬅</div>
+      </a>
+
+      <a href="islamic.html" class="list-card">
+        <div class="card-right">
+          <div class="card-icon">🌍</div>
+          <div class="card-info">
+            <h3>التربية الإسلامية</h3>

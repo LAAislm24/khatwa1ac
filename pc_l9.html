@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Chapitre 9 : La tension électrique</title>
+<style>
+  body { background: #0f172a; color: white; font-family: Arial, sans-serif; max-width: 900px; margin: 20px auto; padding: 15px; line-height: 1.9; }
+  .back { display: inline-block; background: #ef4444; color: white; padding: 10px 20px; border-radius: 10px; text-decoration: none; margin-bottom: 15px; font-weight: bold; }
+  .card { background: #1e293b; border: 2px solid #38bdf8; border-radius: 15px; padding: 22px; margin-bottom: 20px; }
+  .rule { background: #0f172a; padding: 18px; border-radius: 10px; border-left: 5px solid #22c55e; margin: 15px 0; font-size: 16px; }
+  .q { background: #0f172a; padding: 18px; border-radius: 10px; border-left: 5px solid #eab308; margin: 15px 0; font-size: 16px; }
+  select { padding: 6px 10px; border-radius: 6px; border: 2px solid #38bdf8; background: #1e293b; color: #fde047; font-weight: bold; font-size: 15px; cursor: pointer; margin: 3px 0; }
+  .btn-verif { background: #22c55e; color: #0f172a; border: none; padding: 14px 30px; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 15px; }
+  .btn-verif:hover { background: #16a34a; color: white; }
+  #note { font-size: 22px; font-weight: bold; color: #fde047; margin-top: 15px; }
+  h1 { color: #38bdf8; font-size: 22px; border-bottom: 1px solid #334155; padding-bottom: 10px; }
+</style>
+<script>
+  function showT() {
+    var pages = document.querySelectorAll('.t-page');
+    if (pages.length === 0) return;
+    var hash = window.location.hash.replace('#', '');
+    var target = document.getElementById(hash) || pages;
+    pages.forEach(function(p) {
+      p.style.display = (p === target) ? 'block' : 'none';
+    });
+    var noteEl = document.getElementById('note');
+    if (noteEl) noteEl.innerText = "";
+  }
+  function verifier() {
+    var ok = 0, total = 0;
+    document.querySelectorAll('.t-page').forEach(function(page) {
+      if (page.style.display !== 'none') {
+        page.querySelectorAll('select[data-rep]').forEach(function(sel) {
+          total++;
+          if (sel.value === sel.getAttribute('data-rep')) { sel.style.borderColor = "#22c55e"; sel.style.background = "#14532d"; ok++; }
+          else { sel.style.borderColor = "#ef4444"; sel.style.background = "#7f1d1d"; }
+        });
+      }
+    });
+    document.getElementById('note').innerText = "🎯 Votre note : " + ok + " / " + total;
+  }
+  window.addEventListener('DOMContentLoaded', showT);
+  window.addEventListener('hashchange', showT);
+</script>
+</head>
+<body>
+  <a class="back" href="pc.html">🔙 Retour à la Physique-Chimie</a>
+
+  <!-- Tâche 1 -->
+  <div id="t1" class="t-page card">
+    <h1>🔋 Tâche 1 : Utiliser un multimètre pour mesurer une tension électrique</h1>
+    <div class="rule" dir="rtl" style="text-align:right;">
+      <b>📌 1. ملخص الدرس والشرح المفصل (التوتر الكهربائي وجهاز الفولطمتر) :</b><br>
+      • <b>التوتر الكهربائي (La tension électrique) :</b> مقدار فيزيائي رمزه <span dir="ltr"><b>U</b></span>، ووحدته العالمية هي <b>الفولط (<span dir="ltr">Volt : V</span>)</b> (ونستعمل أيضاً الميلي فولط <span dir="ltr">mV</span> حيث <span dir="ltr">1 V = 1000 mV</span>، والكيلوفولط <span dir="ltr">kV</span> حيث <span dir="ltr">1 kV = 1000 V</span>).<br>
+      • <b>جهاز القياس (Le voltmètre) :</b> نقيس التوتر الكهربائي بجهاز <b>الفولطمتر</b> (أو متعدد القياسات <span dir="ltr">Multimètre</span> في وضع فولطمتر)، ورمزه دائرة بداخلها حرف <span dir="ltr"><b>V</b></span>.<br>
+      • <b>طريقة التركيب :</b> يُركب الفولطمتر دائماً <b>على التوازي (En dérivation)</b> بين مربطي ثنائي القطب المراد قياس توتره، بحيث يرتبط مربطه الموجب (<span dir="ltr">V</span>) بجهة القطب الموجب للمولد ومربطه (<span dir="ltr">COM</span>) بجهة القطب السالب.<br>
+      • <b>ملاحظة هامة :</b> التوتر الكهربائي مقدار جبري؛ إذا عكسنا مربطي الفولطمتر تظهر إشارة سالبة (<span dir="ltr">-</span>) على شاشة الفولطمتر الرقمي. كما أن التوتر بين مربطي قاطع تيار مغلق أو سلك توصيل يساوي <b><span dir="ltr">0 V</span></b>.<br><br>
+      <b>💡 أمثلة تطبيقية (Exemples) :</b><br>
+      1. لقياس التوتر بين مربطي مصباح، نربط مربطي الفولطمتر (<span dir="ltr">V</span> و <span dir="ltr">COM</span>) مباشرة مع مربطي المصباح (تركيب على التوازي).<br>
+      2. <span dir="ltr">4500 mV = 4,5 V</span> &nbsp;|&nbsp; <span dir="ltr">12 V = 12 000 mV</span>.
+    </div>
+    <div class="q">
+      <b>✍️ 2. Exercices d'application (Questions types d'évaluation) :</b><br><br>
+      <b>Exercice 1 (Unité et branchement du voltmètre) :</b><br>
+      • Quelle est l'unité internationale de la tension électrique ? <select data-rep="volt"><option value="">-- Choisir --</option><option value="volt">Le Volt (V)</option><option value="amp">L'Ampère (A)</option></select><br>
+      • Comment branche-t-on un voltmètre aux bornes d'une lampe ? <select data-rep="deriv"><option value="">-- Choisir --</option><option value="deriv">En dérivation (parallèle)</option><option value="serie">En série</option></select><br><br>
+      <b>Exercice 2 (Conversions et cas particuliers) :</b><br>
+      • Convertir <b>U = 3,5 V</b> en millivolts (mV) : <select data-rep="3500"><option value="">?</option><option value="3500">3500 mV</option><option value="350">350 mV</option></select> &nbsp;|&nbsp;
+      • Quelle est la tension aux bornes d'un fil de connexion ou d'un interrupteur fermé ? <select data-rep="0v"><option value="">?</option><option value="0v">U = 0 V</option><option value="12v">U = 12 V</option></select>
+    </div>
+  </div>
+
+  <!-- Tâche 2 -->
+  <div id="t2" class="t-page card">
+    <h1>🔋 Tâche 2 : Utiliser les lois des tensions pour déterminer la valeur d'une tension électrique</h1>
+    <div class="rule" dir="rtl" style="text-align:right;">
+      <b>📌 1. ملخص الدرس والشرح المفصل (قوانين التوتر الكهربائي) :</b><br>
+      • <b>1. قانون إضافية التوترات في التركيب على التوالي (Loi d'additivité des tensions) :</b><br>
+      &nbsp;&nbsp;- في دارة مركبة <b>على التوالي (En série)</b>، التوتر الكلي <span dir="ltr"><b>U</b></span> بين مربطي المولد يساوي <b>مجموع التوترات</b> بين مربطي المستقبلات المركبة على التوالي: <span dir="ltr"><b>U = U₁ + U₂</b></span>.<br>
+      • <b>2. قانون وحدانية التوتر في التركيب على التوازي (Loi d'unicité de la tension) :</b><br>
+      &nbsp;&nbsp;- في دارة مركبة <b>على التوازي (En dérivation)</b>، <b>التوتر الكهربائي يكون متساوياً</b> بين مربطي جميع الفروع المركبة على التوازي: <span dir="ltr"><b>U = U₁ = U₂</b></span>.<br><br>
+      <b>💡 أمثلة تطبيقية (Exemples) :</b><br>
+      1. <b>تركيب على التوالي :</b> مولد توتره <span dir="ltr">U = 12 V</span> يغذي مصباحين على التوالي؛ إذا كان توتر المصباح الأول <span dir="ltr">U₁ = 4,5 V</span>، فإن توتر الثاني هو : <span dir="ltr">U₂ = 12 - 4,5 = 7,5 V</span>.<br>
+      2. <b>تركيب على التوازي :</b> إذا كان توتر المولد <span dir="ltr">U = 6 V</span>، فإن توتر المصباح الأول هو <span dir="ltr">6 V</span> وتوتر المصباح الثاني هو أيضاً <span dir="ltr">6 V</span>.
+    </div>
+    <div class="q">
+      <b>✍️ 2. Exercices d'application (Questions types d'évaluation) :</b><br><br>
+      <b>Exercice 1 (Circuit en série - Loi d'additivité) :</b><br>
+      Un générateur de tension <b>U = 9 V</b> alimente deux lampes L₁ et L₂ montées en série. La tension aux bornes de L₁ est <b>U₁ = 3,5 V</b>.<br>
+      • Calculer la tension <b>U₂</b> aux bornes de la lampe L₂ (<span dir="ltr">U = U₁ + U₂</span>) : <select data-rep="5.5"><option value="">-- Choisir --</option><option value="5.5">U₂ = 9 - 3,5 = 5,5 V</option><option value="12.5">U₂ = 12,5 V</option><option value="3.5">U₂ = 3,5 V</option></select><br><br>
+      <b>Exercice 2 (Circuit en dérivation - Loi d'unicité) :</b><br>
+      Deux lampes L₁ et L₂ sont branchées en dérivation aux bornes d'une pile de tension <b>U = 4,5 V</b>.<br>
+      • Quelle est la tension <b>U₁</b> aux bornes de L₁ et <b>U₂</b> aux bornes de L₂ ? <select data-rep="4.5"><option value="">-- Choisir --</option><option value="4.5">U₁ = U₂ = 4,5 V (loi d'unicité de la tension)</option><option value="2.25">U₁ = U₂ = 2,25 V</option></select>
+    </div>
+  </div>
+  <!-- Tâche 3 -->
+  <div id="t3" class="t-page card">
+    <h1>🔋 Tâche 3 : Expliquer l'éclat des lampes dans un circuit à partir des lois de l'électricité</h1>
+    <div class="rule" dir="rtl" style="text-align:right;">
+      <b>📌 1. ملخص الدرس والشرح المفصل (تفسير إضاءة المصابيح والملاءمة الكهربائية - Adaptation) :</b><br>
+      • يحمل كل مصباح إشارة مسجلة عليه تُسمى <b>التوتر الاسمي (La tension nominale)</b>، وهو التوتر الذي يشتغل تحته المصباح بصفة عادية (إضاءة عادية).<br>
+      • <b>حالات إضاءة المصباح حسب التوتر المطبق بين مربطيه (<span dir="ltr">U_lampe</span>) :</b><br>
+      &nbsp;&nbsp;1. <b>الملاءمة (Adaptation - إضاءة عادية) :</b> إذا كان التوتر المطبق بين مربطي المصباح <b>يساوي أو يقارب</b> توتره الاسمي (<span dir="ltr">U_lampe ≈ U_nominale</span>)، يضيء المصباح <b>بصفة عادية (Éclat normal)</b>.<br>
+      &nbsp;&nbsp;2. <b>تحت التوتر (Sous-tension - إضاءة ضعيفة) :</b> إذا كان التوتر المطبق <b>أصغر بكثير</b> من توتره الاسمي (<span dir="ltr">U_lampe &lt; U_nominale</span>)، يضيء المصباح <b>بإضاءة ضعيفة (Éclat faible)</b>.<br>
+      &nbsp;&nbsp;3. <b>فوق التوتر (Surtension - إضاءة قوية وتلف) :</b> إذا كان التوتر المطبق <b>أكبر بكثير</b> من توتره الاسمي (<span dir="ltr">U_lampe &gt; U_nominale</span>)، يضيء المصباح <b>بشدة مفرطة ثم يتلف (Il grille)</b>.<br>
+      • <b>تأثير نوع التركيب على الإضاءة :</b><br>
+      &nbsp;&nbsp;- <b>في التركيب على التوالي :</b> يتقاسم المصباحان توتر المولد (<span dir="ltr">U = U₁ + U₂</span>)، فتضعف إضاءتهما، وإذا أتلف أو أُزيل أحدهما ينطفئ الآخر لأن الدارة تصبح مفتوحة.<br>
+      &nbsp;&nbsp;- <b>في التركيب على التوازي :</b> يأخذ كل مصباح توتر المولد كاملاً (<span dir="ltr">U = U₁ = U₂</span>)، فتكون إضاءتهما قوية وعادية، وإذا أتلف أحدهما يبقى الآخر مشتغلاً.<br><br>
+      <b>💡 أمثلة تطبيقية (Exemples) :</b><br>
+      1. مصباح توتره الاسمي <span dir="ltr">6 V</span> موصول ببطارية <span dir="ltr">6 V</span> : يضيء <b>بإضاءة عادية (Éclat normal)</b>.<br>
+      2. مصباح <span dir="ltr">6 V</span> موصول ببطارية <span dir="ltr">1,5 V</span> : إضاءة ضعيفة (تحت التوتر)، وموصول ببطارية <span dir="ltr">12 V</span> : يتلف المصباح (فوق التوتر).
+    </div>
+    <div class="q">
+      <b>✍️ 2. Exercices d'application (Questions types d'évaluation) :</b><br><br>
+      <b>Exercice 1 (Adaptation d'une lampe à un générateur) :</b><br>
+      On dispose d'une lampe portant l'indication <b>6 V</b> (tension nominale).<br>
+      • Quel est l'éclat de cette lampe si on la branche aux bornes d'une pile de <b>6 V</b> ? <select data-rep="norm"><option value="">-- Choisir --</option><option value="norm">Éclat normal (la lampe est adaptée)</option><option value="faib">Éclat faible (sous-tension)</option></select><br>
+      • Que se passe-t-il si on la branche aux bornes d'un générateur de <b>12 V</b> ? <select data-rep="grille"><option value="">-- Choisir --</option><option value="grille">Elle brille très fortement puis elle grille (surtension)</option><option value="norm2">Elle brille normalement</option></select><br><br>
+      <b>Exercice 2 (Influence du montage série ou dérivation) :</b><br>
+      Deux lampes identiques de tension nominale <b>6 V</b> sont branchées aux bornes d'un générateur de <b>6 V</b>.<br>
+      • Comment faut-il les brancher pour qu'elles brillent toutes les deux normalement ? <select data-rep="deriv"><option value="">-- Choisir --</option><option value="deriv">En dérivation (chacune reçoit 6 V)</option><option value="serie">En série (chacune ne reçoit que 3 V)</option></select>
+    </div>
+  </div>
+
+  <div style="text-align: center;">
+    <button class="btn-verif" onclick="verifier()">✅ Vérifier / تصحيح</button>
+    <div id="note"></div>
+  </div>
+
+</body>
+</html>

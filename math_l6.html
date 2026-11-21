@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leçon 6 : Équations du premier degré - Math 1AC</title>
+<link rel="preconnect" href="https://googleapis.com">
+<link rel="preconnect" href="https://gstatic.com" crossorigin>
+<link href="https://googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root { --bg-dark: #090d16; --card-bg: #1e293b; --primary: #38bdf8; --secondary: #818cf8; --accent: #34d399; --danger: #f87171; --text-main: #f8fafc; --text-muted: #94a3b8; }
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
+  body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.7; }
+  .top-nav { background: #0f172a; padding: 14px 20px; border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+  .nav-btn { background: rgba(56, 189, 248, 0.15); color: #38bdf8; text-decoration: none; padding: 6px 14px; border-radius: 10px; font-size: 14px; font-weight: 700; border: 1px solid rgba(56, 189, 248, 0.3); }
+  .container { max-width: 850px; margin: 25px auto; padding: 0 15px; }
+  .lesson-header { background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(129, 140, 248, 0.15)); border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 18px; padding: 22px; text-align: center; margin-bottom: 25px; }
+  .period-tag { display: inline-block; background: #0284c7; color: white; padding: 3px 12px; border-radius: 12px; font-size: 12px; font-weight: 700; margin-bottom: 8px; }
+  .lesson-header h1 { font-size: 21px; font-weight: 900; color: #38bdf8; direction: ltr; }
+  .card { background: var(--card-bg); border: 1px solid #334155; border-radius: 16px; padding: 20px; margin-bottom: 18px; }
+  .task-badge { display: inline-block; background: rgba(52, 211, 153, 0.15); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.4); padding: 3px 12px; border-radius: 8px; font-size: 13px; font-weight: 800; margin-bottom: 10px; direction: ltr; }
+  .card h2 { font-size: 18px; margin-bottom: 10px; }
+  .math-formula { direction: ltr; text-align: center; font-size: 17px; font-weight: 800; color: #38bdf8; background: #0f172a; padding: 10px; border-radius: 8px; margin: 8px 0; font-family: 'Courier New', monospace; }
+  .example-box { background: rgba(129, 140, 248, 0.1); border: 1px solid rgba(129, 140, 248, 0.3); padding: 12px; border-radius: 10px; margin-top: 10px; direction: ltr; text-align: left; font-size: 15px; }
+  .quiz-section { background: var(--card-bg); border: 2px solid #38bdf8; border-radius: 18px; padding: 22px; margin-top: 30px; }
+  .question-box { background: #0f172a; border: 1px solid #334155; border-radius: 12px; padding: 15px; margin-bottom: 14px; direction: ltr; text-align: left; }
+  .options label { display: block; background: #1e293b; border: 1px solid #334155; padding: 9px 12px; border-radius: 8px; margin-top: 6px; cursor: pointer; }
+  .btn-submit { width: 100%; padding: 15px; border: none; border-radius: 14px; background: linear-gradient(90deg, #38bdf8, #818cf8); color: #090d16; font-size: 17px; font-weight: 900; cursor: pointer; margin-top: 10px; }
+  .score-display { display: none; margin-top: 20px; padding: 16px; border-radius: 14px; text-align: center; font-size: 18px; font-weight: 800; background: #0f172a; border: 2px solid #34d399; color: #34d399; }
+  .correct-ans { border-color: #34d399 !important; background: rgba(52, 211, 153, 0.15) !important; }
+  .wrong-ans { border-color: #f87171 !important; background: rgba(248, 113, 113, 0.15) !important; }
+  footer { text-align: center; padding: 25px; color: var(--text-muted); font-size: 13px; }
+</style>
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a href="math.html" class="nav-btn">➡ دروس الرياضيات</a>
+    <span style="font-weight: 800;">Leçon 6</span>
+    <a href="math_l7.html" class="nav-btn">الدرس 7 ⬅</a>
+  </nav>
+
+  <main class="container">
+    <div class="lesson-header">
+      <span class="period-tag">SEMESTRE 1 - PÉRIODE 2</span>
+      <h1>Leçon 6 : Équations du premier degré à une seule inconnue</h1>
+      <p>المعادلات من الدرجة الأولى بمجهول واحد (Tâche 1 إلى Tâche 9)</p>
+    </div>
+
+    <div class="card">
+      <span class="task-badge">Tâche 1 : Vérifier si un nombre est solution d'une équation</span>
+      <h2>1. التحقق من أن عدداً هو حل لمعادلة</h2>
+      <p>للتحقق مما إذا كان العدد حلّاً للمعادلة، نعوض المجهول <span dir="ltr">x</span> بذلك العدد: إذا حصلنا على نفس القيمة في الطرفين، فهو حل للمعادلة.</p>
+      <div class="example-box">
+        <strong>Exemple :</strong> Est-ce que 3 est solution de 2x + 1 = 7 ?<br>
+        Pour x = 3 : 2(3) + 1 = 6 + 1 = 7. <strong>Donc 3 est solution.</strong>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="task-badge">Tâche 2, 3 & 4 : Résoudre x + b = c et ax = c</span>
+      <h2>2. حل المعادلات البسيطة ونقل الحدود</h2>
+      <p>عند نقل حد من طرف إلى آخر في المعادلة <strong>نغير إشارته</strong>. وللتخلص من معامل مضروب في <span dir="ltr">x</span> نقسم الطرفين على ذلك المعامل.</p>
+      <div class="math-formula">x + b = c ➔ x = c - b &nbsp;&nbsp;|&nbsp;&nbsp; ax = c ➔ x = c / a (a ≠ 0)</div>
+      <div class="example-box">
+        <strong>Exemples :</strong><br>
+        • x + 5 = 12 ➔ x = 12 - 5 ➔ <strong>x = 7</strong><br>
+        • 4x = -20 ➔ x = -20 / 4 ➔ <strong>x = -5</strong>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="task-badge">Tâche 5, 6, 7 & 8 : Équations générales, fractions et parenthèses</span>
+      <h2>3. حل المعادلات المركبة والكسور والأقواس</h2>
+      <p>لحل معادلة مركبة: <strong>1)</strong> ننشر الأقواس أو نوحد المقامات، <strong>2)</strong> نجمع المجاهيل في طرف والمعاليم في الطرف الآخر مع تغيير الإشارة، <strong>3)</strong> نبسط ونحسب قيمة <span dir="ltr">x</span>.</p>
+      <div class="math-formula">x / d = c / e ➔ e × x = c × d &nbsp;(الجداء المتصالب)</div>
+      <div class="example-box">
+        <strong>Exemples :</strong><br>
+        • 5x - 3 = 2x + 9 ➔ 5x - 2x = 9 + 3 ➔ 3x = 12 ➔ <strong>x = 4</strong><br>
+        • 2(x + 3) = 14 ➔ 2x + 6 = 14 ➔ 2x = 8 ➔ <strong>x = 4</strong><br>
+        • x / 3 = 4 / 5 ➔ 5x = 12 ➔ <strong>x = 12/5 = 2,4</strong>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="task-badge">Tâche 9 : Résoudre un problème à l'aide d'une équation</span>
+      <h2>4. حل مسألة باستعمال معادلة</h2>
+      <p>نتبع 4 مراحل أساسية: <strong>1) اختيار المجهول (Choix de l'inconnue)</strong>، <strong>2) صياغة المعادلة (Mise en équation)</strong>، <strong>3) حل المعادلة (Résolution)</strong>، <strong>4) التحقق وصياغة الجواب (Vérification et conclusion)</strong>.</p>
+    </div>
+
+    <section class="quiz-section">
+      <h2 style="text-align:center; color:#38bdf8; margin-bottom:15px;">✍️ Exercices Interactifs</h2>
+      <form id="quizForm">
+        <div class="question-box" id="q1-box">
+          <div>1) Résoudre : x - 8 = 10</div>
+          <div class="options">
+            <label><input type="radio" name="q1" value="a"> x = 2</label>
+            <label><input type="radio" name="q1" value="b"> x = 18</label>
+            <label><input type="radio" name="q1" value="c"> x = -18</label>
+          </div>
+        </div>
+        <div class="question-box" id="q2-box">
+          <div>2) Résoudre : -3x = 15</div>
+          <div class="options">
+            <label><input type="radio" name="q2" value="a"> x = -5</label>
+            <label><input type="radio" name="q2" value="b"> x = 5</label>
+            <label><input type="radio" name="q2" value="c"> x = 18</label>
+          </div>
+        </div>
+        <div class="question-box" id="q3-box">
+          <div>3) Résoudre : 4x + 3 = 2x + 11</div>
+          <div class="options">
+            <label><input type="radio" name="q3" value="a"> x = 7</label>
+            <label><input type="radio" name="q3" value="b"> x = 4</label>
+            <label><input type="radio" name="q3" value="c"> x = 2</label>
+          </div>
+        </div>
+        <div class="question-box" id="q4-box">
+          <div>4) Résoudre : x / 4 = 3 / 2</div>
+          <div class="options">
+            <label><input type="radio" name="q4" value="a"> x = 6</label>
+            <label><input type="radio" name="q4" value="b"> x = 1,5</label>
+            <label><input type="radio" name="q4" value="c"> x = 12</label>
+          </div>
+        </div>
+        <div class="question-box" id="q5-box">
+          <div>5) Résoudre : 3(x - 2) = 9</div>
+          <div class="options">
+            <label><input type="radio" name="q5" value="a"> x = 1</label>
+            <label><input type="radio" name="q5" value="b"> x = 5</label>
+            <label><input type="radio" name="q5" value="c"> x = 3</label>
+          </div>
+        </div>
+        <button type="button" class="btn-submit" onclick="checkQuiz()">تصحيح التمارين ✅</button>
+      </form>
+      <div class="score-display" id="scoreDisplay"></div>
+    </section>
+  </main>
+
+  <footer>منصة <strong>خطوة للنجاح (Khatwa 1AC BIOF)</strong> © 2026</footer>
+
+  <script>
+    function checkQuiz() {
+      const answers = { q1: 'b', q2: 'a', q3: 'b', q4: 'a', q5: 'b' };
+      let score = 0;
+      for (let q in answers) {
+        const box = document.getElementById(q + '-box');
+        box.classList.remove('correct-ans', 'wrong-ans');
+        const sel = document.querySelector(`input[name="${q}"]:checked`);
+        if (sel && sel.value === answers[q]) { score++; box.classList.add('correct-ans'); }
+        else { box.classList.add('wrong-ans'); }
+      }
+      const d = document.getElementById('scoreDisplay');
+      d.style.display = 'block';
+      d.innerHTML = `النتيجة : ${score} / 5 ➔ النقطة : <strong>${(score * 4).toFixed(2)} / 20</strong>`;
+    }
+  </script>
+</body>
+</html>

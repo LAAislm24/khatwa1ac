@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Chapitre 1 : Les états physiques de la matière</title>
+<style>
+  body { background: #0f172a; color: white; font-family: Arial, sans-serif; max-width: 900px; margin: 20px auto; padding: 15px; line-height: 1.9; }
+  .back { display: inline-block; background: #ef4444; color: white; padding: 10px 20px; border-radius: 10px; text-decoration: none; margin-bottom: 15px; font-weight: bold; }
+  .card { background: #1e293b; border: 2px solid #38bdf8; border-radius: 15px; padding: 22px; margin-bottom: 20px; }
+  .rule { background: #0f172a; padding: 18px; border-radius: 10px; border-left: 5px solid #22c55e; margin: 15px 0; font-size: 16px; }
+  .q { background: #0f172a; padding: 18px; border-radius: 10px; border-left: 5px solid #eab308; margin: 15px 0; font-size: 16px; }
+  select { padding: 6px 10px; border-radius: 6px; border: 2px solid #38bdf8; background: #1e293b; color: #fde047; font-weight: bold; font-size: 15px; cursor: pointer; margin: 3px 0; }
+  .btn-verif { background: #22c55e; color: #0f172a; border: none; padding: 14px 30px; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 15px; }
+  .btn-verif:hover { background: #16a34a; color: white; }
+  #note { font-size: 22px; font-weight: bold; color: #fde047; margin-top: 15px; }
+  h1 { color: #38bdf8; font-size: 22px; border-bottom: 1px solid #334155; padding-bottom: 10px; }
+</style>
+<script>
+  function showT() {
+    var pages = document.querySelectorAll('.t-page');
+    if (pages.length === 0) return;
+    var hash = window.location.hash.replace('#', '');
+    var target = document.getElementById(hash) || pages;
+    pages.forEach(function(p) {
+      p.style.display = (p === target) ? 'block' : 'none';
+    });
+    var noteEl = document.getElementById('note');
+    if (noteEl) noteEl.innerText = "";
+  }
+  function verifier() {
+    var ok = 0, total = 0;
+    document.querySelectorAll('.t-page').forEach(function(page) {
+      if (page.style.display !== 'none') {
+        page.querySelectorAll('select[data-rep]').forEach(function(sel) {
+          total++;
+          if (sel.value === sel.getAttribute('data-rep')) { sel.style.borderColor = "#22c55e"; sel.style.background = "#14532d"; ok++; }
+          else { sel.style.borderColor = "#ef4444"; sel.style.background = "#7f1d1d"; }
+        });
+      }
+    });
+    document.getElementById('note').innerText = "🎯 Votre note : " + ok + " / " + total;
+  }
+  window.addEventListener('DOMContentLoaded', showT);
+  window.addEventListener('hashchange', showT);
+</script>
+</head>
+<body>
+  <a class="back" href="pc.html">🔙 Retour à la Physique-Chimie</a>
+
+  <!-- Tâche 1 -->
+  <div id="t1" class="t-page card">
+    <h1>🔬 Tâche 1 : Identifier l'état physique d'un corps à partir de ses caractéristiques</h1>
+    <div class="rule" dir="rtl" style="text-align:right;">
+      <b>📌 1. ملخص الدرس والشرح المفصل (الحالات الفيزيائية الثلاث للمادة) :</b><br>
+      • توجد المادة من حولنا في ثلاث حالات فيزيائية رئيسية: <b>الصلبة (Solide)</b>، <b>السائلة (Liquide)</b>، و<b>الغازية (Gazeux)</b>.<br>
+      • <b>1. الجسم الصلب المتراص (Solide compact) :</b> يمكن مسكه بالأصابع، وله <b>شكل خاص (Forme propre)</b> و<b>حجم خاص (Volume propre)</b> لا يتغيران بتغير الإناء.<br>
+      • <b>2. الجسم الصلب المجزأ (Solide divisé) :</b> يتكون من حبيبات صغيرة، <b>يأخذ شكل الإناء</b> الذي يوضع فيه، وسطحه الحر يكون <b>غير مستوٍ (مكوّم)</b>.<br>
+      • <b>3. الجسم السائل (Corps liquide) :</b> لا يمكن مسكه بالأصابع، <b>يسيل (Il coule)</b>، <b>ليس له شكل خاص</b> (يأخذ شكل الإناء)، وله <b>حجم خاص ثابت</b>. يتميز السائل في حالة سكون بأن <b>سطحه الحر يكون دائماً مستوياً وأفقياً (Surface libre plane et horizontale)</b> حتى لو أملنا الإناء.<br>
+      • <b>4. الجسم الغازي (Corps gazeux) :</b> لا يمكن مسكه بالأصابع، <b>ليس له لا شكل خاص ولا حجم خاص</b>، بل يشغل كل الحجم المتاح له. ويتميز بخاصيتي <b>الانضغاط (Compressibilité)</b> و<b>التوسع (Expansibilité)</b>.<br><br>
+      <b>💡 أمثلة تطبيقية (Exemples) :</b><br>
+      1. <b>قطعة حديد أو مكعب ثلج :</b> جسم صلب متراص له شكل وحجم خاصان.<br>
+      2. <b>الرمل والدقيق والملح :</b> أجسام صلبة مجزأة تأخذ شكل الإناء وسطحها غير مستوٍ.<br>
+      3. <b>الماء والزيت والحليب :</b> سوائل تأخذ شكل الإناء وسطحها الحر مستوٍ وأفقي.<br>
+      4. <b>الهواء وبخار الماء وغاز البوتان :</b> غازات غير مرئية غالباً وتملأ الغرفة أو القنينة بالكامل.
+    </div>
+    <div class="q">
+      <b>✍️ 2. Exercices d'application (Questions types d'évaluation) :</b><br><br>
+      <b>Exercice 1 (Expérience du bécher incliné) :</b><br>
+      Un élève verse de l'eau dans un bécher, puis il l'incline légèrement et le laisse au repos.<br>
+      • Comment appelle-t-on la surface de séparation entre l'eau et l'air ? <select data-rep="libre"><option value="">-- Choisir --</option><option value="libre">La surface libre (السطح الحر)</option><option value="fond">Le fond du bécher</option></select><br>
+      • Comment est cette surface lorsque l'eau est au repos ? <select data-rep="horiz"><option value="">-- Choisir --</option><option value="horiz">Plane et horizontale</option><option value="inclinee">Inclinée comme le bécher</option></select><br><br>
+      <b>Exercice 2 (Classer les corps selon leurs propriétés) :</b><br>
+      • Le sable sec est un : <select data-rep="div"><option value="">?</option><option value="div">Solide divisé</option><option value="liq">Liquide</option></select> &nbsp;|&nbsp;
+      • Le dioxygène (O₂) est un : <select data-rep="gaz"><option value="">?</option><option value="gaz">Gaz (compressible et expansible)</option><option value="comp">Solide compact</option></select>
+    </div>
+  </div>
+
+  <!-- Tâche 2 -->
+  <div id="t2" class="t-page card">
+    <h1>🔬 Tâche 2 : Modéliser la structure de la matière dans ses trois états physiques</h1>
+    <div class="rule" dir="rtl" style="text-align:right;">
+      <b>📌 1. ملخص الدرس والشرح المفصل (النموذج الدقائقي للمادة - Modèle particulaire) :</b><br>
+      • تتكون جميع المواد من حبيبات متناهية في الصغر وغير مرئية بالعين المجردة تُسمى <b>الدقائق (Les particules)</b>، ونمثلها هندسياً بكريات أو مثلثات صغيرة.<br>
+      • <b>1. في الحالة الصلبة (État solide) :</b> تكون الدقائق <b>متراصة (Compactes)</b>، <b>منظمة (Ordonnées)</b>، و<b>مرتبطة ببعضها بقوة</b> (شبه ساكنة تهتز في مكانها فقط).<br>
+      • <b>2. في الحالة السائلة (État liquide) :</b> تكون الدقائق <b>متقاربة ومتلامسة (Rapprochées)</b>، <b>غير منظمة (Désordonnées)</b>، و<b>ضعيفة الارتباط</b> فتتحرك وتنزلق فوق بعضها البعض (مما يفسر جريان السائل).<br>
+      • <b>3. في الحالة الغازية (État gazeux) :</b> تكون الدقائق <b>متباعدة جداً (Très espacées)</b>، <b>غير منظمة (Désordonnées)</b>، و<b>حرة الحركة وتتحرك بسرعة في جميع الاتجاهات</b> (مما يفسر انتشار الغاز وقابليته للانضغاط).<br><br>
+      <b>💡 أمثلة تطبيقية (Exemples) :</b><br>
+      1. <b>مكعب الجليد :</b> نمثله بدقائق متراصة ومرتبة في صفوف منتظمة.<br>
+      2. <b>الماء السائل :</b> نمثله بدقائق متقاربة ومتلامسة لكن مبعثرة بدون ترتيب.<br>
+      3. <b>بخار الماء أو الهواء :</b> نمثله بدقائق قليلة متباعدة جداً عن بعضها في كل الفضاء.
+    </div>
+    <div class="q">
+      <b>✍️ 2. Exercices d'application (Questions types d'évaluation) :</b><br><br>
+      <b>Exercice 1 (Associer chaque description à son état physique) :</b><br>
+      • Les particules sont très espacées et en mouvement rapide et désordonné : <select data-rep="gaz"><option value="">-- Choisir --</option><option value="gaz">État gazeux</option><option value="sol">État solide</option><option value="liq">État liquide</option></select><br>
+      • Les particules sont compactes, ordonnées et fortement liées : <select data-rep="sol"><option value="">-- Choisir --</option><option value="sol">État solide</option><option value="liq">État liquide</option></select><br>
+      • Les particules sont rapprochées, désordonnées et glissent les unes sur les autres : <select data-rep="liq"><option value="">-- Choisir --</option><option value="liq">État liquide</option><option value="gaz">État gazeux</option></select>
+    </div>
+  </div>
+  <!-- Tâche 3 -->
+  <div id="t3" class="t-page card">
+    <h1>🔬 Tâche 3 : Déterminer la nature d'un corps (corps pur, mélange homogène ou hétérogène)</h1>
+    <div class="rule" dir="rtl" style="text-align:right;">
+      <b>📌 1. ملخص الدرس والشرح المفصل (الجسم الخالص والخليط) :</b><br>
+      • <b>1. الجسم الخالص (Le corps pur) :</b> هو كل جسم يتكون من <b>نوع واحد فقط من الدقائق</b> (مكون واحد فقط).<br>
+      • <b>2. الخليط (Le mélange) :</b> هو كل جسم يتكون من <b>نوعين أو أكثر من الدقائق المختلفة</b>، وينقسم إلى نوعين:<br>
+      &nbsp;&nbsp;- <b>الخليط المتجانس (Mélange homogène) :</b> هو خليط <b>لا يمكن التمييز بين مكوناته بالعين المجردة</b> (يظهر كأنه جسم واحد صافٍ وموحد).<br>
+      &nbsp;&nbsp;- <b>الخليط غير المتجانس (Mélange hétérogène) :</b> هو خليط <b>يمكن التمييز بين مكوناته بالعين المجردة</b> (نرى فيه طورين أو أكثر، أو حبيبات عالقة).<br><br>
+      <b>💡 أمثلة تطبيقية (Exemples) :</b><br>
+      1. <b>أجسام خالصة :</b> الماء المقطر (<span dir="ltr">Eau distillée</span>)، غاز ثنائي الأوكسجين (<span dir="ltr">O₂</span>)، الذهب الخالص (<span dir="ltr">24 carats</span>).<br>
+      2. <b>خلائط متجانسة :</b> ماء + ملح مذاب كلياً، ماء + سكر مذاب، الماء المعدني (يحتوي على أملاح ذائبة)، الهواء (خليط غازات).<br>
+      3. <b>خلائط غير متجانسة :</b> ماء + زيت، ماء + رمل، عصير البرتقال باللب، المشروبات الغازية (بها فقاعات غازية مرئية).
+    </div>
+    <div class="q">
+      <b>✍️ 2. Exercices d'application (Questions types d'évaluation) :</b><br><br>
+      <b>Exercice 1 (Analyse de l'étiquette d'une eau minérale) :</b><br>
+      L'étiquette d'une bouteille d'eau minérale indique : Calcium : 80 mg/L ; Magnésium : 26 mg/L ; Sodium : 6,5 mg/L. À l'œil nu, cette eau est limpide et transparente.<br>
+      • Cette eau minérale est-elle un corps pur ou un mélange ? <select data-rep="mel"><option value="">-- Choisir --</option><option value="mel">Un mélange (car elle contient plusieurs sels minéraux dissous)</option><option value="pur">Un corps pur</option></select><br>
+      • Quelle est la nature précise de ce mélange ? <select data-rep="homo"><option value="">-- Choisir --</option><option value="homo">Mélange homogène</option><option value="hetero">Mélange hétérogène</option></select><br><br>
+      <b>Exercice 2 (Expérience au laboratoire) :</b><br>
+      Dans un bécher (A), on dissout complètement une pincée de sel dans l'eau. Dans un bécher (B), on mélange de l'eau et de l'huile.<br>
+      • Le contenu du bécher (A) est un : <select data-rep="homo_a"><option value="">?</option><option value="homo_a">Mélange homogène</option><option value="hetero_a">Mélange hétérogène</option></select> &nbsp;|&nbsp;
+      • Le contenu du bécher (B) est un : <select data-rep="hetero_b"><option value="">?</option><option value="hetero_b">Mélange hétérogène</option><option value="pur_b">Corps pur</option></select>
+    </div>
+  </div>
+
+  <!-- Tâche 4 -->
+  <div id="t4" class="t-page card">
+    <h1>🔬 Tâche 4 : Expliquer les caractéristiques des corps dans différents états physiques</h1>
+    <div class="rule" dir="rtl" style="text-align:right;">
+      <b>📌 1. ملخص الدرس والشرح المفصل (التفسير الدقائقي لخصائص المادة) :</b><br>
+      • <b>1. تفسير ثبات الشكل والحجم في الحالة الصلبة :</b> لأن الدقائق <b>متراصة ومنظمة ومرتبطة بقوة</b>، فلا تستطيع تغيير مواقعها، مما يعطي الجسم الصلب شكلاً وحجماً ثابتين.<br>
+      • <b>2. تفسير الجريان وعدم الانضغاط في الحالة السائلة :</b> لأن الدقائق <b>ضعيفة الارتباط وتنزلق فوق بعضها</b> فيسيل السائل ويأخذ شكل الإناء، ولكنها تبقى متقاربة جداً فلا يوجد فراغ بينها، لذا السائل غير قابل للانضغاط.<br>
+      • <b>3. تفسير الانضغاط والتوسع في الحالة الغازية :</b> لأن الدقائق <b>متباعدة جداً وحرة الحركة</b>؛ فعند الضغط على الغاز يتقلص الفراغ بين الدقائق فينقص حجمه (انضغاط)، وعند سحب المكبس تتباعد الدقائق لتملأ المكان (توسع).<br>
+      • <b>4. مبدأ انحفاظ الكتلة (Conservation de la masse) :</b> أثناء انضغاط الغاز أو توسعه داخل محقنة مغلقة، يتغير الحجم وتبقى الكتلة ثابتة لأن عدد الدقائق لا يتغير.<br><br>
+      <b>💡 أمثلة تطبيقية (Exemples) :</b><br>
+      1. <b>المحقنة المغلقة المملوءة بالهواء :</b> عند دفع المكبس ينضغط الهواء ويقل حجمه، وتزداد عدد التصادمات بين الدقائق وجدران المحقنة.<br>
+      2. <b>المحقنة المملوءة بالماء :</b> يستحيل دفع المكبس لأن دقائق الماء متلامسة ومتقاربة ولا يوجد فراغ بينها.
+    </div>
+    <div class="q">
+      <b>✍️ 2. Exercices d'application (Expérience de la seringue) :</b><br><br>
+      Un élève emprisonne un volume V₁ = 40 mL d'air de masse m₁ = 0,05 g dans une seringue bouchée, puis il pousse le piston : le volume devient V₂ = 20 mL.<br>
+      • Quelle propriété de l'air est mise en évidence ? <select data-rep="comp"><option value="">-- Choisir --</option><option value="comp">La compressibilité (الانضغاط)</option><option value="exp">L'expansibilité (التوسع)</option></select><br>
+      • Comment expliquer cette diminution de volume avec le modèle particulaire ? <select data-rep="rap"><option value="">-- Choisir --</option><option value="rap">Les particules d'air se rapprochent les unes des autres</option><option value="dim">Le nombre de particules diminue</option></select><br>
+      • Quelle est la nouvelle masse m₂ de l'air après compression ? <select data-rep="0.05"><option value="">-- Choisir --</option><option value="0.05">m₂ = 0,05 g (conservation de la masse)</option><option value="0.025">m₂ = 0,025 g</option></select>
+    </div>
+  </div>
+
+  <div style="text-align: center;">
+    <button class="btn-verif" onclick="verifier()">✅ Vérifier / تصحيح</button>
+    <div id="note"></div>
+  </div>
+
+</body>
+</html>
+

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Chapitre 7 : Les circuits électriques</title>
+<style>
+  body { background: #0f172a; color: white; font-family: Arial, sans-serif; max-width: 900px; margin: 20px auto; padding: 15px; line-height: 1.9; }
+  .back { display: inline-block; background: #ef4444; color: white; padding: 10px 20px; border-radius: 10px; text-decoration: none; margin-bottom: 15px; font-weight: bold; }
+  .card { background: #1e293b; border: 2px solid #38bdf8; border-radius: 15px; padding: 22px; margin-bottom: 20px; }
+  .rule { background: #0f172a; padding: 18px; border-radius: 10px; border-left: 5px solid #22c55e; margin: 15px 0; font-size: 16px; }
+  .q { background: #0f172a; padding: 18px; border-radius: 10px; border-left: 5px solid #eab308; margin: 15px 0; font-size: 16px; }
+  select { padding: 6px 10px; border-radius: 6px; border: 2px solid #38bdf8; background: #1e293b; color: #fde047; font-weight: bold; font-size: 15px; cursor: pointer; margin: 3px 0; }
+  .btn-verif { background: #22c55e; color: #0f172a; border: none; padding: 14px 30px; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 15px; }
+  .btn-verif:hover { background: #16a34a; color: white; }
+  #note { font-size: 22px; font-weight: bold; color: #fde047; margin-top: 15px; }
+  h1 { color: #38bdf8; font-size: 22px; border-bottom: 1px solid #334155; padding-bottom: 10px; }
+</style>
+<script>
+  function showT() {
+    var pages = document.querySelectorAll('.t-page');
+    if (pages.length === 0) return;
+    var hash = window.location.hash.replace('#', '');
+    var target = document.getElementById(hash) || pages;
+    pages.forEach(function(p) {
+      p.style.display = (p === target) ? 'block' : 'none';
+    });
+    var noteEl = document.getElementById('note');
+    if (noteEl) noteEl.innerText = "";
+  }
+  function verifier() {
+    var ok = 0, total = 0;
+    document.querySelectorAll('.t-page').forEach(function(page) {
+      if (page.style.display !== 'none') {
+        page.querySelectorAll('select[data-rep]').forEach(function(sel) {
+          total++;
+          if (sel.value === sel.getAttribute('data-rep')) { sel.style.borderColor = "#22c55e"; sel.style.background = "#14532d"; ok++; }
+          else { sel.style.borderColor = "#ef4444"; sel.style.background = "#7f1d1d"; }
+        });
+      }
+    });
+    document.getElementById('note').innerText = "🎯 Votre note : " + ok + " / " + total;
+  }
+  window.addEventListener('DOMContentLoaded', showT);
+  window.addEventListener('hashchange', showT);
+</script>
+</head>
+<body>
+  <a class="back" href="pc.html">🔙 Retour à la Physique-Chimie</a>
+
+  <!-- Tâche 1 -->
+  <div id="t1" class="t-page card">
+    <h1>🔌 Tâche 1 : Représenter le schéma d'un circuit électrique</h1>
+    <div class="rule" dir="rtl" style="text-align:right;">
+      <b>📌 1. ملخص الدرس والشرح المفصل (مكونات الدارة الكهربائية ورموزها الاصطلاحية) :</b><br>
+      • <b>الدارة الكهربائية البسيطة (Circuit électrique simple) :</b> تتكون من حلقة مغلقة تضم:<br>
+      &nbsp;&nbsp;1. <b>المولد (Le générateur / La pile) :</b> يزود الدارة بالتيار الكهربائي، وله قطبان مختلفان: موجب (<span dir="ltr">+</span>) وسالب (<span dir="ltr">-</span>).<br>
+      &nbsp;&nbsp;2. <b>المستقبل (Le récepteur) :</b> يستقبل الطاقة الكهربائية ويحولها (مثل: المصباح <span dir="ltr">Lampe</span>، المحرك <span dir="ltr">Moteur</span>، الصمام الثنائي <span dir="ltr">Diode</span>).<br>
+      &nbsp;&nbsp;3. <b>قاطع التيار (L'interrupteur) :</b> يسمح بفتح الدارة (لا يمر التيار) أو إغلاقها (يمر التيار).<br>
+      &nbsp;&nbsp;4. <b>أسلاك التوصيل (Fils de connexion) :</b> تربط بين عناصر الدارة.<br>
+      • <b>قواعد تمثيل تبيانة الدارة (Schéma normalisé) :</b><br>
+      &nbsp;&nbsp;- نرسم إطاراً مستطيلاً بالمسطرة وقلم الرصاص.<br>
+      &nbsp;&nbsp;- نضع الرموز الاصطلاحية (Symboles normalisés) لكل ثنائي قطب في أضلاع المستطيل (لا نضعها في الزوايا).<br>
+      • <b>الموصلات والعوازل (Conducteurs et isolants) :</b> الموصل يسمح بمرور التيار (مثل: النحاس، الحديد، ماء مالح، غرافيت)، والعازل لا يسمح بمروره (مثل: البلاستيك، الخشب الجاف، الزجاج، الهواء).<br><br>
+      <b>💡 أمثلة تطبيقية (Exemples) :</b><br>
+      1. رمز المصباح (<span dir="ltr">Lampe</span>) هو دائرة بداخلها علامة (<span dir="ltr">×</span>)، ورمز المحرك (<span dir="ltr">Moteur</span>) هو دائرة بداخلها حرف (<span dir="ltr">M</span>).<br>
+      2. عندما يكون قاطع التيار <b>مفتوحاً (Ouvert)</b> تكون الدارة مفتوحة والمصباح منطفئ، وعندما يكون <b>مغلقاً (Fermé)</b> تكون الدارة مغلقة والمصباح مضيء.
+    </div>
+    <div class="q">
+      <b>✍️ 2. Exercices d'application (Questions types d'évaluation) :</b><br><br>
+      <b>Exercice 1 (Rôle des dipôles et état du circuit) :</b><br>
+      • Quel est le dipôle qui fournit l'énergie électrique dans un circuit ? <select data-rep="gen"><option value="">-- Choisir --</option><option value="gen">Le générateur (la pile)</option><option value="lampe">La lampe</option></select><br>
+      • Dans quel état doit être l'interrupteur pour que la lampe s'allume ? <select data-rep="ferme"><option value="">-- Choisir --</option><option value="ferme">Fermé (circuit fermé)</option><option value="ouvert">Ouvert (circuit ouvert)</option></select><br><br>
+      <b>Exercice 2 (Conducteurs et isolants) :</b><br>
+      • Parmi ces matériaux, lequel est un conducteur électrique ? <select data-rep="cuivre"><option value="">?</option><option value="cuivre">Le cuivre (النحاس)</option><option value="plastique">Le plastique</option><option value="verre">Le verre</option></select> &nbsp;|&nbsp;
+      • Quel est le symbole normalisé d'un moteur électrique ? <select data-rep="m"><option value="">?</option><option value="m">Un cercle contenant la lettre M</option><option value="x">Un cercle contenant une croix ×</option></select>
+    </div>
+  </div>
+
+  <!-- Tâche 2 -->
+  <div id="t2" class="t-page card">
+    <h1>🔌 Tâche 2 : Identifier, à partir du nombre de boucles, le type de circuit électrique (série ou avec dérivation)</h1>
+    <div class="rule" dir="rtl" style="text-align:right;">
+      <b>📌 1. ملخص الدرس والشرح المفصل (التركيب على التوالي والتركيب على التوازي) :</b><br>
+      • نميز بين نوعين من التراكيب الكهربائية حسب <b>عدد الحلقات (Nombre de boucles)</b> :<br>
+      • <b>1. التركيب على التوالي (Montage en série) :</b><br>
+      &nbsp;&nbsp;- تُركب ثنائيات القطب الواحد تلو الآخر لتكوّن <b>حلقة واحدة فقط (Une seule boucle)</b> مع المولد.<br>
+      • <b>2. التركيب على التوازي / التفرع (Montage en dérivation / parallèle) :</b><br>
+      &nbsp;&nbsp;- يحتوي على <b>حلقتين أو أكثر (Au moins deux boucles)</b>، وتلتقي الأسلاك في نقط تسمى <b>العُقد (Les nœuds)</b> (كل عقدة يلتقي فيها 3 أسلاك على الأقل).<br>
+      &nbsp;&nbsp;- ينقسم فيه التيار إلى فرع رئيسي (Branche principale) وفروع ثانوية (Branches dérivées).<br><br>
+      <b>💡 أمثلة تطبيقية (Exemples) :</b><br>
+      1. مصباحان موصولان في حلقة واحدة مع عمود كهربائي : <b>تركيب على التوالي (En série)</b>.<br>
+      2. مصابيح المنزل والأجهزة الكهربائية : مركبة دائماً <b>على التوازي (En dérivation)</b> لكي يشتغل كل جهاز بشكل مستقل عن الآخر.
+    </div>
+    <div class="q">
+      <b>✍️ 2. Exercices d'application (Questions types d'évaluation) :</b><br><br>
+      <b>Exercice 1 (Reconnaître le type de montage) :</b><br>
+      • Un circuit électrique comporte une pile et deux lampes formant une seule boucle. Quel est le type de ce montage ? <select data-rep="serie"><option value="">-- Choisir --</option><option value="serie">Montage en série</option><option value="deriv">Montage en dérivation</option></select><br>
+      • Un circuit comporte 2 boucles et 2 nœuds où se rejoignent trois fils. Quel est le type de ce montage ? <select data-rep="deriv"><option value="">-- Choisir --</option><option value="deriv">Montage en dérivation</option><option value="serie">Montage en série</option></select>
+    </div>
+  </div>
+<div style="text-align: center;">
+    <button class="btn-verif" onclick="verifier()">✅ Vérifier / تصحيح</button>
+    <div id="note"></div>
+  </div>
+
+</body>
+</html>

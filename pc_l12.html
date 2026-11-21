@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Chapitre 12 : Énergies d'un corps en mouvement</title>
+<style>
+  body { background: #0f172a; color: white; font-family: Arial, sans-serif; max-width: 900px; margin: 20px auto; padding: 15px; line-height: 1.9; }
+  .back { display: inline-block; background: #ef4444; color: white; padding: 10px 20px; border-radius: 10px; text-decoration: none; margin-bottom: 15px; font-weight: bold; }
+  .card { background: #1e293b; border: 2px solid #38bdf8; border-radius: 15px; padding: 22px; margin-bottom: 20px; }
+  .rule { background: #0f172a; padding: 18px; border-radius: 10px; border-left: 5px solid #22c55e; margin: 15px 0; font-size: 16px; }
+  .q { background: #0f172a; padding: 18px; border-radius: 10px; border-left: 5px solid #eab308; margin: 15px 0; font-size: 16px; }
+  select { padding: 6px 10px; border-radius: 6px; border: 2px solid #38bdf8; background: #1e293b; color: #fde047; font-weight: bold; font-size: 15px; cursor: pointer; margin: 3px 0; }
+  .btn-verif { background: #22c55e; color: #0f172a; border: none; padding: 14px 30px; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 15px; }
+  .btn-verif:hover { background: #16a34a; color: white; }
+  #note { font-size: 22px; font-weight: bold; color: #fde047; margin-top: 15px; }
+  h1 { color: #38bdf8; font-size: 22px; border-bottom: 1px solid #334155; padding-bottom: 10px; }
+</style>
+<script>
+  function showT() {
+    var pages = document.querySelectorAll('.t-page');
+    if (pages.length === 0) return;
+    var hash = window.location.hash.replace('#', '');
+    var target = document.getElementById(hash) || pages;
+    pages.forEach(function(p) {
+      p.style.display = (p === target) ? 'block' : 'none';
+    });
+    var noteEl = document.getElementById('note');
+    if (noteEl) noteEl.innerText = "";
+  }
+  function verifier() {
+    var ok = 0, total = 0;
+    document.querySelectorAll('.t-page').forEach(function(page) {
+      if (page.style.display !== 'none') {
+        page.querySelectorAll('select[data-rep]').forEach(function(sel) {
+          total++;
+          if (sel.value === sel.getAttribute('data-rep')) { sel.style.borderColor = "#22c55e"; sel.style.background = "#14532d"; ok++; }
+          else { sel.style.borderColor = "#ef4444"; sel.style.background = "#7f1d1d"; }
+        });
+      }
+    });
+    document.getElementById('note').innerText = "🎯 Votre note : " + ok + " / " + total;
+  }
+  window.addEventListener('DOMContentLoaded', showT);
+  window.addEventListener('hashchange', showT);
+</script>
+</head>
+<body>
+  <a class="back" href="pc.html">🔙 Retour à la Physique-Chimie</a>
+
+  <!-- Tâche 1 -->
+  <div id="t1" class="t-page card">
+    <h1>⚡ Tâche 1 : Relier l'énergie cinétique à la sécurité routière</h1>
+    <div class="rule" dir="rtl" style="text-align:right;">
+      <b>📌 1. ملخص الدرس والشرح المفصل (الطاقة الحركية والسلامة الطرقية - Énergie cinétique) :</b><br>
+      • <b>الطاقة الحركية (L'énergie cinétique) :</b> رمزها <span dir="ltr"><b>Ec</b></span> ووحدتها العالمية هي <b>الجول (<span dir="ltr">Joule : J</span>)</b>، وهي الطاقة التي يكتسبها كل جسم بسبب حركته.<br>
+      • <b>العوامل المؤثرة في الطاقة الحركية :</b> تتعلق الطاقة الحركية بعاملين أساسيين:<br>
+      &nbsp;&nbsp;1. <b>الكتلة (<span dir="ltr">m</span>) :</b> كلما زادت كتلة الجسم المتحرك، زادت طاقته الحركية.<br>
+      &nbsp;&nbsp;2. <b>السرعة (<span dir="ltr">v</span>) :</b> كلما زادت سرعة الجسم، زادت طاقته الحركية <b>بشكل كبير جداً</b> (تتناسب مع مربع السرعة <span dir="ltr">v²</span>؛ أي إذا تضاعفت السرعة مرتين تتضاعف الطاقة الحركية 4 مرات!).<br>
+      • <b>العلاقة بالسلامة الطرقية (Sécurité routière) :</b><br>
+      &nbsp;&nbsp;- <b>مسافة التوقف (<span dir="ltr">D_A</span>) = مسافة رد الفعل (<span dir="ltr">D_R</span>) + مسافة الفرملة/الكبح (<span dir="ltr">D_F</span>)</b>.<br>
+      &nbsp;&nbsp;- عند الإفراط في السرعة، تزداد الطاقة الحركية للسيارة بشكل هائل، فتطول <b>مسافة الفرملة (<span dir="ltr">D_F</span>)</b> وتصبح خطورة الاصطدام قاتلة.<br><br>
+      <b>💡 أمثلة تطبيقية (Exemples) :</b><br>
+      1. شاحنة ثقيلة وسيارة خفيفة تسيران بنفس السرعة : الشاحنة تملك طاقة حركية أكبر لأن كتلتها أكبر.<br>
+      2. احترام السرعة القانونية وحزام السلامة ومسافة الأمان يقلل من خطورة الطاقة الحركية عند الفرملة المفاجئة.
+    </div>
+    <div class="q">
+      <b>✍️ 2. Exercices d'application (Questions types d'évaluation) :</b><br><br>
+      <b>Exercice 1 (Facteurs de l'énergie cinétique et sécurité routière) :</b><br>
+      • De quels deux facteurs dépend l'énergie cinétique d'un véhicule ? <select data-rep="mv"><option value="">-- Choisir --</option><option value="mv">De sa masse (m) et de sa vitesse (v)</option><option value="col">De sa couleur et de sa forme</option></select><br>
+      • Si la vitesse d'une voiture est multipliée par 2, par combien son énergie cinétique est-elle multipliée ? <select data-rep="4"><option value="">-- Choisir --</option><option value="4">Par 4 (elle augmente très fortement)</option><option value="2">Par 2 seulement</option></select><br>
+      • Quelle est la formule de la distance d'arrêt (D_A) d'un véhicule ? <select data-rep="da"><option value="">-- Choisir --</option><option value="da">D_A = D_R + D_F (distance de réaction + distance de freinage)</option><option value="df">D_A = D_R - D_F</option></select>
+    </div>
+  </div>
+
+  <!-- Tâche 2 -->
+  <div id="t2" class="t-page card">
+    <h1>⚡ Tâche 2 : Étudier l'influence de l'énergie potentielle sur l'impact d'un corps sur une surface</h1>
+    <div class="rule" dir="rtl" style="text-align:right;">
+      <b>📌 1. ملخص الدرس والشرح المفصل (طاقة الوضع الثقالية والطاقة الميكانيكية - Énergie potentielle) :</b><br>
+      • <b>طاقة الوضع الثقالية (L'énergie potentielle de pesanteur) :</b> رمزها <span dir="ltr"><b>Ep</b></span> ووحدتها العالمية هي <b>الجول (<span dir="ltr">J</span>)</b>، وهي الطاقة التي يختزنها الجسم بسبب <b>ارتفاعه (<span dir="ltr">h</span>)</b> عن سطح الأرض.<br>
+      • <b>العوامل المؤثرة في طاقة الوضع :</b> تزداد طاقة الوضع الثقالية كلما زادت <b>كتلة الجسم (<span dir="ltr">m</span>)</b> وكلما زاد <b>ارتفاعه (<span dir="ltr">h</span>)</b> عن سطح الأرض.<br>
+      • <b>التحول الطاقي أثناء السقوط :</b><br>
+      &nbsp;&nbsp;- عندما يسقط جسم من ارتفاع <span dir="ltr">h</span> نحو الأرض: <b>ينقص ارتفاعه فتتناقص طاقة وضعه (<span dir="ltr">Ep</span>)</b>، وتتحول تدريجياً إلى <b>طاقة حركية (<span dir="ltr">Ec</span>) تزداد</b> مع تزايد سرعته.<br>
+      &nbsp;&nbsp;- مجموعهما يُسمى <b>الطاقة الميكانيكية (<span dir="ltr">Em = Ec + Ep</span>)</b>.<br>
+      • <b>تأثير الارتطام (Impact) :</b> كلما سقط الجسم من ارتفاع أكبر أو كانت كتلته أكبر، كان أثر ارتطامه على السطح (عمق الحفرة في الرمل مثلاً) أكبر.<br><br>
+      <b>💡 أمثلة تطبيقية (Exemples) :</b><br>
+      1. <b>مياه السدود :</b> تختزن طاقة وضع كبيرة بسبب ارتفاعها، وعند سقوطها تتحول إلى طاقة حركية تدير العنفات لإنتاج الكهرباء.<br>
+      2. كرة حديدية تسقط في الرمل من ارتفاع <span dir="ltr">2 m</span> تترك أثراً أعمق من سقوطها من ارتفاع <span dir="ltr">0,5 m</span>.
+    </div>
+    <div class="q">
+      <b>✍️ 2. Exercices d'application (Questions types d'évaluation) :</b><br><br>
+      <b>Exercice 1 (Chute d'une bille dans le sable) :</b><br>
+      On lâche deux billes de même masse dans du sable fin : la bille (A) d'une hauteur h₁ = 1,5 m et la bille (B) d'une hauteur h₂ = 0,4 m.<br>
+      • Quelle bille possède la plus grande énergie potentielle avant le lâcher ? <select data-rep="a"><option value="">-- Choisir --</option><option value="a">La bille (A) car son altitude h₁ est plus grande</option><option value="b">La bille (B)</option></select><br>
+      • Comment évolue l'énergie potentielle (Ep) et l'énergie cinétique (Ec) d'une bille pendant sa chute ? <select data-rep="conv"><option value="">-- Choisir --</option><option value="conv">Ep diminue et se transforme en Ec qui augmente</option><option value="aug">Ep et Ec augmentent toutes les deux</option></select><br>
+      • Quelle bille laissera l'impact le plus profond dans le sable ? <select data-rep="imp_a"><option value="">-- Choisir --</option><option value="imp_a">La bille (A)</option><option value="imp_b">La bille (B)</option></select>
+    </div>
+  </div>
+
+  <div style="text-align: center;">
+    <button class="btn-verif" onclick="verifier()">✅ Vérifier / تصحيح</button>
+    <div id="note"></div>
+  </div>
+
+</body>
+</html>

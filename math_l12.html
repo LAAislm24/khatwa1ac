@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leçon 12 : Fonctions et proportionnalité - Math 1AC</title>
+<link rel="preconnect" href="https://googleapis.com">
+<link rel="preconnect" href="https://gstatic.com" crossorigin>
+<link href="https://googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root { --bg-dark: #090d16; --card-bg: #1e293b; --primary: #38bdf8; --secondary: #818cf8; --accent: #34d399; --text-main: #f8fafc; --text-muted: #94a3b8; }
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
+  body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.85; }
+  .top-nav { background: #0f172a; padding: 14px 20px; border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+  .nav-btn { background: rgba(56, 189, 248, 0.15); color: #38bdf8; text-decoration: none; padding: 6px 14px; border-radius: 10px; font-size: 14px; font-weight: 700; border: 1px solid rgba(56, 189, 248, 0.3); }
+  .container { max-width: 880px; margin: 25px auto; padding: 0 15px; }
+  .lesson-header { background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(129, 140, 248, 0.15)); border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 18px; padding: 25px; text-align: center; margin-bottom: 25px; }
+  .period-tag { display: inline-block; background: #0284c7; color: white; padding: 4px 14px; border-radius: 12px; font-size: 12px; font-weight: 700; margin-bottom: 8px; }
+  .lesson-header h1 { font-size: 22px; font-weight: 900; color: #38bdf8; direction: ltr; }
+  .card { background: var(--card-bg); border: 1px solid #334155; border-radius: 16px; padding: 22px; margin-bottom: 20px; }
+  .task-badge { display: inline-block; background: rgba(52, 211, 153, 0.15); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.4); padding: 4px 12px; border-radius: 8px; font-size: 13px; font-weight: 800; margin-bottom: 12px; direction: ltr; }
+  .card h2 { font-size: 18px; color: #f8fafc; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 8px; }
+  .card ul { padding-right: 20px; margin-bottom: 10px; }
+  .card li { margin-bottom: 8px; }
+  .math-formula { direction: ltr; text-align: center; font-size: 16px; font-weight: 800; color: #38bdf8; background: #0f172a; padding: 12px; border-radius: 10px; margin: 10px 0; font-family: 'Courier New', monospace; border: 1px solid rgba(56, 189, 248, 0.25); }
+  .example-box { background: rgba(129, 140, 248, 0.1); border: 1px solid rgba(129, 140, 248, 0.3); padding: 14px; border-radius: 10px; margin-top: 12px; direction: ltr; text-align: left; font-size: 15px; }
+  footer { text-align: center; padding: 25px; color: var(--text-muted); font-size: 13px; }
+</style>
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a href="math.html" class="nav-btn">➡ دروس الرياضيات</a>
+    <span style="font-weight: 800;">Leçon 12</span>
+    <a href="math_l13.html" class="nav-btn">الدرس 13 ⬅</a>
+  </nav>
+
+  <main class="container">
+    <div class="lesson-header">
+      <span class="period-tag">SEMESTRE 2 - PÉRIODE 4</span>
+      <h1>Leçon 12 : Fonctions et proportionnalité</h1>
+      <p>الدوال والتناسبية (كل Tâche في بطاقة مستقلة)</p>
+    </div>
+
+    <!-- Tâche 1 -->
+    <div class="card">
+      <span class="task-badge">Tâche 1 : Placer et repérer un point dans un repère du plan</span>
+      <h2>1. معلمة نقطة في معلم متعامد في المستوى</h2>
+      <p>يتكون المعلم <span dir="ltr">(O, I, J)</span> من محورين متعامدين في أصل المعلم <span dir="ltr">O(0 ; 0)</span> : المحور الأفقي (<strong>محور الأفاصيل - Axe des abscisses</strong>) والمحور العمودي (<strong>محور الأراتيب - Axe des ordonnées</strong>).</p>
+      <div class="math-formula">Coordonnées d'un point : M(x_M ; y_M) = M(Abscisse ; Ordonnée)</div>
+      <div class="example-box">
+        <strong>Exemple :</strong> Le point A(2 ; -3) a pour abscisse <strong>2</strong> et pour ordonnée <strong>-3</strong>.
+      </div>
+    </div>
+
+    <!-- Tâche 2 -->
+    <div class="card">
+      <span class="task-badge">Tâche 2 : Lire un graphe</span>
+      <h2>2. قراءة واستخراج معطيات من مبيان</h2>
+      <p>لقراءة مبيان يربط بين مقدارين، نحدد القيمة على المحور الأفقي (الأفصول) ثم نسقطها عمودياً على المنحنى لنقرأ القيمة الموافقة لها على المحور العمودي (الأرتوب)، والعكس صحيح.</p>
+    </div>
+
+    <!-- Tâche 3 -->
+    <div class="card">
+      <span class="task-badge">Tâche 3 : Reconnaître la proportionnalité avec les nombres négatifs</span>
+      <h2>3. التناسبية مع الأعداد النسبية</h2>
+      <p>يكون جدول أعداد جدول تناسبية إذا أمكن الانتقال من السطر الأول إلى السطر الثاني بالضرب في نفس العدد الثابت <span dir="ltr">k</span> (يسمى معامل التناسب — <em>Coefficient de proportionnalité</em>)، سواء كان موجباً أو سالباً.</p>
+      <div class="math-formula">y = k × x &nbsp;&nbsp;⟺&nbsp;&nbsp; k = y / x &nbsp;(x ≠ 0)</div>
+    </div>
+
+    <!-- Tâche 4 -->
+    <div class="card">
+      <span class="task-badge">Tâche 4 : Reconnaître une fonction linéaire</span>
+      <h2>4. التعرف على الدالة الخطية وحساب الصور</h2>
+      <p>ليكن <span dir="ltr">a</span> عدداً معلوماً. العلاقة <span dir="ltr">f</span> التي تربط كل عدد <span dir="ltr">x</span> بالعدد <span dir="ltr">ax</span> تسمى <strong>دالة خطية (Fonction linéaire)</strong> معاملها <span dir="ltr">a</span>.</p>
+      <div class="math-formula">f(x) = a × x &nbsp;&nbsp;|&nbsp;&nbsp; Coefficient : a = f(x) / x</div>
+      <div class="example-box">
+        <strong>Exemple :</strong> Soit f(x) = -4x. L'image de 3 est : f(3) = -4 × 3 = <strong>-12</strong>.
+      </div>
+    </div>
+
+    <!-- Tâche 5 -->
+    <div class="card">
+      <span class="task-badge">Tâche 5 : Représenter graphiquement une fonction linéaire</span>
+      <h2>5. التمثيل المبياني لدالة خطية</h2>
+      <p>التمثيل المبياني لدالة خطية <span dir="ltr">f(x) = ax</span> في معلم هو <strong>مستقيم يمر دائماً من أصل المعلم <span dir="ltr">O(0 ; 0)</span></strong>. لرسمه يكفي إيجاد نقطة واحدة إضافية <span dir="ltr">A(x ; f(x))</span>.</p>
+      <div class="example-box">
+        <strong>Exemple :</strong> Pour tracer f(x) = 2x, on relie l'origine <strong>O(0 ; 0)</strong> au point <strong>A(2 ; 4)</strong>.
+      </div>
+    </div>
+
+    <!-- Tâche 6 -->
+    <div class="card">
+      <span class="task-badge">Tâche 6 : Résoudre un problème de pourcentage et de vitesse moyenne</span>
+      <h2>6. حل مسائل النسبة المئوية والسرعة المتوسطة</h2>
+      <ul>
+        <li><strong>النسبة المئوية :</strong> لحساب <span dir="ltr">t%</span> من مقدار <span dir="ltr">M</span> نطبق : <span dir="ltr">M × (t / 100)</span>.</li>
+        <li><strong>السرعة المتوسطة (Vitesse moyenne) :</strong> هي خارج المسافة <span dir="ltr">d</span> على المدة الزمنية <span dir="ltr">t</span> :
+          <div class="math-formula">v = d / t &nbsp;&nbsp;|&nbsp;&nbsp; d = v × t &nbsp;&nbsp;|&nbsp;&nbsp; t = d / v</div>
+        </li>
+      </ul>
+    </div>
+
+  </main>
+  <footer>منصة <strong>خطوة للنجاح (Khatwa 1AC BIOF)</strong> © 2026</footer>
+</body>
+</html>

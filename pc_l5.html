@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Chapitre 5 : Le son</title>
+<style>
+  body { background: #0f172a; color: white; font-family: Arial, sans-serif; max-width: 900px; margin: 20px auto; padding: 15px; line-height: 1.9; }
+  .back { display: inline-block; background: #ef4444; color: white; padding: 10px 20px; border-radius: 10px; text-decoration: none; margin-bottom: 15px; font-weight: bold; }
+  .card { background: #1e293b; border: 2px solid #38bdf8; border-radius: 15px; padding: 22px; margin-bottom: 20px; }
+  .rule { background: #0f172a; padding: 18px; border-radius: 10px; border-left: 5px solid #22c55e; margin: 15px 0; font-size: 16px; }
+  .q { background: #0f172a; padding: 18px; border-radius: 10px; border-left: 5px solid #eab308; margin: 15px 0; font-size: 16px; }
+  select { padding: 6px 10px; border-radius: 6px; border: 2px solid #38bdf8; background: #1e293b; color: #fde047; font-weight: bold; font-size: 15px; cursor: pointer; margin: 3px 0; }
+  .btn-verif { background: #22c55e; color: #0f172a; border: none; padding: 14px 30px; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 15px; }
+  .btn-verif:hover { background: #16a34a; color: white; }
+  #note { font-size: 22px; font-weight: bold; color: #fde047; margin-top: 15px; }
+  h1 { color: #38bdf8; font-size: 22px; border-bottom: 1px solid #334155; padding-bottom: 10px; }
+</style>
+<script>
+  function showT() {
+    var pages = document.querySelectorAll('.t-page');
+    if (pages.length === 0) return;
+    var hash = window.location.hash.replace('#', '');
+    var target = document.getElementById(hash) || pages;
+    pages.forEach(function(p) {
+      p.style.display = (p === target) ? 'block' : 'none';
+    });
+    var noteEl = document.getElementById('note');
+    if (noteEl) noteEl.innerText = "";
+  }
+  function verifier() {
+    var ok = 0, total = 0;
+    document.querySelectorAll('.t-page').forEach(function(page) {
+      if (page.style.display !== 'none') {
+        page.querySelectorAll('select[data-rep]').forEach(function(sel) {
+          total++;
+          if (sel.value === sel.getAttribute('data-rep')) { sel.style.borderColor = "#22c55e"; sel.style.background = "#14532d"; ok++; }
+          else { sel.style.borderColor = "#ef4444"; sel.style.background = "#7f1d1d"; }
+        });
+      }
+    });
+    document.getElementById('note').innerText = "🎯 Votre note : " + ok + " / " + total;
+  }
+  window.addEventListener('DOMContentLoaded', showT);
+  window.addEventListener('hashchange', showT);
+</script>
+</head>
+<body>
+  <a class="back" href="pc.html">🔙 Retour à la Physique-Chimie</a>
+
+  <!-- Tâche 1 -->
+  <div id="t1" class="t-page card">
+    <h1>🔊 Tâche 1 : Identifier l'émetteur, le récepteur et le milieu de propagation du son</h1>
+    <div class="rule" dir="rtl" style="text-align:right;">
+      <b>📌 1. ملخص الدرس والشرح المفصل (إنتاج وانتشار الصوت) :</b><br>
+      • <b>كيف ينتج الصوت؟</b> ينتج الصوت دائماً عن <b>اهتزاز جسم مادي (Vibration d'un corps)</b> مثل أوتار الغيتار، الحبال الصوتية، أو غشاء مكبر الصوت.<br>
+      • <b>عناصر سلسلة الصوت الثلاثة :</b><br>
+      &nbsp;&nbsp;1. <b>الباعث الصوتي (L'émetteur) :</b> هو الجسم الذي يهتز ويُصدر الصوت (مثل: آلة موسيقية، هاتف، حنجرة الإنسان).<br>
+      &nbsp;&nbsp;2. <b>وسط الانتشار (Le milieu de propagation) :</b> هو الوسط المادي الذي ينقل الصوت؛ ويجب أن يكون <b>وسطاً مادياً (Milieu matériel)</b> (غاز، سائل، أو صلب). <b>الصوت لا ينتشر في الفراغ (Le son ne se propage pas dans le vide)</b>.<br>
+      &nbsp;&nbsp;3. <b>المستقبل الصوتي (Le récepteur) :</b> هو الجهاز أو العضو الذي يلتقط الصوت (مثل: أذن الإنسان، الميكروفون).<br>
+      • <b>سرعة انتشار الصوت (Vitesse du son) :</b> تزداد سرعة الصوت كلما كان الوسط أكثر تراصاً : في الهواء (<span dir="ltr">340 m/s</span>) &lt; في الماء (<span dir="ltr">1500 m/s</span>) &lt; في الحديد (<span dir="ltr">5000 m/s</span>).<br><br>
+      <b>💡 أمثلة تطبيقية (Exemples) :</b><br>
+      1. <b>تجربة الناقوس المفرغ من الهواء (Cloche à vide) :</b> عندما نفرغ الهواء من الناقوس، نرى مطرقة الجرس تهتز لكننا <b>لا نسمع الصوت</b> لأن الصوت لا ينتشر في الفراغ.<br>
+      2. <b>تلميذ يتكلم مع زميله في القسم :</b> الباعث هو فم التلميذ، وسط الانتشار هو الهواء، والمستقبل هو أذن الزميل.
+    </div>
+    <div class="q">
+      <b>✍️ 2. Exercices d'application (Questions types d'évaluation) :</b><br><br>
+      <b>Exercice 1 (Identifier la chaîne sonore) :</b><br>
+      Lors d'un concert, un musicien pince la corde d'une guitare et le son est capté par un microphone.<br>
+      • Quel est l'émetteur du son ? <select data-rep="guitare"><option value="">-- Choisir --</option><option value="guitare">La corde de la guitare</option><option value="micro">Le microphone</option></select><br>
+      • Quel est le récepteur du son ? <select data-rep="micro"><option value="">-- Choisir --</option><option value="micro">Le microphone</option><option value="air">L'air</option></select><br>
+      • Quel est le milieu de propagation ? <select data-rep="air"><option value="">-- Choisir --</option><option value="air">L'air</option><option value="vide">Le vide</option></select><br><br>
+      <b>Exercice 2 (Propagation dans le vide) :</b><br>
+      Pourquoi deux astronautes sur la Lune (où il n'y a pas d'air) ne peuvent-ils pas s'entendre directement sans radio ?<br>
+      <select data-rep="vide"><option value="">-- Choisir la justification --</option><option value="vide">Car le son est une onde mécanique qui ne se propage pas dans le vide</option><option value="froid">Car il fait trop froid sur la Lune</option></select>
+    </div>
+  </div>
+
+  <!-- Tâche 2 -->
+  <div id="t2" class="t-page card">
+    <h1>🔊 Tâche 2 : Déterminer la fréquence d'un son</h1>
+    <div class="rule" dir="rtl" style="text-align:right;">
+      <b>📌 1. ملخص الدرس والشرح المفصل (الدور والتردد - Période et Fréquence) :</b><br>
+      • <b>1. الدور (La période T) :</b> هو المدة الزمنية التي تستغرقها اهتزازة كاملة واحدة (دورة واحدة). وحدته العالمية هي <b>الثانية (<span dir="ltr">s</span>)</b> (وغالباً يُعطى بالميلي ثانية <span dir="ltr">ms</span> حيث <span dir="ltr">1 s = 1000 ms</span>).<br>
+      • <b>2. التردد (La fréquence f) :</b> هو عدد الاهتزازات الكاملة في الثانية الواحدة. وحدته العالمية هي <b>الهرتز (<span dir="ltr">Hz</span>)</b>.<br>
+      • <b>العلاقة الأساسية بين التردد والدور :</b> <span dir="ltr"><b>f = 1 / T</b></span> &nbsp; (حيث <span dir="ltr">T</span> بالثانية <span dir="ltr">s</span> و <span dir="ltr">f</span> بالهرتز <span dir="ltr">Hz</span>).<br>
+      • <b>مجال السمع عند الإنسان (Domaine audible) :</b> تسمع أذن الإنسان الأصوات التي يتراوح ترددها بين <b><span dir="ltr">20 Hz</span> و <span dir="ltr">20 000 Hz (20 kHz)</span></b>:<br>
+      &nbsp;&nbsp;- أقل من <span dir="ltr">20 Hz</span> : <b>موجات تحت صوتية (Infrasons)</b> غير مسموعة.<br>
+      &nbsp;&nbsp;- أكبر من <span dir="ltr">20 000 Hz</span> : <b>موجات فوق صوتية (Ultrasons)</b> غير مسموعة (تستعملها الخفافيش والدلافين والفحص بالصدى).<br><br>
+      <b>💡 أمثلة تطبيقية (Exemples) :</b><br>
+      1. إذا كان الدور هو <span dir="ltr">T = 0,01 s</span>، فإن التردد هو : <span dir="ltr">f = 1 / 0,01 = 100 Hz</span>.<br>
+      2. إذا كان <span dir="ltr">T = 5 ms = 0,005 s</span>، فإن التردد هو : <span dir="ltr">f = 1 / 0,005 = 200 Hz</span> (صوت مسموع).
+    </div>
+    <div class="q">
+      <b>✍️ 2. Exercices d'application (Questions types d'évaluation) :</b><br><br>
+      <b>Exercice 1 (Calculer la fréquence à partir de la période) :</b><br>
+      Un diapason émet un son dont la période est <b>T = 2 ms</b> (soit <b>0,002 s</b>).<br>
+      • Calculer la fréquence <b>f</b> de ce son (<span dir="ltr">f = 1 / T</span>) : <select data-rep="500"><option value="">-- Choisir --</option><option value="500">f = 500 Hz</option><option value="2">f = 2 Hz</option><option value="0.5">f = 0,5 Hz</option></select><br>
+      • Ce son est-il audible par l'oreille humaine ? <select data-rep="oui"><option value="">-- Choisir --</option><option value="oui">Oui, car 500 Hz est compris entre 20 Hz et 20 000 Hz</option><option value="non">Non, c'est un ultrason</option></select><br><br>
+      <b>Exercice 2 (Classer selon le domaine fréquentiel) :</b><br>
+      • Un son de fréquence <b>f = 35 000 Hz</b> est un : <select data-rep="ultra"><option value="">?</option><option value="ultra">Ultrason (non audible)</option><option value="infra">Infrason</option></select> &nbsp;|&nbsp;
+      • Un son de fréquence <b>f = 10 Hz</b> est un : <select data-rep="infra2"><option value="">?</option><option value="infra2">Infrason (non audible)</option><option value="aud">Son audible</option></select>
+    </div>
+  </div>
+  <!-- Tâche 3 -->
+  <div id="t3" class="t-page card">
+    <h1>🔊 Tâche 3 : Comparer les sons aigus et les sons graves</h1>
+    <div class="rule" dir="rtl" style="text-align:right;">
+      <b>📌 1. ملخص الدرس والشرح المفصل (طبقة الصوت : الصوت الحاد والصوت الغليظ - Hauteur d'un son) :</b><br>
+      • <b>طبقة الصوت (La hauteur du son) :</b> هي الخاصية الفيزيائية التي تمكن الأذن من التمييز بين الصوت الحاد (الرفيع) والصوت الغليظ (الخشن)، وترتبط مباشرة بـ <b>التردد (<span dir="ltr">f</span>)</b>.<br>
+      • <b>1. الصوت الحاد (Son aigu) :</b> يتميز بـ <b>تردد مرتفع (<span dir="ltr">f</span> كبير)</b> ودور صغير (<span dir="ltr">T</span> صغير)؛ أي أن عدد الاهتزازات في الثانية يكون كبيراً (مثل صوت العصفور، صفارة الحكم، أو الوتر الرقيق للغيتار).<br>
+      • <b>2. الصوت الغليظ (Son grave) :</b> يتميز بـ <b>تردد منخفض (<span dir="ltr">f</span> صغير)</b> ودور كبير (<span dir="ltr">T</span> كبير)؛ أي أن عدد الاهتزازات في الثانية يكون قليلاً (مثل صوت الأسد، صوت الرعد، أو الوتر السميك للغيتار).<br>
+      • <b>قاعدة المقارنة :</b> كلما زاد التردد <span dir="ltr"><b>f</b></span>، كان الصوت <b>أكثر حدة (Plus aigu)</b>.<br><br>
+      <b>💡 أمثلة تطبيقية (Exemples) :</b><br>
+      1. نوتة موسيقية ترددها <span dir="ltr">f₁ = 440 Hz</span> (نوتة La) ونوتة أخرى ترددها <span dir="ltr">f₂ = 262 Hz</span> (نوتة Do) : النوتة ذات التردد <span dir="ltr">440 Hz</span> هي <b>الأكثر حدة (Plus aigu)</b> لأن <span dir="ltr">440 Hz &gt; 262 Hz</span>.<br>
+      2. في الرسم التذبذبي (Oscillogramme) : المنحنى الذي يحتوي على عدد أكبر من التموجات في نفس المدة الزمنية يمثل الصوت الحاد.
+    </div>
+    <div class="q">
+      <b>✍️ 2. Exercices d'application (Questions types d'évaluation) :</b><br><br>
+      <b>Exercice 1 (Comparer deux notes de musique) :</b><br>
+      Un violon émet un son (S₁) de fréquence <b>f₁ = 880 Hz</b>, et un violoncelle émet un son (S₂) de fréquence <b>f₂ = 110 Hz</b>.<br>
+      • Quelle grandeur physique caractérise la hauteur d'un son ? <select data-rep="freq"><option value="">-- Choisir --</option><option value="freq">La fréquence (f)</option><option value="amp">L'amplitude</option></select><br>
+      • Quel est le son le plus aigu ? <select data-rep="s1"><option value="">-- Choisir --</option><option value="s1">Le son (S₁) car f₁ &gt; f₂</option><option value="s2">Le son (S₂)</option></select><br>
+      • Quel est le son le plus grave ? <select data-rep="s2_g"><option value="">-- Choisir --</option><option value="s2_g">Le son (S₂) de fréquence 110 Hz</option><option value="s1_g">Le son (S₁)</option></select>
+    </div>
+  </div>
+
+  <!-- Tâche 4 -->
+  <div id="t4" class="t-page card">
+    <h1>🔊 Tâche 4 : Comparer deux sons en se basant sur leurs amplitudes</h1>
+    <div class="rule" dir="rtl" style="text-align:right;">
+      <b>📌 1. ملخص الدرس والشرح المفصل (شدة الصوت والوسع - Intensité sonore et Amplitude) :</b><br>
+      • <b>شدة الصوت (L'intensité sonore) :</b> هي الخاصية التي تمكننا من التمييز بين <b>الصوت القوي / المرتفع (Son fort)</b> و<b>الصوت الضعيف / المنخفض (Son faible)</b>، وترتبط مباشرة بـ <b>وسع الاهتزاز (<span dir="ltr">Amplitude</span>)</b>.<br>
+      • <b>1. الصوت القوي (Son fort) :</b> له <b>وسع كبير (Grande amplitude)</b>؛ أي أن قمم الموجة الصوتية في الرسم التذبذبي تكون مرتفعة جداً عن المحور الأفقي.<br>
+      • <b>2. الصوت الضعيف (Son faible) :</b> له <b>وسع صغير (Faible amplitude)</b>؛ أي أن قمم الموجة الصوتية تكون قريبة من المحور الأفقي.<br>
+      • <b>ملاحظة هامة :</b> عند رفع صوت التلفاز أو النقر بقوة على وتر الغيتار، <b>يزداد الوسع (شدة الصوت)</b> بينما <b>يبقى التردد (طبقة الصوت) ثابتاً</b>.<br>
+      • <b>مستوى الشدة الصوتية (Niveau sonore) :</b> يُقاس بجهاز <b>الصونومتر (Sonomètre)</b> ووحدته هي <b>الديسيبل (<span dir="ltr">dB</span>)</b>، وتُعد الأصوات التي تفوق <span dir="ltr">85 dB</span> خطيرة على حاسة السمع.<br><br>
+      <b>💡 أمثلة تطبيقية (Exemples) :</b><br>
+      1. النقر برفق على شوكة رنانة يعطي صوتاً ضعيفاً (وسع صغير)، والنقر عليها بقوة يعطي صوتاً قوياً (وسع كبير) بنفس التردد.<br>
+      2. الهمس له شدة صوتية حوالي <span dir="ltr">30 dB</span>، بينما ضجيج الطائرة يفوق <span dir="ltr">120 dB</span>.
+    </div>
+    <div class="q">
+      <b>✍️ 2. Exercices d'application (Questions types d'évaluation) :</b><br><br>
+      <b>Exercice 1 (Analyser l'effet d'une frappe forte sur un tambour) :</b><br>
+      Un élève frappe doucement sur un tambour (Son A), puis il frappe plus fort au même endroit (Son B).<br>
+      • Quelle grandeur physique augmente pour le son (B) ? <select data-rep="amp"><option value="">-- Choisir --</option><option value="amp">L'amplitude du signal sonore</option><option value="freq">La fréquence du son</option></select><br>
+      • Comment qualifie-t-on le son (B) par rapport au son (A) ? <select data-rep="fort"><option value="">-- Choisir --</option><option value="fort">Plus fort (intensité sonore plus grande)</option><option value="aigu">Plus aigu</option></select><br><br>
+      <b>Exercice 2 (Mesure et prévention auditive) :</b><br>
+      • Avec quel appareil mesure-t-on le niveau d'intensité sonore en décibels (dB) ? <select data-rep="sono"><option value="">-- Choisir --</option><option value="sono">Le sonomètre</option><option value="thermo">Le thermomètre</option></select>
+    </div>
+  </div>
+
+  <div style="text-align: center;">
+    <button class="btn-verif" onclick="verifier()">✅ Vérifier / تصحيح</button>
+    <div id="note"></div>
+  </div>
+
+</body>
+</html>
+

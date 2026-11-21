@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leçon 4 : Expressions littérales - Math 1AC BIOF</title>
+<meta name="description" content="ملخص درس التعابير الحرفية Leçon 4 Introduction aux expressions littérales للأولى إعدادي مسار دولي مع تمارين تفاعلية مصححة." />
+
+<!-- خط Cairo -->
+<link rel="preconnect" href="https://googleapis.com">
+<link rel="preconnect" href="https://gstatic.com" crossorigin>
+<link href="https://googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg-dark: #090d16;
+    --card-bg: #1e293b;
+    --primary: #38bdf8;
+    --secondary: #818cf8;
+    --accent: #34d399;
+    --danger: #f87171;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Cairo', sans-serif;
+  }
+
+  body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    min-height: 100vh;
+    line-height: 1.7;
+  }
+
+  /* الشريط العلوي */
+  .top-nav {
+    background: #0f172a;
+    padding: 14px 20px;
+    border-bottom: 1px solid #1e293b;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav-btn {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    transition: 0.2s;
+  }
+
+  .nav-btn:hover {
+    background: #38bdf8;
+    color: #090d16;
+  }
+
+  .container {
+    max-width: 850px;
+    margin: 25px auto;
+    padding: 0 15px;
+  }
+
+  /* رأس الدرس */
+  .lesson-header {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(129, 140, 248, 0.15));
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    border-radius: 18px;
+    padding: 22px;
+    text-align: center;
+    margin-bottom: 25px;
+  }
+
+  .period-tag {
+    display: inline-block;
+    background: #0284c7;
+    color: white;
+    padding: 3px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .lesson-header h1 {
+    font-size: 22px;
+    font-weight: 900;
+    color: #38bdf8;
+    direction: ltr;
+  }
+
+  .lesson-header p {
+    color: var(--text-muted);
+    font-size: 15px;
+    margin-top: 4px;
+  }
+
+  /* بطاقات الشرح */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid #334155;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .task-badge {
+    display: inline-block;
+    background: rgba(52, 211, 153, 0.15);
+    color: #34d399;
+    border: 1px solid rgba(52, 211, 153, 0.4);
+    padding: 3px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    direction: ltr;
+  }
+
+  .card h2 {
+    font-size: 18px;
+    color: #f8fafc;
+    margin-bottom: 12px;
+  }
+
+  .rule-box {
+    background: #0f172a;
+    border-right: 4px solid #38bdf8;
+    padding: 14px 18px;
+    border-radius: 10px;
+    margin: 12px 0;
+  }
+
+  .math-formula {
+    direction: ltr;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 800;
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.08);
+    padding: 10px;
+    border-radius: 8px;
+    margin: 8px 0;
+    font-family: 'Courier New', monospace;
+  }
+
+  .example-box {
+    background: rgba(129, 140, 248, 0.1);
+    border: 1px solid rgba(129, 140, 248, 0.3);
+    padding: 14px;
+    border-radius: 12px;
+    margin-top: 12px;
+    direction: ltr;
+    text-align: left;
+    font-size: 15px;
+  }
+
+  .example-box strong {
+    color: #818cf8;
+  }
+
+  .lexique-mini {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  .lex-item {
+    background: #0f172a;
+    border: 1px solid #334155;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+  }
+
+  .lex-item span {
+    color: #38bdf8;
+    font-weight: 700;
+  }
+
+  /* قسم التمارين التفاعلية */
+  .quiz-section {
+    background: var(--card-bg);
+    border: 2px solid #38bdf8;
+    border-radius: 18px;
+    padding: 22px;
+    margin-top: 30px;
+  }
+
+  .quiz-title {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 900;
+    color: #38bdf8;
+    margin-bottom: 5px;
+  }
+
+  .quiz-sub {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .question-box {
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 15px;
+    direction: ltr;
+    text-align: left;
+  }
+
+  .q-text {
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: #f8fafc;
+  }
+
+  .options label {
+    display: block;
+    background: #1e293b;
+    border: 1px solid #334155;
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 15px;
+  }
+
+  .options label:hover {
+    border-color: #38bdf8;
+  }
+
+  .options input {
+    margin-right: 10px;
+  }
+
+  .btn-submit {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(90deg, #38bdf8, #818cf8);
+    color: #090d16;
+    font-size: 17px;
+    font-weight: 900;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.2s;
+  }
+
+  .btn-submit:hover {
+    opacity: 0.9;
+  }
+
+  .score-display {
+    display: none;
+    margin-top: 20px;
+    padding: 18px;
+    border-radius: 14px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 800;
+    background: #0f172a;
+    border: 2px solid #34d399;
+    color: #34d399;
+  }
+
+  .correct-ans {
+    border-color: #34d399 !important;
+    background: rgba(52, 211, 153, 0.15) !important;
+  }
+
+  .wrong-ans {
+    border-color: #f87171 !important;
+    background: rgba(248, 113, 113, 0.15) !important;
+  }
+
+  footer {
+    text-align: center;
+    padding: 25px;
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+</style>
+</head>
+<body>
+
+  <!-- الشريط العلوي -->
+  <nav class="top-nav">
+    <a href="math.html" class="nav-btn">➡ دروس الرياضيات</a>
+    <span style="font-weight: 800; font-size: 15px;">Mathématiques 1AC</span>
+    <a href="math_l5.html" class="nav-btn">الدرس الموالي ⬅</a>
+  </nav>
+
+  <main class="container">
+
+    <!-- عنوان الدرس -->
+    <div class="lesson-header">
+      <span class="period-tag">SEMESTRE 1 - PÉRIODE 2</span>
+      <h1>Leçon 4 : Introduction aux expressions littérales</h1>
+      <p>تقديم التعابير الحرفية : التبسيط والاختزال (Tâche 4 & Tâche 5)</p>
+    </div>
+
+    <!-- المصطلحات الأساسية -->
+    <div class="card">
+      <h2>🔤 مصطلحات الدرس (Vocabulaire BIOF)</h2>
+      <div class="lexique-mini">
+        <div class="lex-item">تعبير حرفي : <span>Expression littérale</span></div>
+        <div class="lex-item">اختزال / تبسيط : <span>Réduire / Simplifier</span></div>
+        <div class="lex-item">حدود متشابهة : <span>Termes semblables</span></div>
+        <div class="lex-item">معامل : <span>Coefficient</span></div>
+      </div>
+    </div>
+
+    <!-- Tâche 4 -->
+    <div class="card">
+      <span class="task-badge">Tâche 4 : Réduire des expressions de la forme ax + bx</span>
+      <h2>1. اختزال تعبير حرفي من الشكل ax + bx</h2>
+      <p>لاختزال تعبير حرفي يتكون من حدود تحتوي على نفس الحرف (المجهول)، نقوم بجمع أو طرح المعاملات (الأعداد) ونحتفظ بنفس الحرف.</p>
+      
+      <div class="rule-box">
+        <strong>القاعدة (Règle) :</strong> مهما كانت الأعداد <span dir="ltr">a</span> و <span dir="ltr">b</span> و <span dir="ltr">x</span> :
+        <div class="math-formula">ax + bx = (a + b)x</div>
+        <div class="math-formula">ax - bx = (a - b)x</div>
+      </div>
+
+      <div class="example-box">
+        <strong>Exemples (أمثلة تطبيقية) :</strong><br>
+        • A = 5x + 3x = (5 + 3)x = <strong>8x</strong><br>
+        • B = 7y - 2y = (7 - 2)y = <strong>5y</strong><br>
+        • C = -4a + 9a = (-4 + 9)a = <strong>5a</strong><br>
+        • D = x + 6x = 1x + 6x = <strong>7x</strong> <span style="color:#94a3b8; font-size:13px;">(ملاحظة: x تعني 1x)</span>
+      </div>
+    </div>
+
+    <!-- Tâche 5 -->
+    <div class="card">
+      <span class="task-badge">Tâche 5 : Réduire et simplifier des expressions littérales</span>
+      <h2>2. تبسيط واختزال تعبير حرفي مركب</h2>
+      <p>لتبسيط تعبير حرفي طويل، نقوم <strong>بتجميع الحدود المتشابهة مع بعضها</strong> (الحروف التي لها نفس الأس معاً، والأعداد المعلومة معاً)، ثم نحسب كل مجموعة على حدة.</p>
+
+      <div class="rule-box">
+        <strong>⚠️ تنبيه مهم جداً :</strong><br>
+        لا يمكن جمع <span dir="ltr">3x</span> مع <span dir="ltr">5</span> (تبقى <span dir="ltr">3x + 5</span> ولا تساوي <span dir="ltr">8x</span>).<br>
+        كما لا يمكن جمع <span dir="ltr">x²</span> مع <span dir="ltr">x</span> (تبقى <span dir="ltr">x² + x</span>).
+      </div>
+
+      <div class="example-box">
+        <strong>Exemples (أمثلة) :</strong><br>
+        • E = 4x + 7 + 2x - 3<br>
+        &nbsp;&nbsp;E = (4x + 2x) + (7 - 3)<br>
+        &nbsp;&nbsp;E = <strong>6x + 4</strong><br><br>
+        • F = 3x² + 5x - x² + 2x + 8<br>
+        &nbsp;&nbsp;F = (3x² - x²) + (5x + 2x) + 8<br>
+        &nbsp;&nbsp;F = <strong>2x² + 7x + 8</strong>
+      </div>
+    </div>
+
+    <!-- التمارين التفاعلية -->
+    <section class="quiz-section">
+      <div class="quiz-title">✍️ Exercices Interactifs (اختبر فهمك)</div>
+      <div class="quiz-sub">اختر الإجابة الصحيحة لكل سؤال ثم اضغط على زر التصحيح في الأسفل</div>
+
+      <form id="quizForm">
+        <!-- Q1 -->
+        <div class="question-box" id="q1-box">
+          <div class="q-text">1) Réduire l'expression : A = 6x + 4x</div>
+          <div class="options">
+            <label><input type="radio" name="q1" value="a"> 10x²</label>
+            <label><input type="radio" name="q1" value="b"> 10x</label>
+            <label><input type="radio" name="q1" value="c"> 24x</label>
+          </div>
+        </div>
+
+        <!-- Q2 -->

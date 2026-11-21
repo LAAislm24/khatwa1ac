@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<style>
+  body { background: #0f172a; color: white; font-family: Arial; text-align: center; margin: 0; padding-bottom: 40px; }
+  .header { background: #1e293b; padding: 15px; border-bottom: 3px solid #22c55e; }
+  h1 { margin: 0; color: #22c55e; font-size: 26px; }
+  button { background: #1e293b; color: #38bdf8; border: 2px solid #38bdf8; padding: 12px 16px; margin: 6px; font-size: 15px; border-radius: 12px; cursor: pointer; }
+  button:hover { background: #38bdf8; color: #0f172a; font-weight: bold; }
+  .chap-btn { width: 46%; min-width: 280px; text-align: left; }
+  .tache-btn { border-color: #22c55e; color: white; width: 92%; max-width: 720px; text-align: left; display: block; margin: 6px auto; font-size: 15px; line-height: 1.5; }
+  .back-btn { background: #ef4444; color: white; border: none; padding: 10px 20px; font-size: 15px; margin-bottom: 15px; text-decoration: none; display: inline-block; border-radius: 10px; }
+  .box { display: none; max-width: 920px; margin: 20px auto; background: #1e293b; padding: 20px; border-radius: 20px; border: 2px solid #22c55e; }
+  .theme-title { color: #eab308; margin-top: 18px; border-bottom: 1px solid #334155; padding-bottom: 5px; }
+</style>
+<script>
+  function show(id) {
+    var b = document.getElementsByClassName('box');
+    for (var i = 0; i < b.length; i++) { b[i].style.display = 'none'; }
+    document.getElementById(id).style.display = 'block';
+  }
+</script>
+</head>
+<body>
+
+<div class="header"><h1>🌿 Sciences de la Vie et de la Terre (SVT) - 1AC</h1></div>
+
+<div id="svt_home" class="box" style="display: block;">
+  <a class="back-btn" href="index.html">🔙 الرجوع للمواد</a>
+  <h3 class="theme-title">🌱 Thème 1 : Le vivant dans son environnement (P1 & P2)</h3>
+  <button class="chap-btn" onclick="show('t1_c1')">Chapitre 1 : Les écosystèmes et leurs composantes</button>
+  <button class="chap-btn" onclick="show('t1_c2')">Chapitre 2 : Les systèmes organiques selon l'environnement</button>
+  <button class="chap-btn" onclick="show('t1_c3')">Chapitre 3 : La cellule, unité structurale et fonctionnelle</button>
+
+  <h3 class="theme-title">🫀 Thème 2 : Corps humain et santé (P3)</h3>
+  <button class="chap-btn" onclick="show('t2_c1')">Chapitre 1 : Digestion et absorption</button>
+  <button class="chap-btn" onclick="show('t2_c2')">Chapitre 2 : Respiration, circulation et santé humaine</button>
+
+  <h3 class="theme-title">🌍 Thème 3 : Planète Terre (P4 & P5)</h3>
+  <button class="chap-btn" onclick="show('t3_c1')">Chapitre 1 : La Terre dans le système solaire et l'Univers</button>
+  <button class="chap-btn" onclick="show('t3_c2')">Chapitre 2 : La Terre en tant que système (P4 & P5)</button>
+
+  <h3 class="theme-title">♻️ Thème 4 : L'humain et l'environnement (P5)</h3>
+  <button class="chap-btn" onclick="show('t4_c1')">Chapitre 1 : Les ressources naturelles et Glossaire (p. 208 - 227)</button>
+</div>
+
+<div id="t1_c1" class="box"><button class="back-btn" onclick="show('svt_home')">🔙 Retour</button><h2>Thème 1 - Chapitre 1 : Les écosystèmes et leurs composantes</h2>
+  <button class="tache-btn">• SÉQUENCE 1 : Tâche 1 : Déduire la diversité des écosystèmes et justifier leur unité (p. 08)</button>
+  <button class="tache-btn">• SÉQUENCE 2 : Tâche 2 : Déterminer le groupe d'un animal (p. 12) | Tâche 3 : Groupe d'un végétal (p. 17) | Consolidation (p. 21) & Défi (p. 24)</button>
+</div>
+
+<div id="t1_c2" class="box"><button class="back-btn" onclick="show('svt_home')">🔙 Retour</button><h2>Thème 1 - Chapitre 2 : Les systèmes organiques selon l'environnement</h2>
+  <button class="tache-btn">• SÉQUENCE 1 : Tâche 4 : Identifier les étapes d'une démarche d'investigation expérimentale (p. 28)</button>
+  <button class="tache-btn">• SÉQUENCE 2 : Tâche 5 : Protocole respiration (p. 35) | Tâche 6 (p. 39) | Tâche 7 (p. 41) | Devoir P1 (p. 45) | Tâche 1 : Appareil respiratoire et milieu (p. 49)</button>
+  <button class="tache-btn">• SÉQUENCE 3 : Tâche 2 : Tube digestif et régime alimentaire (p. 53) | Consolidation (p. 57) & Défi (p. 62)</button>
+</div>
+
+<div id="t1_c3" class="box"><button class="back-btn" onclick="show('svt_home')">🔙 Retour</button><h2>Thème 1 - Chapitre 3 : La cellule, unité structurale et fonctionnelle</h2>
+  <button class="tache-btn">• SÉQUENCE 1 : Tâche 3 : Microscope optique (p. 66) | Tâche 4 : Préparations microscopiques (p. 68) | Tâche 5 : Décrire des cellules (p. 73)</button>
+  <button class="tache-btn">• SÉQUENCE 2 : Tâche 6 : Constituants cellulaires et fonctions (p. 75) | Consolidation (p. 79) & Défi (p. 83) | Devoir P2 (p. 85)</button>
+</div>
+
+<div id="t2_c1" class="box"><button class="back-btn" onclick="show('svt_home')">🔙 Retour</button><h2>Thème 2 - Chapitre 1 : Digestion et absorption</h2>
+  <button class="tache-btn">• SÉQUENCE 1 : Tâche 1 : Étapes de la digestion | Tâche 2 : Hypothèse et protocole | Tâche 3 : Digestion de l'amidon | Tâche 4 : Rôle des villosités</button>
+  <button class="tache-btn">• SÉQUENCE 2 : Tâche 5 : Apport quantitatif en aliments et bonne santé | Consolidation & Défi</button>
+</div>
+
+<div id="t2_c2" class="box"><button class="back-btn" onclick="show('svt_home')">🔙 Retour</button><h2>Thème 2 - Chapitre 2 : Respiration, circulation et santé humaine</h2>
+  <button class="tache-btn">• SÉQUENCE 1 : Tâche 6 : Organes respiratoires | Tâche 7 : Organes circulatoires | Tâche 1 : Échanges poumons-sang | Tâche 2 : Échanges sang-cellules</button>
+  <button class="tache-btn">• SÉQUENCE 2 : Tâche 3 : Rôle de l'exercice physique | Consolidation, Défi & Devoir maison P3 (p. 138 - 142)</button>
+</div>
+
+<div id="t3_c1" class="box"><button class="back-btn" onclick="show('svt_home')">🔙 Retour</button><h2>Thème 3 - Chapitre 1 : La Terre dans le système solaire et l'Univers</h2>
+  <button class="tache-btn">• SÉQUENCE 1 : Tâche 4 : Position de la Terre dans le système solaire (p. 146) | Tâche 5 : Comparer les caractéristiques des planètes (p. 152) | Consolidation & Défi (p. 156 - 160)</button>
+</div>
+
+<div id="t3_c2" class="box"><button class="back-btn" onclick="show('svt_home')">🔙 Retour</button><h2>Thème 3 - Chapitre 2 : La Terre en tant que système (P4 & P5)</h2>
+  <button class="tache-btn">• SÉQUENCE 1 (P4) : Tâche 6 : Couches de l'atmosphère (p. 161) | Tâche 7 : Météo et climat (p. 166) | Devoir maison P4</button>
+  <button class="tache-btn">• SÉQUENCE 2 (P5) : Tâche 1 : Décrire la répartition de l'eau sur Terre (p. 179) | Tâche 2 : Expliquer la répartition de l'eau (p. 183)</button>
+  <button class="tache-btn">• SÉQUENCE 3 (P5) : Tâche 3 : Couches de la Terre (p. 188) | Tâche 4 : Type d'une roche (p. 192) | Consolidation & Défi (p. 195 - 200)</button>
+</div>
+
+<div id="t4_c1" class="box"><button class="back-btn" onclick="show('svt_home')">🔙 Retour</button><h2>Thème 4 - Chapitre 1 : Les ressources naturelles et leurs utilisations</h2>
+  <button class="tache-btn">• SÉQUENCE 1 : Tâche 5 : Combustibles fossiles non renouvelables (p. 208) | Tâche 6 : Énergies solaire, hydraulique et éolienne renouvelables (p. 212)</button>
+  <button class="tache-btn">• Consolidation & Défi (p. 216 - 218) | Devoir maison : Période 5 (p. 220) | Glossaire (p. 227)</button>
+</div>
+
+</body>
+</html>

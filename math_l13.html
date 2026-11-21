@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leçon 13 : Statistiques et probabilité - Math 1AC</title>
+<link rel="preconnect" href="https://googleapis.com">
+<link rel="preconnect" href="https://gstatic.com" crossorigin>
+<link href="https://googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root { --bg-dark: #090d16; --card-bg: #1e293b; --primary: #38bdf8; --secondary: #818cf8; --accent: #34d399; --text-main: #f8fafc; --text-muted: #94a3b8; }
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
+  body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.85; }
+  .top-nav { background: #0f172a; padding: 14px 20px; border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+  .nav-btn { background: rgba(56, 189, 248, 0.15); color: #38bdf8; text-decoration: none; padding: 6px 14px; border-radius: 10px; font-size: 14px; font-weight: 700; border: 1px solid rgba(56, 189, 248, 0.3); }
+  .container { max-width: 880px; margin: 25px auto; padding: 0 15px; }
+  .lesson-header { background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(129, 140, 248, 0.15)); border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 18px; padding: 25px; text-align: center; margin-bottom: 25px; }
+  .period-tag { display: inline-block; background: #0284c7; color: white; padding: 4px 14px; border-radius: 12px; font-size: 12px; font-weight: 700; margin-bottom: 8px; }
+  .lesson-header h1 { font-size: 22px; font-weight: 900; color: #38bdf8; direction: ltr; }
+  .card { background: var(--card-bg); border: 1px solid #334155; border-radius: 16px; padding: 22px; margin-bottom: 20px; }
+  .task-badge { display: inline-block; background: rgba(52, 211, 153, 0.15); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.4); padding: 4px 12px; border-radius: 8px; font-size: 13px; font-weight: 800; margin-bottom: 12px; direction: ltr; }
+  .card h2 { font-size: 18px; color: #f8fafc; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 8px; }
+  .math-formula { direction: ltr; text-align: center; font-size: 16px; font-weight: 800; color: #38bdf8; background: #0f172a; padding: 12px; border-radius: 10px; margin: 10px 0; font-family: 'Courier New', monospace; border: 1px solid rgba(56, 189, 248, 0.25); }
+  .example-box { background: rgba(129, 140, 248, 0.1); border: 1px solid rgba(129, 140, 248, 0.3); padding: 14px; border-radius: 10px; margin-top: 12px; direction: ltr; text-align: left; font-size: 15px; }
+  footer { text-align: center; padding: 25px; color: var(--text-muted); font-size: 13px; }
+</style>
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a href="math.html" class="nav-btn">➡ دروس الرياضيات</a>
+    <span style="font-weight: 800;">Leçon 13</span>
+    <a href="math.html" class="nav-btn">نهاية المقرر 🎓</a>
+  </nav>
+
+  <main class="container">
+    <div class="lesson-header">
+      <span class="period-tag">SEMESTRE 2 - PÉRIODE 5</span>
+      <h1>Leçon 13 : Statistiques et probabilité</h1>
+      <p>الإحصاء والاحتمالات (كل Tâche في بطاقة مستقلة من 1 إلى 12)</p>
+    </div>
+
+    <!-- Tâche 1 -->
+    <div class="card">
+      <span class="task-badge">Tâche 1 : Organiser des données statistiques qualitatives en tableau</span>
+      <h2>1. تنظيم معطيات إحصائية نوعية في جدول</h2>
+      <p><strong>الميزة النوعية (Caractère qualitatif)</strong> هي ميزة لا يُعبّر عنها بأرقام (مثل : اللون المفضل، الهواية، فصيلة الدم...). ننظمها في جدول يضم قيم الميزة وفي السطر الثاني <strong>الحصيص (Effectif)</strong> أي عدد مرات تكرار كل قيمة.</p>
+    </div>
+
+    <!-- Tâche 2 -->
+    <div class="card">
+      <span class="task-badge">Tâche 2 : Organiser des données statistiques quantitatives en tableau</span>
+      <h2>2. تنظيم معطيات إحصائية كمية في جدول</h2>
+      <p><strong>الميزة الكمية (Caractère quantitatif)</strong> هي ميزة قابلة للقياس بالأرقام (مثل : نقط الفروض، السن، عدد الإخوة...). نرتب قيم الميزة تصاعدياً في السطر الأول ونكتب حصيص كل قيمة في السطر الثاني، ومجموعها هو <strong>الحصيص الإجمالي (Effectif total <span dir="ltr">N</span>)</strong>.</p>
+    </div>
+
+    <!-- Tâche 3 -->
+    <div class="card">
+      <span class="task-badge">Tâche 3 : Calculer et interpréter la fréquence et le pourcentage</span>
+      <h2>3. حساب وتأويل التردد والنسبة المئوية</h2>
+      <p>التردد <span dir="ltr">f</span> لقيمة هو خارج قسمة حصيصها على الحصيص الإجمالي <span dir="ltr">N</span>، وهو عدد محصور بين <span dir="ltr">0</span> و <span dir="ltr">1</span> ومجموع الترددات يساوي دائماً <span dir="ltr">1</span> :</p>
+      <div class="math-formula">Fréquence (f) = Effectif / Effectif total &nbsp;&nbsp;|&nbsp;&nbsp; Pourcentage (%) = f × 100</div>
+    </div>
+
+    <!-- Tâche 4 -->
+    <div class="card">
+      <span class="task-badge">Tâche 4 : Déterminer et interpréter le mode d'une série statistique</span>
+      <h2>4. تحديد وتأويل منوال متسلسلة إحصائية</h2>
+      <p><strong>المنوال (Le mode)</strong> لمتسلسلة إحصائية هو قيمة الميزة التي لها <strong>أكبر حصيص</strong> (القيمة الأكثر تكراراً).</p>
+    </div>
+
+    <!-- Tâche 5 -->
+    <div class="card">
+      <span class="task-badge">Tâche 5 : Calculer et interpréter la moyenne arithmétique</span>
+      <h2>5. حساب وتأويل المعدل الحسابي</h2>
+      <p><strong>المعدل الحسابي (La moyenne arithmétique <span dir="ltr">m</span>)</strong> هو خارج قسمة مجموع جداءات قيم الميزة في حصيصاتها على الحصيص الإجمالي <span dir="ltr">N</span> :</p>
+      <div class="math-formula">m = (x₁×n₁ + x₂×n₂ + ... + x_k×n_k) / N</div>
+    </div>
+
+    <!-- Tâche 6 -->
+    <div class="card">
+      <span class="task-badge">Tâche 6 : Déterminer et interpréter la médiane d'une série statistique</span>
+      <h2>6. تحديد وتأويل القيمة الوسطية (الوسيط)</h2>
+      <p>بعد <strong>ترتيب قيم المتسلسلة تصاعدياً</strong>، <strong>القيمة الوسطية (La médiane)</strong> هي القيمة التي تقسم الساكنة الإحصائية إلى مجموعتين لهما نفس الحصيص (50% أقل منها أو تساويها و 50% أكبر منها أو تساويها).</p>
+    </div>
+
+    <!-- Tâche 7 -->
+    <div class="card">
+      <span class="task-badge">Tâche 7 : Construire et lire un diagramme en bâtonnets</span>
+      <h2>7. إنشاء وقراءة مبيان عصوي</h2>
+      <p>في <strong>المبيان العصوي (Diagramme en bâtonnets)</strong>، نضع قيم الميزة على المحور الأفقي والحصيصات على المحور العمودي، ونرسم فوق كل قيمة قطعة عمودية طولها متناسب مع حصيصها.</p>
+    </div>
+
+    <!-- Tâche 8 -->
+    <div class="card">
+      <span class="task-badge">Tâche 8 : Construire et lire un diagramme circulaire</span>
+      <h2>8. إنشاء وقراءة مبيان قطاعي (دائري)</h2>
+      <p>في <strong>المبيان القطاعي (Diagramme circulaire)</strong>، يُمثّل الحصيص الإجمالي بقرص كامل زاويته <span dir="ltr">360°</span>، ويُحسب قياس زاوية كل قطاع بالصيغة :</p>
+      <div class="math-formula">Angle (α) = (Effectif / Effectif total) × 360° = Fréquence × 360°</div>
+    </div>
+
+    <!-- Tâche 9 -->
+    <div class="card">
+      <span class="task-badge">Tâche 9 : Résoudre un problème en utilisant les diagrammes et paramètres</span>
+      <h2>9. حل مسألة إحصائية باستعمال المبيانات والمؤشرات</h2>
+      <p>لحل مسألة إحصائية متكاملة، نستخرج المعطيات من المبيان (العصوي أو القطاعي) وننظمها في جدول ثم نحسب الحصيص الإجمالي والمعدل الحسابي والمنوال والوسيط لتفسير الظاهرة المدروسة.</p>
+    </div>
+
+    <!-- Tâche 10 -->
+    <div class="card">
+      <span class="task-badge">Tâche 10 : Identifier les issues d'une expérience aléatoire</span>
+      <h2>10. تحديد إمكانيات تجربة عشوائية</h2>
+      <p><strong>التجربة العشوائية (Expérience aléatoire)</strong> هي تجربة نعرف جميع نتائجها الممكنة مسبقاً دون أن نتمكن من الجزم بالنتيجة التي ستقع. كل نتيجة ممكنة تسمى <strong>إمكانية (Une issue)</strong>.</p>
+      <div class="example-box">
+        <strong>Exemple :</strong> Lorsqu'on lance un dé à 6 faces, les issues possibles sont : <strong>1, 2, 3, 4, 5 et 6</strong>.
+      </div>
+    </div>
+
+    <!-- Tâche 11 -->
+    <div class="card">
+      <span class="task-badge">Tâche 11 : Calculer la probabilité d'une issue</span>
+      <h2>11. حساب احتمال إمكانية أو حدث</h2>
+      <p>في حالة تساوي الاحتمالات، احتمال حدث <span dir="ltr">A</span> يساوي خارج قسمة عدد الحالات الملائمة لتحقق <span dir="ltr">A</span> على العدد الإجمالي للإمكانيات الممكنة :</p>
+      <div class="math-formula">P(A) = Nombre d'issues favorables / Nombre total d'issues &nbsp;&nbsp;(0 ≤ P(A) ≤ 1)</div>
+    </div>
+
+    <!-- Tâche 12 -->
+    <div class="card">
+      <span class="task-badge">Tâche 12 : Résoudre un problème de probabilité</span>
+      <h2>12. حل مسألة في الاحتمالات</h2>
+      <p>لحل مسألة في الاحتمالات (سحب كرات من كيس، رمي نرد، دولاب الحظ...) : <strong>1)</strong> نحسب العدد الكلي للعناصر، <strong>2)</strong> نعد العناصر التي تحقق الشرط المطلوب، <strong>3)</strong> نكتب الاحتمال على شكل كسر مختزل أو عدد عشري أو نسبة مئوية.</p>
+    </div>
+
+  </main>
+  <footer>منصة <strong>خطوة للنجاح (Khatwa 1AC BIOF)</strong> © 2026</footer>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Chapitre 8 : Le courant électrique</title>
+<style>
+  body { background: #0f172a; color: white; font-family: Arial, sans-serif; max-width: 900px; margin: 20px auto; padding: 15px; line-height: 1.9; }
+  .back { display: inline-block; background: #ef4444; color: white; padding: 10px 20px; border-radius: 10px; text-decoration: none; margin-bottom: 15px; font-weight: bold; }
+  .card { background: #1e293b; border: 2px solid #38bdf8; border-radius: 15px; padding: 22px; margin-bottom: 20px; }
+  .rule { background: #0f172a; padding: 18px; border-radius: 10px; border-left: 5px solid #22c55e; margin: 15px 0; font-size: 16px; }
+  .q { background: #0f172a; padding: 18px; border-radius: 10px; border-left: 5px solid #eab308; margin: 15px 0; font-size: 16px; }
+  select { padding: 6px 10px; border-radius: 6px; border: 2px solid #38bdf8; background: #1e293b; color: #fde047; font-weight: bold; font-size: 15px; cursor: pointer; margin: 3px 0; }
+  .btn-verif { background: #22c55e; color: #0f172a; border: none; padding: 14px 30px; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 15px; }
+  .btn-verif:hover { background: #16a34a; color: white; }
+  #note { font-size: 22px; font-weight: bold; color: #fde047; margin-top: 15px; }
+  h1 { color: #38bdf8; font-size: 22px; border-bottom: 1px solid #334155; padding-bottom: 10px; }
+</style>
+<script>
+  function showT() {
+    var pages = document.querySelectorAll('.t-page');
+    if (pages.length === 0) return;
+    var hash = window.location.hash.replace('#', '');
+    var target = document.getElementById(hash) || pages[0];
+    pages.forEach(function(p) {
+      p.style.display = (p === target) ? 'block' : 'none';
+    });
+    var noteEl = document.getElementById('note');
+    if (noteEl) noteEl.innerText = "";
+  }
+  function verifier() {
+    var ok = 0, total = 0;
+    document.querySelectorAll('.t-page').forEach(function(page) {
+      if (page.style.display !== 'none') {
+        page.querySelectorAll('select[data-rep]').forEach(function(sel) {
+          total++;
+          if (sel.value === sel.getAttribute('data-rep')) { sel.style.borderColor = "#22c55e"; sel.style.background = "#14532d"; ok++; }
+          else { sel.style.borderColor = "#ef4444"; sel.style.background = "#7f1d1d"; }
+        });
+      }
+    });
+    document.getElementById('note').innerText = "🎯 Votre note : " + ok + " / " + total;
+  }
+  window.addEventListener('DOMContentLoaded', showT);
+  window.addEventListener('hashchange', showT);
+</script>
+</head>
+<body>
+  <a class="back" href="pc.html">🔙 Retour à la Physique-Chimie</a>
+
+  <!-- Tâche 1 -->
+  <div id="t1" class="t-page card">
+    <h1>⚡ Tâche 1 : Utiliser un multimètre pour mesurer l'intensité du courant électrique</h1>
+    <div class="rule" dir="rtl" style="text-align:right;">
+      <b>📌 1. ملخص الدرس والشرح المفصل (شدة التيار الكهربائي وجهاز الأمبيرمتر) :</b><br>
+      • <b>شدة التيار الكهربائي (Intensité du courant électrique) :</b> مقدار فيزيائي رمزه <span dir="ltr"><b>I</b></span>، ووحدته العالمية هي <b>الأمبير (<span dir="ltr">Ampère : A</span>)</b> (ونستعمل أيضاً الميلي أمبير <span dir="ltr">mA</span> حيث <span dir="ltr">1 A = 1000 mA</span>).<br>
+      • <b>المنحى الاصطلاحي للتيار (Sens conventionnel) :</b> خارج المولد، يمر التيار الكهربائي المستمر من <b>القطب الموجب (<span dir="ltr">+</span>) نحو القطب السالب (<span dir="ltr">-</span>)</b>.<br>
+      • <b>جهاز القياس (L'ampèremètre) :</b> نقيس شدة التيار بجهاز <b>الأمبيرمتر</b> (أو متعدد القياسات <span dir="ltr">Multimètre</span> في وضع أمبيرمتر)، ورمزه دائرة بداخلها حرف <span dir="ltr"><b>A</b></span>.<br>
+      • <b>طريقة التركيب :</b> يُركب الأمبيرمتر دائماً <b>على التوالي (En série)</b> في الدارة، بحيث يدخل التيار من مربطه الموجب (<span dir="ltr">A</span> أو <span dir="ltr">mA</span>) ويخرج من مربطه المشترك (<span dir="ltr">COM</span>).<br>
+      • <b>حساب الشدة بأمبيرمتر ذي إبرة :</b> <span dir="ltr"><b>I = (C × n) / N</b></span> (حيث <span dir="ltr">C</span> العيار، <span dir="ltr">n</span> عدد التدريجات المقروءة، و <span dir="ltr">N</span> عدد تدريجات الميناء الكلي).<br><br>
+      <b>💡 أمثلة تطبيقية (Exemples) :</b><br>
+      1. إذا كان العيار <span dir="ltr">C = 2 A</span>، وعدد التدريجات الكلي <span dir="ltr">N = 100</span>، وأشارت الإبرة إلى <span dir="ltr">n = 40</span>، فإن : <span dir="ltr">I = (2 × 40) / 100 = 0,8 A</span>.<br>
+      2. <span dir="ltr">250 mA = 0,25 A</span> &nbsp;|&nbsp; <span dir="ltr">1,5 A = 1500 mA</span>.
+    </div>
+    <div class="q">
+      <b>✍️ 2. Exercices d'application (Questions types d'évaluation) :</b><br><br>
+      <b>Exercice 1 (Branchement et sens du courant) :</b><br>
+      • Comment branche-t-on un ampèremètre dans un circuit électrique ? <select data-rep="serie"><option value="">-- Choisir --</option><option value="serie">En série</option><option value="deriv">En dérivation</option></select><br>
+      • Quel est le sens conventionnel du courant électrique à l'extérieur d'un générateur ? <select data-rep="plus_moins"><option value="">-- Choisir --</option><option value="plus_moins">De la borne positive (+) vers la borne négative (-)</option><option value="moins_plus">De la borne (-) vers la borne (+)</option></select><br><br>
+      <b>Exercice 2 (Lecture sur un ampèremètre à aiguille) :</b><br>
+      Un ampèremètre possède un cadran de <b>N = 100 divisions</b>. On choisit le calibre <b>C = 500 mA</b> et l'aiguille s'arrête sur la graduation <b>n = 60</b>.<br>
+      • Calculer l'intensité <b>I</b> du courant en mA (<span dir="ltr">I = (C × n) / N</span>) : <select data-rep="300"><option value="">-- Choisir --</option><option value="300">300 mA</option><option value="500">500 mA</option><option value="60">60 mA</option></select><br>
+      • Convertir cette valeur en Ampères (A) : <select data-rep="0.3"><option value="">-- Choisir --</option><option value="0.3">0,3 A</option><option value="3">3 A</option></select>
+    </div>
+  </div>
+
+  <!-- Tâche 2 -->
+  <div id="t2" class="t-page card">
+    <h1>⚡ Tâche 2 : Utiliser les lois de l'intensité pour déterminer la valeur d'une intensité du courant</h1>
+    <div class="rule" dir="rtl" style="text-align:right;">
+      <b>📌 1. ملخص الدرس والشرح المفصل (قوانين شدة التيار الكهربائي) :</b><br>
+      • <b>1. قانون إضافية التوترات؟ لا، قانون وحدانية الشدة في التركيب على التوالي (Loi d'unicité de l'intensité) :</b><br>
+      &nbsp;&nbsp;- في دارة مركبة <b>على التوالي (En série)</b>، تكون <b>شدة التيار هي نفسها في جميع نقط الدارة</b>: <span dir="ltr"><b>I = I₁ = I₂ = I₃</b></span>.<br>
+      • <b>2. قانون العُقد في التركيب على التوازي (Loi des nœuds) :</b><br>
+      &nbsp;&nbsp;- في دارة مركبة <b>على التوازي (En dérivation)</b>، <b>مجموع شدات التيارات الداخلة إلى عقدة يساوي مجموع شدات التيارات الخارجة منها</b>.<br>
+      &nbsp;&nbsp;- أي أن شدة التيار الرئيسي <span dir="ltr"><b>I</b></span> تساوي مجموع شدات التيارات المتفرعة : <span dir="ltr"><b>I = I₁ + I₂</b></span>.<br><br>
+      <b>💡 أمثلة تطبيقية (Exemples) :</b><br>
+      1. <b>تركيب على التوالي :</b> إذا كانت شدة التيار الخارجة من المولد هي <span dir="ltr">I = 0,4 A</span>، فإن التيار المار في المصباح الأول هو <span dir="ltr">0,4 A</span> وفي المصباح الثاني هو أيضاً <span dir="ltr">0,4 A</span>.<br>
+      2. <b>تركيب على التوازي :</b> إذا كان التيار الرئيسي <span dir="ltr">I = 0,8 A</span> والتيار في الفرع الأول <span dir="ltr">I₁ = 0,3 A</span>، فإن التيار في الفرع الثاني هو <span dir="ltr">I₂ = 0,8 - 0,3 = 0,5 A</span>.
+    </div>
+    <div class="q">
+      <b>✍️ 2. Exercices d'application (Questions types d'évaluation) :</b><br><br>
+      <b>Exercice 1 (Circuit en série) :</b><br>
+      Deux lampes L₁ et L₂ sont branchées en série avec une pile. Un ampèremètre mesure une intensité <b>I₁ = 0,25 A</b> dans L₁.<br>
+      • Quelle est l'intensité <b>I₂</b> du courant qui traverse la lampe L₂ ? <select data-rep="0.25"><option value="">-- Choisir --</option><option value="0.25">I₂ = 0,25 A (loi d'unicité de l'intensité)</option><option value="0.50">I₂ = 0,50 A</option></select><br><br>
+      <b>Exercice 2 (Circuit en dérivation - Loi des nœuds) :</b><br>
+      Dans un montage en dérivation, l'intensité du courant dans la branche principale est <b>I = 1,2 A</b>. L'intensité dans la première branche dérivée est <b>I₁ = 0,45 A</b>.<br>
+      • Calculer l'intensité <b>I₂</b> dans la deuxième branche dérivée (<span dir="ltr">I = I₁ + I₂</span>) : <select data-rep="0.75"><option value="">-- Choisir --</option><option value="0.75">I₂ = 1,2 - 0,45 = 0,75 A</option><option value="1.65">I₂ = 1,65 A</option><option value="0.45">I₂ = 0,45 A</option></select>
+    </div>
+  </div>
+
+  <div style="text-align: center;">
+    <button class="btn-verif" onclick="verifier()">✅ Vérifier / تصحيح</button>
+    <div id="note"></div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<style>
+  body { background: #0f172a; color: white; font-family: Arial; max-width: 800px; margin: 20px auto; padding: 15px; text-align: right; line-height: 1.8; }
+  .back { display: inline-block; background: #ef4444; color: white; padding: 10px 20px; border-radius: 10px; text-decoration: none; margin-bottom: 15px; }
+  .card { background: #1e293b; border: 2px solid #38bdf8; border-radius: 15px; padding: 20px; margin-bottom: 20px; }
+  h1, h2 { color: #38bdf8; }
+  .q-box { background: #0f172a; padding: 15px; border-radius: 10px; margin: 12px 0; border-right: 4px solid #eab308; }
+  button { background: #1e293b; color: #38bdf8; border: 2px solid #38bdf8; padding: 10px 18px; margin: 5px; border-radius: 8px; cursor: pointer; font-size: 16px; }
+  button:hover { background: #38bdf8; color: #0f172a; font-weight: bold; }
+  #res { font-size: 20px; font-weight: bold; margin-top: 15px; color: #22c55e; }
+</style>
+</head>
+<body>
+  <a class="back" href="arabic.html">🔙 الرجوع للغة العربية</a>
+  <h1>📘 ملخص وتحدي: الجملة الفعلية (ص 13)</h1>
+
+  <div class="card">
+    <h2>📌 ملخص الدرس (للحفظ والفهم):</h2>
+    <p>• <b>تعريف الجملة الفعلية:</b> هي كل جملة تبتدئ بـ <b>فعل</b> (ماضٍ، مضارع، أو أمر).</p>
+    <p>• <b>أركانها الأساسية:</b> تتكون من ركنين أساسيين هما: <b>الفعل + الفاعل</b> (وقد تحتاج إلى <b>مفعول به</b> إذا كان الفعل متعدياً).</p>
+    <p>• <b>أمثلة:</b> <br>
+       - <b>فعل لازم (يكتفي بالفاعل):</b> <u>نجحَ التلميذُ</u>.<br>
+       - <b>فعل متعدٍ (يحتاج مفعولاً به):</b> <u>قرأَ أحمدُ الكتابَ</u>.
+    </p>
+  </div>
+
+  <div class="card" style="border-color: #eab308;">
+    <h2 style="color: #eab308;">🏆 تحدي الأبطال (اختبر فهمك):</h2>
+    
+    <div class="q-box">
+      <p><b>1. ما نوع الجملة التالية: "يجتهدُ التلميذُ في دروسهِ"؟</b></p>
+      <button onclick="check(this, true)">جملة فعلية</button>
+      <button onclick="check(this, false)">جملة اسمية</button>
+    </div>
+
+    <div class="q-box">
+      <p><b>2. ما هما الركنان الأساسيان للجملة الفعلية؟</b></p>
+      <button onclick="check(this, false)">المبتدأ والخبر</button>
+      <button onclick="check(this, true)">الفعل والفاعل</button>
+    </div>
+
+    <div class="q-box">
+      <p><b>3. حدد نوع الفعل في جملة: "نامَ الطفلُ مبكراً":</b></p>
+      <button onclick="check(this, true)">فعل لازم</button>
+      <button onclick="check(this, false)">فعل متعدٍ</button>
+    </div>
+
+    <div id="res"></div>
+  </div>
+
+  <script>
+    var score = 0;
+    function check(btn, ok) {
+      if (ok) {
+        btn.style.background = "#22c55e";
+        btn.style.color = "#0f172a";
+        score++;
+      } else {
+        btn.style.background = "#ef4444";
+        btn.style.color = "white";
+      }
+      btn.parentElement.querySelectorAll('button').forEach(b => b.disabled = true);
+      document.getElementById('res').innerText = "🎯 نتيجتك الحالية: " + score + " / 3";
+    }
+  </script>
+</body>
+</html>

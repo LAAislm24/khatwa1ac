@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<style>
+  body { background: #0f172a; color: white; font-family: Arial; max-width: 880px; margin: 20px auto; padding: 15px; line-height: 1.9; }
+  .back { display: inline-block; background: #ef4444; color: white; padding: 10px 20px; border-radius: 10px; text-decoration: none; margin-bottom: 15px; font-weight: bold; }
+  .card { background: #1e293b; border: 2px solid #38bdf8; border-radius: 15px; padding: 20px; }
+  .rule { background: #0f172a; padding: 15px; border-radius: 10px; border-left: 5px solid #22c55e; margin: 12px 0; }
+  .q { background: #0f172a; padding: 15px; border-radius: 10px; border-left: 5px solid #eab308; margin: 12px 0; }
+  select { padding: 5px 8px; border-radius: 6px; border: 2px solid #38bdf8; background: #1e293b; color: #fde047; font-weight: bold; font-size: 15px; cursor: pointer; }
+  .t-page { display: none; }
+  .btn-verif { background: #22c55e; color: #0f172a; border: none; padding: 12px 25px; border-radius: 10px; font-size: 17px; font-weight: bold; cursor: pointer; margin-top: 15px; }
+  .btn-verif:hover { background: #16a34a; color: white; }
+  #note { font-size: 20px; font-weight: bold; color: #fde047; margin-top: 15px; }
+</style>
+<script>
+  function showT() {
+    document.querySelectorAll('.t-page').forEach(p => p.style.display = 'none');
+    document.getElementById('note').innerText = "";
+    var el = document.getElementById(location.hash.replace('#', '') || 't1');
+    if (el) el.style.display = 'block';
+  }
+  function verifier() {
+    var ok = 0, total = 0;
+    document.querySelectorAll('.t-page').forEach(function(page) {
+      if (page.style.display === 'block') {
+        page.querySelectorAll('select[data-rep]').forEach(function(sel) {
+          total++;
+          if (sel.value === sel.getAttribute('data-rep')) { sel.style.borderColor = "#22c55e"; sel.style.background = "#14532d"; ok++; }
+          else { sel.style.borderColor = "#ef4444"; sel.style.background = "#7f1d1d"; }
+        });
+      }
+    });
+    document.getElementById('note').innerText = "🎯 نتيجتك : " + ok + " / " + total;
+  }
+  window.onload = showT; window.onhashchange = showT;
+</script>
+</head>
+<body>
+  <a class="back" href="math.html">🔙 Retour aux Mathématiques</a>
+
+  <!-- Tâche 1 -->
+  <div id="t1" class="t-page card" dir="rtl" style="text-align:right;">
+    <h1>📐 Tâche 1 : Additionner deux nombres entiers avec la droite numérique (p. 17)</h1>
+    
+    <div class="rule">
+      <b>📌 1. الشرح المبسط والأمثلة التطبيقية :</b><br>
+      • <b>نقطة البداية (Point de départ) :</b> نحدد دائماً مكان العدد الأول على المستقيم العددي.<br>
+      • <b>إضافة عدد موجب (Ajouter un nombre positif +) :</b> نتحرك نحو <b>اليمين (vers la droite)</b> بعدد خطوات يساوي ذلك العدد.<br>
+      • <b>إضافة عدد سالب (Ajouter un nombre négatif -) :</b> نتحرك نحو <b>اليسار (vers la gauche)</b> بعدد خطوات يساوي ذلك العدد.<br><br>
+      <b>أمثلة تطبيقية (Exemples) :</b><br>
+      1. <span dir="ltr"><b>(-2) + (+5) = +3</b></span> : نبدأ من -2، ثم نتحرك 5 خطوات نحو اليمين لنصل إلى +3.<br>
+      2. <span dir="ltr"><b>(+3) + (-4) = -1</b></span> : نبدأ من +3، ثم نتحرك 4 خطوات نحو اليسار لنصل إلى -1.<br>
+      3. <span dir="ltr"><b>(-1) + (-3) = -4</b></span> : نبدأ من -1، ثم نتحرك 3 خطوات نحو اليسار لنصل إلى -4.
+    </div>
+
+    <div class="q">
+      <b>✍️ 2. تمارين للمراجعة (6 Questions d'entraînement بالاختيارات) :</b><br><br>
+
+      <b>سؤال 1 (تحديد الاتجاه) : إذا كنت عند العدد -4 وأردت إضافة +6، في أي اتجاه ستتحرك؟</b><br>
+      <select data-rep="droite"><option value="">-- اختر الاتجاه --</option><option value="droite">نحو اليمين (vers la droite)</option><option value="gauche">نحو اليسار (vers la gauche)</option></select><br><br>
+
+      <b>سؤال 2 (حساب بسيط) : احسب باستعمال المستقيم العددي : <span dir="ltr">(+2) + (-5)</span></b><br>
+      <select data-rep="-3"><option value="">-- اختر النتيجة --</option><option value="-3">-3</option><option value="+3">+3</option><option value="-7">-7</option></select><br><br>
+
+      <b>سؤال 3 (جمع عددين سالبين) : احسب باستعمال المستقيم العددي : <span dir="ltr">(-3) + (-2)</span></b><br>
+      <select data-rep="-5"><option value="">-- اختر النتيجة --</option><option value="-5">-5</option><option value="+5">+5</option><option value="-1">-1</option></select><br><br>
+
+      <b>سؤال 4 (العدد المقابل) : إذا بدأت من +4 وتحركت 4 خطوات نحو اليسار، أين ستصل؟</b><br>
+      • سنصل إلى : <select data-rep="0"><option value="">?</option><option value="0">0</option><option value="+8">+8</option><option value="-4">-4</option></select> &nbsp;|&nbsp;
+      • العملية المناسبة : <select data-rep="ok"><option value="">-- اختر العملية --</option><option value="ok">(+4) + (-4) = 0</option><option value="no">(+4) + (+4) = +8</option></select><br><br>
+
+      <b>سؤال 5 (إيجاد العدد المجهول) : انطلقت من -5 ووصلت إلى +1. ما هو العدد الذي أضفته؟</b><br>
+      • العدد المضاف : <select data-rep="+6"><option value="">?</option><option value="+6">+6</option><option value="-6">-6</option><option value="-4">-4</option></select> &nbsp;|&nbsp;
+      • العملية كاملة : <select data-rep="ok"><option value="">-- اختر العملية --</option><option value="ok">(-5) + (+6) = +1</option><option value="no">(-5) + (-6) = -11</option></select><br><br>
+
+      <b>سؤال 6 (مسألة تطبيقية) : كانت درجة الحرارة -3°C، ثم ارتفعت بـ +7 درجات عند الظهيرة. كم أصبحت؟</b><br>
+      <select data-rep="+4°C"><option value="">-- اختر درجة الحرارة --</option><option value="+4°C">+4°C</option><option value="-4°C">-4°C</option><option value="+10°C">+10°C</option></select>
+    </div>
+  </div>
+
+  <!-- زر التصحيح ومكان النتيجة -->
+  <div style="text-align: center;">
+    <button class="btn-verif" onclick="verifier()">✅ Vérifier / تصحيح</button>
+    <div id="note"></div>
+  </div>
+
+</body>
+</html>
+  <!-- Tâche 2 -->
+  <div id="t2" class="t-page card" dir="rtl" style="text-align:right;">
+    <h1>📐 Tâche 2 : Additionner avec la valeur absolue</h1>
+    
+    <div class="rule">
+      <b>📌 1. الشرح المبسط والأمثلة التطبيقية :</b><br>
+      القيمة المطلقة (La valeur absolue) لعدد هي مسافته عن الصفر (أي العدد بدون إشارة + أو -). لجمع عددين صحيحين نستعمل قاعدتين :<br><br>
+      • <b>الحالة 1 : لهما نفس الإشارة (Même signe) :</b> نحتفظ بنفس الإشارة، و<b>نجمع</b> العددين (القيمتين المطلقتين).<br>
+      • <b>الحالة 2 : لهما إشارتان مختلفتان (Signes contraires) :</b> نأخذ إشارة العدد <b>الأكبر مسافة عن الصفر</b>، و<b>نطرح</b> العدد الأصغر من الأكبر.<br><br>
+      <b>أمثلة تطبيقية (Exemples) :</b><br>
+      1. <span dir="ltr"><b>(-4) + (-6) = -10</b></span> : نفس الإشارة (سالب)، نحتفظ بـ <span dir="ltr">-</span> ونجمع <span dir="ltr">4 + 6 = 10</span>.<br>
+      2. <span dir="ltr"><b>(+8) + (-3) = +5</b></span> : إشارتان مختلفتان، <span dir="ltr">8</span> أكبر من <span dir="ltr">3</span> إذن الإشارة <span dir="ltr">+</span>، ونطرح <span dir="ltr">8 - 3 = 5</span>.<br>
+      3. <span dir="ltr"><b>(-9) + (+2) = -7</b></span> : إشارتان مختلفتان، <span dir="ltr">9</span> أكبر من <span dir="ltr">2</span> إذن الإشارة <span dir="ltr">-</span>، ونطرح <span dir="ltr">9 - 2 = 7</span>.
+    </div>
+
+    <div class="q">
+      <b>✍️ 2. تمارين للمراجعة (6 Questions d'entraînement بالاختيارات) :</b><br><br>
+
+      <b>سؤال 1 (تحديد القاعدة) : لجمع عددين لهما نفس الإشارة مثل <span dir="ltr">(-5) + (-7)</span>، ماذا نفعل؟</b><br>
+      <select data-rep="add"><option value="">-- اختر القاعدة --</option><option value="add">نحتفظ بنفس الإشارة ونجمع العددين</option><option value="sub">نأخذ إشارة الأكبر ونطرح العددين</option></select><br><br>
+
+      <b>سؤال 2 (نفس الإشارة - سالب) : احسب : <span dir="ltr">(-6) + (-8)</span></b><br>
+      <select data-rep="-14"><option value="">-- اختر النتيجة --</option><option value="-14">-14</option><option value="+14">+14</option><option value="-2">-2</option></select><br><br>
+
+      <b>سؤال 3 (إشارتان مختلفتان) : احسب : <span dir="ltr">(-12) + (+5)</span></b><br>
+      • إشارة النتيجة هي : <select data-rep="-"><option value="">?</option><option value="-">-</option><option value="+">+</option></select> &nbsp;|&nbsp;
+      • النتيجة النهائية : <select data-rep="-7"><option value="">-- اختر النتيجة --</option><option value="-7">-7</option><option value="+7">+7</option><option value="-17">-17</option></select><br><br>
+
+      <b>سؤال 4 (إشارتان مختلفتان) : احسب : <span dir="ltr">(+15) + (-9)</span></b><br>
+      <select data-rep="+6"><option value="">-- اختر النتيجة --</option><option value="+6">+6</option><option value="-6">-6</option><option value="+24">+24</option></select><br><br>
+
+      <b>سؤال 5 (أعداد كبيرة) : احسب : <span dir="ltr">(-25) + (+10)</span></b><br>
+      <select data-rep="-15"><option value="">-- اختر النتيجة --</option><option value="-15">-15</option><option value="+15">+15</option><option value="-35">-35</option></select><br><br>
+
+      <b>سؤال 6 (مسألة تطبيقية) : غواصة على عمق <span dir="ltr">-40m</span>، صعدت بـ <span dir="ltr">+15m</span>. في أي عمق أصبحت؟</b><br>
+      <select data-rep="-25m"><option value="">-- اختر العمق --</option><option value="-25m">-25m</option><option value="+25m">+25m</option><option value="-55m">-55m</option></select>
+    </div>
+  </div>
+  <!-- Tâche 3 -->
+  <div id="t3" class="t-page card" dir="rtl" style="text-align:right;">
+    <h1>📐 Tâche 3 : Utiliser la commutativité et l'associativité de l'addition</h1>
+    
+    <div class="rule">
+      <b>📌 1. الشرح المبسط والأمثلة التطبيقية :</b><br>
+      لتسهيل حساب مجموع عدة أعداد نسبية، نستخدم خاصيتين مهمتين :<br>
+      • <b>التبادلية (La commutativité) :</b> يمكننا تغيير ترتيب الحدود في الجمع دون أن يتغير المجموع.<br>
+      • <b>التجميعية (L'associativité) :</b> يمكننا تجميع الأعداد الموجبة معاً والأعداد السالبة معاً، أو تجميع الأعداد المتقابلة (التي مجموعها 0).<br><br>
+      <b>أمثلة تطبيقية (Exemples) :</b><br>
+      1. <span dir="ltr"><b>A = (-5) + (+8) + (+5) + (-2)</b></span><br>
+      نجمع المتقابلين أولاً : <span dir="ltr"><b>[(-5) + (+5)] + [(+8) + (-2)] = 0 + (+6) = +6</b></span>.<br>
+      2. <span dir="ltr"><b>B = (-4) + (+7) + (-6) + (+3)</b></span><br>
+      نجمع السالبة معاً والموجبة معاً : <span dir="ltr"><b>[(-4) + (-6)] + [(+7) + (+3)] = (-10) + (+10) = 0</b></span>.
+    </div>
+
+    <div class="q">
+      <b>✍️ 2. تمارين للمراجعة (6 Questions d'entraînement بالاختيارات) :</b><br><br>
+
+      <b>سؤال 1 (مفهوم الخاصية) : ماذا تعني خاصية التبادلية (Commutativité) في الجمع؟</b><br>
+      <select data-rep="ordre"><option value="">-- اختر الجواب --</option><option value="ordre">يمكن تغيير ترتيب الأعداد دون تغير النتيجة</option><option value="signe">نغير إشارة جميع الأعداد</option></select><br><br>
+
+      <b>سؤال 2 (تجميع الأعداد المتقابلة) : احسب بذكاء : <span dir="ltr">(-9) + (+14) + (+9)</span></b><br>
+      <select data-rep="+14"><option value="">-- اختر النتيجة --</option><option value="+14">+14</option><option value="-14">-14</option><option value="+32">+32</option></select><br><br>
+
+      <b>سؤال 3 (تجميع حسب الإشارة) : في العملية <span dir="ltr">(-3) + (+5) + (-7) + (+2)</span>، ما هو مجموع الأعداد السالبة فقط؟</b><br>
+      <select data-rep="-10"><option value="">-- اختر المجموع --</option><option value="-10">-10</option><option value="+7">+7</option><option value="-3">-3</option></select><br><br>
+
+      <b>سؤال 4 (إكمال الحساب) : احسب المجموع الكلي : <span dir="ltr">(-3) + (+5) + (-7) + (+2)</span></b><br>
+      <select data-rep="-3"><option value="">-- اختر النتيجة --</option><option value="-3">-3</option><option value="+3">+3</option><option value="-17">-17</option></select><br><br>
+
+      <b>سؤال 5 (حساب سريع) : احسب : <span dir="ltr">(+12) + (-8) + (-12) + (-2)</span></b><br>
+      <select data-rep="-10"><option value="">-- اختر النتيجة --</option><option value="-10">-10</option><option value="+10">+10</option><option value="-6">-6</option></select><br><br>
+
+      <b>سؤال 6 (تطبيق عددي) : احسب : <span dir="ltr">(-15) + (+20) + (-5) + (+10)</span></b><br>
+      <select data-rep="+10"><option value="">-- اختر النتيجة --</option><option value="+10">+10</option><option value="-10">-10</option><option value="+50">+50</option></select>
+    </div>
+  </div>
+  <!-- Tâche 4 -->
+  <div id="t4" class="t-page card" dir="rtl" style="text-align:right;">
+    <h1>📐 Tâche 4 : Effectuer la soustraction de nombres entiers</h1>
+    
+    <div class="rule">
+      <b>📌 1. الشرح المبسط والأمثلة التطبيقية :</b><br>
+      <b>القاعدة الذهبية للطرح :</b> لطرح عدد صحيح، <b>نضيف مقابله (On ajoute son opposé)</b>.<br>
+      • نحتفظ بالعدد الأول كما هو.<br>
+      • نحول عملية الطرح (<span dir="ltr">-</span>) إلى جمع (<span dir="ltr">+</span>).<br>
+      • نعكس إشارة العدد الثاني (الموجب يصبح سالباً، والسالب يصبح موجباً).<br><br>
+      <b>أمثلة تطبيقية (Exemples) :</b><br>
+      1. <span dir="ltr"><b>(+5) - (+8) = (+5) + (-8) = -3</b></span><br>
+      2. <span dir="ltr"><b>(-4) - (-9) = (-4) + (+9) = +5</b></span><br>
+      3. <span dir="ltr"><b>(-6) - (+3) = (-6) + (-3) = -9</b></span>
+    </div>
+
+    <div class="q">
+      <b>✍️ 2. تمارين للمراجعة (6 Questions d'entraînement بالاختيارات) :</b><br><br>
+
+      <b>سؤال 1 (تحويل الطرح إلى جمع) : كيف نكتب العملية <span dir="ltr">(+7) - (-4)</span> على شكل جمع؟</b><br>
+      <select data-rep="ok"><option value="">-- اختر الكتابة الصحيحة --</option><option value="ok">(+7) + (+4)</option><option value="no1">(+7) + (-4)</option><option value="no2">(-7) + (+4)</option></select><br><br>
+
+      <b>سؤال 2 (حساب مباشر) : احسب : <span dir="ltr">(+7) - (-4)</span></b><br>
+      <select data-rep="+11"><option value="">-- اختر النتيجة --</option><option value="+11">+11</option><option value="+3">+3</option><option value="-11">-11</option></select><br><br>
+
+      <b>سؤال 3 (طرح عدد موجب) : احسب : <span dir="ltr">(-5) - (+6)</span></b><br>
+      <select data-rep="-11"><option value="">-- اختر النتيجة --</option><option value="-11">-11</option><option value="+1">+1</option><option value="-1">-1</option></select><br><br>
+
+      <b>سؤال 4 (طرح عددين سالبين) : احسب : <span dir="ltr">(-10) - (-3)</span></b><br>
+      <select data-rep="-7"><option value="">-- اختر النتيجة --</option><option value="-7">-7</option><option value="-13">-13</option><option value="+7">+7</option></select><br><br>
+
+      <b>سؤال 5 (طرح من الصفر) : احسب : <span dir="ltr">0 - (-12)</span></b><br>
+      <select data-rep="+12"><option value="">-- اختر النتيجة --</option><option value="+12">+12</option><option value="-12">-12</option><option value="0">0</option></select><br><br>
+
+      <b>سؤال 6 (حساب الفرق) : احسب : <span dir="ltr">(+4) - (+15)</span></b><br>
+      <select data-rep="-11"><option value="">-- اختر النتيجة --</option><option value="-11">-11</option><option value="+11">+11</option><option value="-19">-19</option></select>
+    </div>
+  </div>
+  <!-- Tâche 5 -->
+  <div id="t5" class="t-page card" dir="rtl" style="text-align:right;">
+    <h1>📐 Tâche 5 : Additionner et soustraire dans des expressions numériques</h1>
+    
+    <div class="rule">
+      <b>📌 1. الشرح المبسط والأمثلة التطبيقية :</b><br>
+      لحساب تعبير جبري يحتوي على الجمع والطرح والأقواس :<br>
+      1. <b>إذا كانت هناك أقواس داخلية :</b> نحسب ما بداخل الأقواس أولاً.<br>
+      2. <b>إذا كانت سلسلة عمليات بدون أقواس :</b> نحول كل عمليات الطرح إلى جمع المقابل، ثم نجمع الأعداد الموجبة معاً والسالبة معاً.<br>
+      3. <b>تبسيط الكتابة :</b> <span dir="ltr">+(+) = +</span> ، <span dir="ltr">+(-) = -</span> ، <span dir="ltr">-(+) = -</span> ، <span dir="ltr">-(-) = +</span>.<br><br>
+      <b>مثال تطبيقي (Exemple) :</b><br>
+      <span dir="ltr"><b>E = (-3) - (-5) + (-7) - (+2)</b></span><br>
+      <span dir="ltr"><b>E = (-3) + (+5) + (-7) + (-2)</b></span><br>
+      <span dir="ltr"><b>E = (+5) + [(-3) + (-7) + (-2)] = (+5) + (-12) = -7</b></span>
+    </div>
+
+    <div class="q">
+      <b>✍️ 2. تمارين للمراجعة (6 Questions d'entraînement بالاختيارات) :</b><br><br>
+
+      <b>سؤال 1 (تبسيط الإشارات) : ما هي الكتابة المبسطة للتعبير <span dir="ltr">(-4) - (-6) + (-2)</span> ؟</b><br>
+      <select data-rep="ok"><option value="">-- اختر التبسيط --</option><option value="ok">-4 + 6 - 2</option><option value="no1">-4 - 6 - 2</option><option value="no2">+4 + 6 - 2</option></select><br><br>
+
+      <b>سؤال 2 (حساب تعبير بسيط) : احسب : <span dir="ltr">A = -4 + 6 - 2</span></b><br>
+      <select data-rep="0"><option value="">-- اختر النتيجة --</option><option value="0">0</option><option value="-12">-12</option><option value="+4">+4</option></select><br><br>
+
+      <b>سؤال 3 (الأولوية للأقواس) : في التعبير <span dir="ltr">B = 10 - (3 - 8)</span>، ما هي قيمة ما بداخل القوس <span dir="ltr">(3 - 8)</span> ؟</b><br>
+      <select data-rep="-5"><option value="">-- اختر القيمة --</option><option value="-5">-5</option><option value="+5">+5</option><option value="-11">-11</option></select><br><br>
+
+      <b>سؤال 4 (إكمال الحساب) : احسب النتيجة النهائية للتعبير : <span dir="ltr">B = 10 - (3 - 8)</span></b><br>
+      <select data-rep="15"><option value="">-- اختر النتيجة --</option><option value="15">15</option><option value="5">5</option><option value="-15">-15</option></select><br><br>
+
+      <b>سؤال 5 (سلسلة عمليات) : احسب : <span dir="ltr">C = (-8) + (+3) - (-5) - (+10)</span></b><br>
+      <select data-rep="-10"><option value="">-- اختر النتيجة --</option><option value="-10">-10</option><option value="+10">+10</option><option value="-20">-20</option></select><br><br>
+
+      <b>سؤال 6 (تعبير بأقواس) : احسب : <span dir="ltr">D = (-4 + 7) - (2 - 9)</span></b><br>
+      <select data-rep="10"><option value="">-- اختر النتيجة --</option><option value="10">10</option><option value="-4">-4</option><option value="4">4</option></select>
+    </div>
+  </div>
+  <!-- Tâche 6 -->
+  <div id="t6" class="t-page card" dir="rtl" style="text-align:right;">
+    <h1>📐 Tâche 6 : Appliquer les règles aux nombres décimaux et aux fractions</h1>
+    
+    <div class="rule">
+      <b>📌 1. الشرح المبسط والأمثلة التطبيقية :</b><br>
+      قواعد جمع وطرح الأعداد الصحيحة (الإشارات، القيمة المطلقة، وطرح المقابل) تبقى <b>نفسها تماماً</b> بالنسبة للأعداد العشرية (Décimaux) والكسور (Fractions) :<br>
+      • <b>الأعداد العشرية :</b> ننتبه لوضع الفاصلة تحت الفاصلة عند الجمع أو الطرح.<br>
+      • <b>الكسور :</b> يجب <b>توحيد المقامات (Même dénominateur)</b> أولاً، ثم نطبق قواعد الإشارات على البسطين.<br><br>
+      <b>أمثلة تطبيقية (Exemples) :</b><br>
+      1. <span dir="ltr"><b>(-2,5) + (-1,5) = -4</b></span> (نفس الإشارة : نجمع ونحتفظ بـ <span dir="ltr">-</span>).<br>
+      2. <span dir="ltr"><b>(+3,2) - (+5,7) = (+3,2) + (-5,7) = -2,5</b></span>.<br>
+      3. <span dir="ltr"><b>(-3/4) + (+1/4) = (-3 + 1) / 4 = -2/4 = -1/2</b></span>.
+    </div>
+
+    <div class="q">
+      <b>✍️ 2. تمارين للمراجعة (6 Questions d'entraînement بالاختيارات) :</b><br><br>
+
+      <b>سؤال 1 (جمع عددين عشريين) : احسب : <span dir="ltr">(-4,5) + (-2,5)</span></b><br>
+      <select data-rep="-7"><option value="">-- اختر النتيجة --</option><option value="-7">-7</option><option value="+7">+7</option><option value="-2">-2</option></select><br><br>
+
+      <b>سؤال 2 (إشارتان مختلفتان - عشري) : احسب : <span dir="ltr">(-6,4) + (+2,1)</span></b><br>
+      <select data-rep="-4,3"><option value="">-- اختر النتيجة --</option><option value="-4,3">-4,3</option><option value="+4,3">+4,3</option><option value="-8,5">-8,5</option></select><br><br>
+
+      <b>سؤال 3 (طرح عددين عشريين) : احسب : <span dir="ltr">(+1,5) - (-3,5)</span></b><br>
+      <select data-rep="+5"><option value="">-- اختر النتيجة --</option><option value="+5">+5</option><option value="-2">-2</option><option value="+2">+2</option></select><br><br>
+
+      <b>سؤال 4 (كسور بنفس المقام) : احسب : <span dir="ltr">(-5/7) + (+2/7)</span></b><br>
+      <select data-rep="-3/7"><option value="">-- اختر النتيجة --</option><option value="-3/7">-3/7</option><option value="+3/7">+3/7</option><option value="-7/7">-7/7</option></select><br><br>
+
+      <b>سؤال 5 (طرح كسرين) : احسب : <span dir="ltr">(-1/3) - (+4/3)</span></b><br>
+      <select data-rep="-5/3"><option value="">-- اختر النتيجة --</option><option value="-5/3">-5/3</option><option value="+3/3">+3/3</option><option value="-3/3">-3/3</option></select><br><br>
+
+      <b>سؤال 6 (توحيد المقامات) : احسب : <span dir="ltr">(-1/2) + (+1/4)</span></b><br>
+      <select data-rep="-1/4"><option value="">-- اختر النتيجة --</option><option value="-1/4">-1/4</option><option value="+1/4">+1/4</option><option value="-2/6">-2/6</option></select>
+    </div>
+  </div>
+  <!-- Tâche 7 -->
+  <div id="t7" class="t-page card" dir="rtl" style="text-align:right;">
+    <h1>📐 Tâche 7 : Résoudre un problème en utilisant l'addition et la soustraction</h1>
+    
+    <div class="rule">
+      <b>📌 1. الشرح المبسط ومنهجية حل المسائل :</b><br>
+      لحل مسألة باستعمال الأعداد النسبية، نترجم الكلمات إلى إشارات (<span dir="ltr">+</span> أو <span dir="ltr">-</span>) :<br>
+      • <b>إشارة موجبة (<span dir="ltr">+</span>) :</b> ربح، صعود، ارتفاع، إيداع مبلغ، فوق سطح البحر، بعد الميلاد.<br>
+      • <b>إشارة سالبة (<span dir="ltr">-</span>) :</b> خسارة، نزول، انخفاض، سحب مبلغ، تحت سطح البحر، قبل الميلاد.<br>
+      • <b>حساب الفرق أو المدة :</b> دائماً نستعمل الطرح : <span dir="ltr"><b>النهاية - البداية</b></span>.<br><br>
+      <b>مثال تطبيقي (Exemple) :</b><br>
+      تاجر خسر <span dir="ltr">150 DH</span> في الصباح (<span dir="ltr">-150</span>)، وربح <span dir="ltr">230 DH</span> في المساء (<span dir="ltr">+230</span>).<br>
+      الحصيلة هي : <span dir="ltr"><b>(-150) + (+230) = +80 DH</b></span> (إذن ربح <span dir="ltr">80 DH</span>).
+    </div>
+
+    <div class="q">
+      <b>✍️ 2. تمارين للمراجعة (6 مسائل تطبيقية بالاختيارات) :</b><br><br>
+
+      <b>سؤال 1 (المصعد) : صعد أحمد من الطابق <span dir="ltr">-2</span> (تحت الأرض) بـ <span dir="ltr">6</span> طوابق نحو الأعلى. في أي طابق وصل؟</b><br>
+      <select data-rep="+4"><option value="">-- اختر الطابق --</option><option value="+4">الطابق +4</option><option value="-8">الطابق -8</option><option value="+8">الطابق +8</option></select><br><br>
+
+      <b>سؤال 2 (الحساب البنكي) : في رصيد سلمى <span dir="ltr">400 DH</span>، سحبت منه <span dir="ltr">550 DH</span>. كم أصبح رصيدها؟</b><br>
+      <select data-rep="-150 DH"><option value="">-- اختر الرصيد --</option><option value="-150 DH">-150 DH</option><option value="+150 DH">+150 DH</option><option value="-950 DH">-950 DH</option></select><br><br>
+
+      <b>سؤال 3 (التاريخ) : ولد عالم سنة <span dir="ltr">-45</span> (قبل الميلاد) وتوفي سنة <span dir="ltr">+25</span> (بعد الميلاد). كم سنة عاش؟</b><br>
+      • العملية المناسبة : <select data-rep="ok"><option value="">-- اختر العملية --</option><option value="ok">(+25) - (-45)</option><option value="no">(-45) - (+25)</option></select> &nbsp;|&nbsp;
+      • عمره : <select data-rep="70"><option value="">?</option><option value="70">70 سنة</option><option value="20">20 سنة</option></select><br><br>
+
+      <b>سؤال 4 (الطقس) : كانت الحرارة <span dir="ltr">-6°C</span> ليلاً وأصبحت <span dir="ltr">+3°C</span> نهاراً. بكم ارتفعت درجة الحرارة؟</b><br>
+      <select data-rep="+9°C"><option value="">-- اختر الفرق --</option><option value="+9°C">+9°C</option><option value="-3°C">-3°C</option><option value="+3°C">+3°C</option></select><br><br>
+
+      <b>سؤال 5 (الغوص) : غواص على عمق <span dir="ltr">-18m</span>، نزل بـ <span dir="ltr">7m</span> إضافية ثم صعد بـ <span dir="ltr">10m</span>. ما هو موقعه الآن؟</b><br>
+      <select data-rep="-15m"><option value="">-- اختر العمق --</option><option value="-15m">-15m</option><option value="-35m">-35m</option><option value="-1m">-1m</option></select><br><br>
+
+      <b>سؤال 6 (لعبة نقاط) : في جولة أولى حصلت على <span dir="ltr">-12</span> نقطة، وفي الثانية <span dir="ltr">+20</span>، وفي الثالثة <span dir="ltr">-8</span>. ما هو مجموعك؟</b><br>
+      <select data-rep="0"><option value="">-- اختر المجموع --</option><option value="0">0 نقطة</option><option value="+16">+16 نقطة</option><option value="-40">-40 نقطة</option></select>
+    </div>
+  </div>
+  <!-- Consolidation 2 -->
+  <div id="consolidation2" class="t-page card" dir="rtl" style="text-align:right;">
+    <h1>🏆 حصة الدعم الشاملة : Consolidation 2 (جميع مهام Leçon 2)</h1>
+    
+    <div class="rule">
+      <b>📌 ملخص شامل لجميع قواعد الدرس (Leçon 2) :</b><br>
+      1. <b>الجمع (Addition) :</b> نفس الإشارة ⬅️ نحتفظ بالإشارة ونجمع | إشارتان مختلفتان ⬅️ إشارة الأكبر مسافة ونطرح.<br>
+      2. <b>الطرح (Soustraction) :</b> نضيف المقابل : <span dir="ltr"><b>a - b = a + (-b)</b></span>.<br>
+      3. <b>التبسيط :</b> <span dir="ltr"><b>-(-a) = +a</b></span> و <span dir="ltr"><b>-(+a) = -a</b></span>.<br>
+      4. <b>التبادلية والتجميعية :</b> نجمع الأعداد المتقابلة (مجموعها 0) والموجبة معاً والسالبة معاً.<br>
+      5. <b>الكسور والعشرية :</b> نفس قواعد الإشارات (مع توحيد المقامات للكسور).
+    </div>
+
+    <div class="q">
+      <b>✍️ اختبار شامل لجميع المهام (7 أسئلة شاملة) :</b><br><br>
+
+      <b>1. [Tâche 1 - المستقيم العددي] : انطلقت من <span dir="ltr">-3</span> وتحركت 8 خطوات نحو اليمين. أين ستصل؟</b><br>
+      <select data-rep="+5"><option value="">-- اختر --</option><option value="+5">+5</option><option value="-5">-5</option><option value="-11">-11</option></select><br><br>
+
+      <b>2. [Tâche 2 - القيمة المطلقة] : احسب : <span dir="ltr">(-18) + (+7)</span></b><br>
+      <select data-rep="-11"><option value="">-- اختر --</option><option value="-11">-11</option><option value="+11">+11</option><option value="-25">-25</option></select><br><br>
+
+      <b>3. [Tâche 3 - التجميعية] : احسب بذكاء : <span dir="ltr">(-13) + (+9) + (+13) + (-19)</span></b><br>
+      <select data-rep="-10"><option value="">-- اختر --</option><option value="-10">-10</option><option value="+10">+10</option><option value="-28">-28</option></select><br><br>
+
+      <b>4. [Tâche 4 - الطرح] : احسب : <span dir="ltr">(-9) - (-14)</span></b><br>
+      <select data-rep="+5"><option value="">-- اختر --</option><option value="+5">+5</option><option value="-23">-23</option><option value="-5">-5</option></select><br><br>
+
+      <b>5. [Tâche 5 - التعابير الجبرية] : احسب : <span dir="ltr">M = 5 - (8 - 12) + (-3)</span></b><br>
+      <select data-rep="6"><option value="">-- اختر --</option><option value="6">6</option><option value="-2">-2</option><option value="12">12</option></select><br><br>
+
+      <b>6. [Tâche 6 - العشرية والكسور] : احسب : <span dir="ltr">(-3,5) - (+1,5)</span> &nbsp;|&nbsp; و <span dir="ltr">(-2/5) + (-1/5)</span></b><br>
+      • العشري : <select data-rep="-5"><option value="">?</option><option value="-5">-5</option><option value="-2">-2</option></select> &nbsp;|&nbsp;
+      • الكسر : <select data-rep="-3/5"><option value="">?</option><option value="-3/5">-3/5</option><option value="-1/5">-1/5</option></select><br><br>
+
+      <b>7. [Tâche 7 - مسألة] : درجة الحرارة في قمة جبل <span dir="ltr">-8°C</span>، وفي السفح <span dir="ltr">+12°C</span>. ما هو فرق الحرارة بين السفح والقمة؟</b><br>
+      <select data-rep="20°C"><option value="">-- اختر الفرق --</option><option value="20°C">20°C</option><option value="4°C">4°C</option><option value="-20°C">-20°C</option></select>
+    </div>
+  </div>
+

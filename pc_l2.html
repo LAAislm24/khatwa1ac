@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Chapitre 2 : Les changements d'état physique</title>
+<style>
+  body { background: #0f172a; color: white; font-family: Arial, sans-serif; max-width: 900px; margin: 20px auto; padding: 15px; line-height: 1.9; }
+  .back { display: inline-block; background: #ef4444; color: white; padding: 10px 20px; border-radius: 10px; text-decoration: none; margin-bottom: 15px; font-weight: bold; }
+  .card { background: #1e293b; border: 2px solid #38bdf8; border-radius: 15px; padding: 22px; margin-bottom: 20px; }
+  .rule { background: #0f172a; padding: 18px; border-radius: 10px; border-left: 5px solid #22c55e; margin: 15px 0; font-size: 16px; }
+  .q { background: #0f172a; padding: 18px; border-radius: 10px; border-left: 5px solid #eab308; margin: 15px 0; font-size: 16px; }
+  select { padding: 6px 10px; border-radius: 6px; border: 2px solid #38bdf8; background: #1e293b; color: #fde047; font-weight: bold; font-size: 15px; cursor: pointer; margin: 3px 0; }
+  .btn-verif { background: #22c55e; color: #0f172a; border: none; padding: 14px 30px; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 15px; }
+  .btn-verif:hover { background: #16a34a; color: white; }
+  #note { font-size: 22px; font-weight: bold; color: #fde047; margin-top: 15px; }
+  h1 { color: #38bdf8; font-size: 22px; border-bottom: 1px solid #334155; padding-bottom: 10px; }
+</style>
+<script>
+  function showT() {
+    var pages = document.querySelectorAll('.t-page');
+    if (pages.length === 0) return;
+    var hash = window.location.hash.replace('#', '');
+    var target = document.getElementById(hash) || pages[0];
+    pages.forEach(function(p) {
+      p.style.display = (p === target) ? 'block' : 'none';
+    });
+    var noteEl = document.getElementById('note');
+    if (noteEl) noteEl.innerText = "";
+  }
+  function verifier() {
+    var ok = 0, total = 0;
+    document.querySelectorAll('.t-page').forEach(function(page) {
+      if (page.style.display !== 'none') {
+        page.querySelectorAll('select[data-rep]').forEach(function(sel) {
+          total++;
+          if (sel.value === sel.getAttribute('data-rep')) { sel.style.borderColor = "#22c55e"; sel.style.background = "#14532d"; ok++; }
+          else { sel.style.borderColor = "#ef4444"; sel.style.background = "#7f1d1d"; }
+        });
+      }
+    });
+    document.getElementById('note').innerText = "🎯 Votre note : " + ok + " / " + total;
+  }
+  window.addEventListener('DOMContentLoaded', showT);
+  window.addEventListener('hashchange', showT);
+</script>
+</head>
+<body>
+  <a class="back" href="pc.html">🔙 Retour à la Physique-Chimie</a>
+
+  <!-- Tâche 1 -->
+  <div id="t1" class="t-page card">
+    <h1>🌡️ Tâche 1 : Décrire l'évolution de la température au cours du temps lors d'un changement d'état</h1>
+    <div class="rule" dir="rtl" style="text-align:right;">
+      <b>📌 1. ملخص الدرس والشرح المفصل (تطور درجة الحرارة أثناء التحول الفيزيائي) :</b><br>
+      • <b>التحول الفيزيائي (Changement d'état) :</b> هو انتقال المادة من حالة فيزيائية إلى أخرى تحت تأثير الحرارة (التسخين أو التبريد).<br>
+      • <b>أسماء التحولات الفيزيائية الستة :</b><br>
+      &nbsp;&nbsp;- <b>الانصهار (La fusion) :</b> من الصلب إلى السائل | <b>التجمد (La solidification) :</b> من السائل إلى الصلب.<br>
+      &nbsp;&nbsp;- <b>التبخر (La vaporisation) :</b> من السائل إلى الغاز | <b>التكاثف أو الإسالة (La liquéfaction) :</b> من الغاز إلى السائل.<br>
+      &nbsp;&nbsp;- <b>التسامي (La sublimation) :</b> من الصلب إلى الغاز مباشرة | <b>التكاثف الصلب (La condensation) :</b> من الغاز إلى الصلب.<br>
+      • <b>تطور درجة الحرارة عند تسخين جسم خالص (مثل الجليد) :</b> تمر المنحنى بـ <b>3 مراحل</b>:<br>
+      &nbsp;&nbsp;1. <b>قبل الانصهار :</b> ترتفع درجة حرارة الجليد الصلب تدريجياً (مثلاً من <span dir="ltr">-10°C</span> إلى <span dir="ltr">0°C</span>).<br>
+      &nbsp;&nbsp;2. <b>أثناء الانصهار (Palier de température) :</b> <b>تبقى درجة الحرارة ثابتة</b> عند <span dir="ltr">0°C</span> طيلة مدة التحول (وجود جليد + ماء سائل معاً).<br>
+      &nbsp;&nbsp;3. <b>بعد الانصهار التام :</b> تعود درجة حرارة الماء السائل للارتفاع من جديد.<br><br>
+      <b>💡 أمثلة تطبيقية (Exemples) :</b><br>
+      1. <b>انصهار الجليد الخالص :</b> يظهر في المنحنى البياني <b>مستقر أفقي (Palier horizontal)</b> عند <span dir="ltr">0°C</span>.<br>
+      2. <b>تسخين خليط (ماء + ملح) :</b> لا يظهر مستقر أفقي، بل تستمر درجة الحرارة في الارتفاع ببطء طيلة مدة التحول.
+    </div>
+    <div class="q">
+      <b>✍️ 2. Exercices d'application (Questions types d'évaluation) :</b><br><br>
+      <b>Exercice 1 (Exploitation d'un tableau de mesures) :</b><br>
+      Un élève chauffe de la glace pure et relève la température chaque minute :<br>
+      t (min) : 0 | 1 | 2 | 3 | 4 | 5 | 6<br>
+      T (°C) : -8 | -4 | 0 | 0 | 0 | +5 | +12<br>
+      • À quelle minute la fusion commence-t-elle et quand se termine-t-elle ? <select data-rep="2_4"><option value="">-- Choisir --</option><option value="2_4">Elle commence à t = 2 min et se termine à t = 4 min</option><option value="0_6">De t = 0 min à t = 6 min</option></select><br>
+      • Quel est l'état physique de l'eau à t = 3 min ? <select data-rep="mix"><option value="">-- Choisir --</option><option value="mix">Mélange solide + liquide (glace + eau)</option><option value="sol">Solide uniquement (glace)</option></select><br>
+      • Comment appelle-t-on la partie horizontale de la courbe entre 2 min et 4 min ? <select data-rep="palier"><option value="">-- Choisir --</option><option value="palier">Un palier de température</option><option value="pic">Un pic thermique</option></select><br><br>
+      <b>Exercice 2 (Nommer les changements d'état) :</b><br>
+      • Le passage de la vapeur d'eau (nuages) à l'eau liquide (pluie) est : <select data-rep="liq"><option value="">?</option><option value="liq">La liquéfaction</option><option value="fus">La fusion</option></select> &nbsp;|&nbsp;
+      • Le passage de la glace à l'eau liquide est : <select data-rep="fus"><option value="">?</option><option value="fus">La fusion</option><option value="sol">La solidification</option></select>
+    </div>
+  </div>
+
+  <!-- Tâche 2 -->
+  <div id="t2" class="t-page card">
+    <h1>🌡️ Tâche 2 : Identifier les températures de fusion et d'ébullition d'un corps pur</h1>
+    <div class="rule" dir="rtl" style="text-align:right;">
+      <b>📌 1. ملخص الدرس والشرح المفصل (درجتا الانصهار والغليان للجسم الخالص) :</b><br>
+      • يتميز كل <b>جسم خالص (Corps pur)</b> بدرجتي حرارة ثابتتين تميزانه عن غيره تحت الضغط الجوي العادي (<span dir="ltr">1 atm</span>) :<br>
+      • <b>1. درجة حرارة الانصهار (Température de fusion) :</b> هي درجة الحرارة الثابتة التي يتحول عندها الجسم الخالص من الحالة الصلبة إلى السائلة (وهي نفسها درجة التجمد).<br>
+      • <b>2. درجة حرارة الغليان (Température d'ébullition) :</b> هي درجة الحرارة الثابتة التي يغلي عندها السائل ويتحول إلى غاز (بخار).<br>
+      • <b>كيف نميز الجسم الخالص عن الخليط تجريبياً؟</b><br>
+      &nbsp;&nbsp;- <b>الجسم الخالص :</b> يتميز بوجود <b>مستقر أفقي (Palier de température)</b>؛ أي تبقى درجة حرارته ثابتة أثناء الانصهار أو الغليان.<br>
+      &nbsp;&nbsp;- <b>الخليط (Mélange) :</b> تتغير درجة حرارته باستمرار أثناء التحول الفيزيائي (لا يوجد مستقر أفقي).<br>
+      • <b>حالة المادة عند درجة حرارة معينة :</b> إذا كانت درجة الحرارة أقل من درجة الانصهار فالجسم <b>صلب</b>، وإذا كانت بين الانصهار والغليان فهو <b>سائل</b>، وإذا فاقت الغليان فهو <b>غاز</b>.<br><br>
+      <b>💡 أمثلة تطبيقية (Exemples) :</b><br>
+      1. <b>الماء الخالص (Eau pure) :</b> درجة انصهاره وتجمده هي <span dir="ltr"><b>0°C</b></span>، ودرجة غليانه هي <span dir="ltr"><b>100°C</b></span>.<br>
+      2. <b>الحديد الخالص :</b> ينصهر عند <span dir="ltr"><b>1538°C</b></span> | <b>الكحول الخالص :</b> يغلي عند <span dir="ltr"><b>78°C</b></span>.
+    </div>
+    <div class="q">
+      <b>✍️ 2. Exercices d'application (Questions types d'évaluation) :</b><br><br>
+      <b>Exercice 1 (Distinguer eau pure et eau salée) :</b><br>
+      On porte à ébullition deux liquides (A) et (B). Pour le liquide (A), la température reste constante à 100°C. Pour le liquide (B), la température varie de 101°C à 104°C.<br>
+      • Quel liquide représente l'eau pure (distillée) ? <select data-rep="A"><option value="">-- Choisir --</option><option value="A">Le liquide (A) car il présente un palier à 100°C</option><option value="B">Le liquide (B)</option></select><br>
+      • Que représente alors le liquide (B) ? <select data-rep="mel"><option value="">-- Choisir --</option><option value="mel">Un mélange (ex : eau salée)</option><option value="pur">Un corps pur</option></select><br><br>
+      <b>Exercice 2 (Déterminer l'état physique d'un métal) :</b><br>
+      Le plomb a une température de fusion de 327°C et une température d'ébullition de 1749°C.<br>
+      • Quel est l'état physique du plomb à 20°C ? <select data-rep="sol"><option value="">?</option><option value="sol">Solide (car 20°C &lt; 327°C)</option><option value="liq">Liquide</option></select> &nbsp;|&nbsp;
+      • Quel est son état dans un four à 500°C ? <select data-rep="liq"><option value="">?</option><option value="liq">Liquide (entre 327°C et 1749°C)</option><option value="gaz">Gazeux</option></select>
+    </div>
+  </div>
+
+  <!-- Tâche 3 -->
+  <div id="t3" class="t-page card">
+    <h1>🌡️ Tâche 3 : Expliquer, à l'aide du modèle particulaire, un phénomène lié aux changements d'état</h1>
+    <div class="rule" dir="rtl" style="text-align:right;">
+      <b>📌 1. ملخص الدرس والشرح المفصل (التفسير الدقائقي للتحولات الفيزيائية) :</b><br>
+      • <b>مبدأ انحفاظ الكتلة (Conservation de la masse) :</b> أثناء أي تحول فيزيائي (انصهار، تجمد، تبخر، تكاثف)، <b>تبقى الكتلة ثابتة لا تتغير</b>، بينما <b>يتغير الحجم</b>.<br>
+      • <b>التفسير الدقائقي لانحفاظ الكتلة :</b> تبقى الكتلة ثابتة لأن <b>عدد الدقائق ونوعها وكتلة كل دقيقة لا تتغير</b> أثناء التحول الفيزيائي.<br>
+

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Chapitre 3 : La masse volumique</title>
+<style>
+  body { background: #0f172a; color: white; font-family: Arial, sans-serif; max-width: 900px; margin: 20px auto; padding: 15px; line-height: 1.9; }
+  .back { display: inline-block; background: #ef4444; color: white; padding: 10px 20px; border-radius: 10px; text-decoration: none; margin-bottom: 15px; font-weight: bold; }
+  .card { background: #1e293b; border: 2px solid #38bdf8; border-radius: 15px; padding: 22px; margin-bottom: 20px; }
+  .rule { background: #0f172a; padding: 18px; border-radius: 10px; border-left: 5px solid #22c55e; margin: 15px 0; font-size: 16px; }
+  .q { background: #0f172a; padding: 18px; border-radius: 10px; border-left: 5px solid #eab308; margin: 15px 0; font-size: 16px; }
+  select { padding: 6px 10px; border-radius: 6px; border: 2px solid #38bdf8; background: #1e293b; color: #fde047; font-weight: bold; font-size: 15px; cursor: pointer; margin: 3px 0; }
+  .btn-verif { background: #22c55e; color: #0f172a; border: none; padding: 14px 30px; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 15px; }
+  .btn-verif:hover { background: #16a34a; color: white; }
+  #note { font-size: 22px; font-weight: bold; color: #fde047; margin-top: 15px; }
+  h1 { color: #38bdf8; font-size: 22px; border-bottom: 1px solid #334155; padding-bottom: 10px; }
+</style>
+<script>
+  function showT() {
+    var pages = document.querySelectorAll('.t-page');
+    if (pages.length === 0) return;
+    var hash = window.location.hash.replace('#', '');
+    var target = document.getElementById(hash) || pages[0];
+    pages.forEach(function(p) {
+      p.style.display = (p === target) ? 'block' : 'none';
+    });
+    var noteEl = document.getElementById('note');
+    if (noteEl) noteEl.innerText = "";
+  }
+  function verifier() {
+    var ok = 0, total = 0;
+    document.querySelectorAll('.t-page').forEach(function(page) {
+      if (page.style.display !== 'none') {
+        page.querySelectorAll('select[data-rep]').forEach(function(sel) {
+          total++;
+          if (sel.value === sel.getAttribute('data-rep')) { sel.style.borderColor = "#22c55e"; sel.style.background = "#14532d"; ok++; }
+          else { sel.style.borderColor = "#ef4444"; sel.style.background = "#7f1d1d"; }
+        });
+      }
+    });
+    document.getElementById('note').innerText = "🎯 Votre note : " + ok + " / " + total;
+  }
+  window.addEventListener('DOMContentLoaded', showT);
+  window.addEventListener('hashchange', showT);
+</script>
+</head>
+<body>
+  <a class="back" href="pc.html">🔙 Retour à la Physique-Chimie</a>
+
+  <!-- Tâche 1 -->
+  <div id="t1" class="t-page card">
+    <h1>⚖️ Tâche 1 : Mesurer le volume d'un corps solide</h1>
+    <div class="rule" dir="rtl" style="text-align:right;">
+      <b>📌 1. ملخص الدرس والشرح المفصل (قياس حجم جسم صلب) :</b><br>
+      • <b>الحجم (Le volume) :</b> هو الحيز الذي يشغله الجسم في الفضاء، رمزه <span dir="ltr"><b>V</b></span> ووحدته العالمية هي المتر المكعب (<span dir="ltr">m³</span>)، كما نستعمل اللتر (<span dir="ltr">L</span>) والمليلتر (<span dir="ltr">mL</span>) والسنتيمتر المكعب (<span dir="ltr">cm³</span>).<br>
+      • <b>تحويلات أساسية :</b> <span dir="ltr"><b>1 mL = 1 cm³</b></span> &nbsp;|&nbsp; <span dir="ltr"><b>1 L = 1 dm³ = 1000 cm³</b></span>.<br>
+      • <b>1. جسم صلب غير منتظم (Solide de forme quelconque) :</b> نستعمل <b>طريقة إزاحة السائل (Déplacement de liquide)</b> بالمخبار المدرج : <span dir="ltr"><b>V = V₂ - V₁</b></span>.<br>
+      • <b>2. جسم صلب ذو شكل هندسي منتظم (Forme géométrique simple) :</b><br>
+      &nbsp;&nbsp;- <b>المكعب (Cube) :</b> <span dir="ltr">V = a × a × a = a³</span><br>
+      &nbsp;&nbsp;- <b>متوازي المستطيلات (Parallélépipède) :</b> <span dir="ltr">V = L × l × h</span><br>
+      &nbsp;&nbsp;- <b>الأسطوانة (Cylindre) :</b> <span dir="ltr">V = π × R² × h</span><br><br>
+      <b>💡 أمثلة تطبيقية (Exemples) :</b><br>
+      1. حجر غير منتظم : <span dir="ltr">V₁ = 40 mL</span> و <span dir="ltr">V₂ = 65 mL</span> إذن <span dir="ltr">V = 65 - 40 = 25 mL = 25 cm³</span>.<br>
+      2. مكعب ضلعه <span dir="ltr">a = 2 cm</span> : <span dir="ltr">V = 2 × 2 × 2 = 8 cm³</span>.
+    </div>
+    <div class="q">
+      <b>✍️ 2. Exercices d'application (Questions types d'évaluation) :</b><br><br>
+      <b>Exercice 1 (Déplacement de liquide) :</b><br>
+      Un élève verse de l'eau dans une éprouvette graduée jusqu'à V₁ = 50 mL. Il y plonge complètement une clé : le niveau monte à V₂ = 62 mL.<br>
+      • Quel est le volume de la clé en mL ? <select data-rep="12"><option value="">-- Choisir --</option><option value="12">12 mL</option><option value="112">112 mL</option><option value="50">50 mL</option></select><br>
+      • Quelle est sa valeur en cm³ ? <select data-rep="12cm"><option value="">-- Choisir --</option><option value="12cm">12 cm³ (car 1 mL = 1 cm³)</option><option value="1200">1200 cm³</option></select><br><br>
+      <b>Exercice 2 (Solide géométrique) :</b><br>
+      Un morceau de bois parallélépipédique a pour dimensions : L = 5 cm, l = 3 cm et h = 2 cm.<br>
+      • Quelle est la formule du volume ? <select data-rep="form"><option value="">?</option><option value="form">V = L × l × h</option><option value="add">V = L + l + h</option></select> &nbsp;|&nbsp;
+      • Calculer son volume V : <select data-rep="30"><option value="">?</option><option value="30">30 cm³</option><option value="10">10 cm³</option></select>
+    </div>
+  </div>
+
+  <!-- Tâche 2 -->
+  <div id="t2" class="t-page card">
+    <h1>⚖️ Tâche 2 : Déterminer la masse volumique d'un corps</h1>
+    <div class="rule" dir="rtl" style="text-align:right;">
+      <b>📌 1. ملخص الدرس والشرح المفصل (الكتلة الحجمية) :</b><br>
+      • <b>الكتلة الحجمية (La masse volumique) :</b> هي مقدار فيزيائي يميز كل مادة خالصة، رمزها <span dir="ltr"><b>ρ (rhô)</b></span> وتساوي خارج قسمة الكتلة <span dir="ltr"><b>m</b></span> على الحجم <span dir="ltr"><b>V</b></span>.<br>
+      • <b>العلاقة الأساسية :</b> <span dir="ltr"><b>ρ = m / V</b></span> &nbsp; (ومنه <span dir="ltr">m = ρ × V</span> &nbsp; و &nbsp; <span dir="ltr">V = m / ρ</span>).<br>
+      • <b>الوحدات والتحويل :</b> الوحدة العالمية هي <span dir="ltr"><b>kg/m³</b></span>، والوحدة العملية هي <span dir="ltr"><b>g/cm³</b></span> (أو <span dir="ltr">g/mL</span>)، حيث : <span dir="ltr"><b>1 g/cm³ = 1000 kg/m³</b></span>.<br><br>
+      <b>💡 أمثلة تطبيقية (Exemples) :</b><br>
+      1. <b>الماء الخالص :</b> <span dir="ltr">ρ = 1 g/cm³ = 1000 kg/m³</span>.<br>
+      2. <b>الحديد :</b> <span dir="ltr">ρ = 7,8 g/cm³ = 7800 kg/m³</span> &nbsp;|&nbsp; <b>الزيت :</b> <span dir="ltr">ρ = 0,9 g/cm³ = 900 kg/m³</span>.
+    </div>
+    <div class="q">
+      <b>✍️ 2. Exercices d'application (Questions types d'évaluation) :</b><br><br>
+      <b>Exercice 1 (Identifier un métal) :</b><br>
+      Une bague métallique a une masse m = 21 g et un volume V = 2 cm³. Données : ρ(Argent) = 10,5 g/cm³ ; ρ(Aluminium) = 2,7 g/cm³.<br>
+      • Calculer la masse volumique ρ de la bague : <select data-rep="10.5"><option value="">-- Choisir --</option><option value="10.5">10,5 g/cm³</option><option value="42">42 g/cm³</option><option value="19">19 g/cm³</option></select><br>
+      • De quel métal est-elle constituée ? <select data-rep="argent"><option value="">-- Choisir --</option><option value="argent">L'argent</option><option value="alu">L'aluminium</option></select><br><br>
+      <b>Exercice 2 (Conversion et calcul de masse) :</b><br>
+      La masse volumique de l'huile est ρ = 0,8 g/cm³.<br>
+      • Convertir ρ en kg/m³ : <select data-rep="800"><option value="">?</option><option value="800">800 kg/m³</option><option value="8">8 kg/m³</option></select> &nbsp;|&nbsp;
+      • Calculer la masse m de V = 100 cm³ d'huile : <select data-rep="80g"><option value="">?</option><option value="80g">80 g</option><option value="125g">125 g</option></select>
+    </div>
+  </div>
+  <!-- Tâche 3 -->
+  <div id="t3" class="t-page card">
+    <h1>⚖️ Tâche 3 : Identifier la position des corps (qui flottent ou coulent) dans un liquide à partir de leurs masses volumiques</h1>
+    <div class="rule" dir="rtl" style="text-align:right;">
+      <b>📌 1. ملخص الدرس والشرح المفصل (طفو وغوص الأجسام - Flottabilité) :</b><br>
+      • لمعرفة هل يطفو جسم فوق سائل أم يغوص في قعره، نقارن <b>الكتلة الحجمية للجسم (<span dir="ltr">ρ_corps</span>)</b> مع <b>الكتلة الحجمية للسائل (<span dir="ltr">ρ_liquide</span>)</b> :<br>
+      • <b>1. حالة الطفو (Le corps flotte) :</b> إذا كانت <span dir="ltr"><b>ρ_corps &lt; ρ_liquide</b></span> (كتلته الحجمية أصغر من السائل)، فإن الجسم <b>يطفو فوق السائل</b>.<br>
+      • <b>2. حالة الغوص (Le corps coule) :</b> إذا كانت <span dir="ltr"><b>ρ_corps &gt; ρ_liquide</b></span> (كتلته الحجمية أكبر من السائل)، فإن الجسم <b>يغوص إلى قعر الإناء</b>.<br>
+      • <b>3. حالة السوائل غير القابلة للامتزاج (Liquides non miscibles) :</b> السائل ذو الكتلة الحجمية الأصغر يطفو في الأعلى، والسائل ذو الكتلة الحجمية الأكبر يستقر في الأسفل.<br><br>
+      <b>💡 أمثلة تطبيقية (Exemples) :</b><br>
+      1. <b>الزيت (<span dir="ltr">0,9 g/cm³</span>) والماء (<span dir="ltr">1 g/cm³</span>) :</b> الزيت يطفو فوق الماء لأن <span dir="ltr">0,9 &lt; 1</span>.<br>
+      2. <b>الحديد (<span dir="ltr">7,8 g/cm³</span>) في الماء (<span dir="ltr">1 g/cm³</span>) :</b> الحديد يغوص في الماء لأن <span dir="ltr">7,8 &gt; 1</span>.
+    </div>
+    <div class="q">
+      <b>✍️ 2. Exercices d'application (Questions types d'évaluation) :</b><br><br>
+      <b>Exercice 1 (Flotter ou couler dans l'eau ?) :</b><br>
+      On plonge dans l'eau (<span dir="ltr">ρ_eau = 1 g/cm³</span>) trois objets : un bouchon en liège (<span dir="ltr">ρ = 0,24 g/cm³</span>), une bille en verre (<span dir="ltr">ρ = 2,5 g/cm³</span>) et un glaçon (<span dir="ltr">ρ = 0,92 g/cm³</span>).<br>
+      • Quelle est la position du bouchon en liège ? <select data-rep="flotte"><option value="">-- Choisir --</option><option value="flotte">Il flotte à la surface (car 0,24 &lt; 1)</option><option value="coule">Il coule au fond</option></select><br>
+      • Quelle est la position de la bille en verre ? <select data-rep="coule"><option value="">-- Choisir --</option><option value="coule">Elle coule au fond (car 2,5 &gt; 1)</option><option value="flotte">Elle flotte à la surface</option></select><br>
+      • Que fait le glaçon dans l'eau ? <select data-rep="flotte_g"><option value="">-- Choisir --</option><option value="flotte_g">Il flotte (car 0,92 &lt; 1)</option><option value="coule_g">Il coule</option></select><br><br>
+      <b>Exercice 2 (Mélange de liquides non miscibles) :</b><br>
+      Dans une éprouvette, on verse de l'eau (<span dir="ltr">ρ = 1 g/cm³</span>), de l'huile (<span dir="ltr">ρ = 0,8 g/cm³</span>) et du mercure (<span dir="ltr">ρ = 13,6 g/cm³</span>).<br>
+      • Quel liquide se place tout en haut ? <select data-rep="huile"><option value="">?</option><option value="huile">L'huile (ρ = 0,8 g/cm³)</option><option value="mercure">Le mercure</option></select> &nbsp;|&nbsp;
+      • Quel liquide se place tout en bas ? <select data-rep="mercure"><option value="">?</option><option value="mercure">Le mercure (ρ = 13,6 g/cm³)</option><option value="eau">L'eau</option></select>
+    </div>
+  </div>
+
+  <!-- Tâche TP -->
+  <div id="tp" class="t-page card">
+    <h1>🧪 Tâche TP : Déterminer expérimentalement la masse volumique d'un liquide / d'un corps solide</h1>
+    <div class="rule" dir="rtl" style="text-align:right;">
+      <b>📌 1. ملخص التجربة (Protocole expérimental) :</b><br>
+      • <b>1. قياس الكتلة الحجمية لسائل (Liquide) :</b><br>
+      &nbsp;&nbsp;- نزن المخبار المدرج فارغاً فنجد كتلته <span dir="ltr"><b>m₁</b></span>.<br>
+      &nbsp;&nbsp;- نسكب فيه حجماً معيناً <span dir="ltr"><b>V</b></span> من السائل ونزنه من جديد فنجد الكتلة الإجمالية <span dir="ltr"><b>m₂</b></span>.<br>
+      &nbsp;&nbsp;- نحسب كتلة السائل فقط : <span dir="ltr"><b>m = m₂ - m₁</b></span>، ثم نحسب الكتلة الحجمية : <span dir="ltr"><b>ρ = m / V</b></span>.<br>
+      • <b>2. قياس الكتلة الحجمية لجسم صلب (Solide) :</b><br>
+      &nbsp;&nbsp;- نقيس كتلة الجسم الصلب <span dir="ltr"><b>m</b></span> باستعمال الميزان الإلكتروني (Balance électronique).<br>
+      &nbsp;&nbsp;- نقيس حجمه <span dir="ltr"><b>V = V₂ - V₁</b></span> باستعمال المخبار المدرج.<br>
+      &nbsp;&nbsp;- نطبق العلاقة : <span dir="ltr"><b>ρ = m / V</b></span>.
+    </div>
+    <div class="q">
+      <b>✍️ 2. Exercice TP (Exploitation des mesures) :</b><br><br>
+      Pour déterminer la masse volumique d'un liquide inconnu, un élève réalise les mesures suivantes :<br>
+      - Masse de l'éprouvette vide : <span dir="ltr">m₁ = 45 g</span>.<br>
+      - Masse de l'éprouvette contenant <span dir="ltr">V = 50 mL</span> de liquide : <span dir="ltr">m₂ = 85 g</span>.<br>
+      • Quelle est la masse <b>m</b> du liquide seul ? <select data-rep="40"><option value="">-- Choisir --</option><option value="40">m = 85 - 45 = 40 g</option><option value="130">m = 130 g</option><option value="85">m = 85 g</option></select><br>
+      • Calculer la masse volumique <b>ρ</b> de ce liquide (<span dir="ltr">ρ = m / V</span>) : <select data-rep="0.8"><option value="">-- Choisir --</option><option value="0.8">ρ = 40 / 50 = 0,8 g/mL</option><option value="1.25">ρ = 1,25 g/mL</option></select>
+    </div>
+  </div>
+
+  <div style="text-align: center;">
+    <button class="btn-verif" onclick="verifier()">✅ Vérifier / تصحيح</button>
+    <div id="note"></div>
+  </div>
+
+</body>
+</html>

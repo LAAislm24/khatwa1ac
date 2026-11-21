@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<style>
+  body { background: #0f172a; color: white; font-family: Arial; text-align: center; margin: 0; padding-bottom: 40px; }
+  .header { background: #1e293b; padding: 15px; border-bottom: 3px solid #38bdf8; }
+  h1 { margin: 0; color: #38bdf8; font-size: 26px; }
+  button { background: #1e293b; color: #38bdf8; border: 2px solid #38bdf8; padding: 12px 16px; margin: 6px; font-size: 15px; border-radius: 12px; cursor: pointer; }
+  button:hover { background: #38bdf8; color: #0f172a; font-weight: bold; }
+  .unit-btn { width: 45%; min-width: 260px; }
+  .lesson-btn { border-color: #22c55e; color: white; width: 92%; max-width: 680px; text-align: left; display: block; margin: 7px auto; font-size: 15px; }
+  .back-btn { background: #ef4444; color: white; border: none; padding: 10px 20px; font-size: 15px; margin-bottom: 15px; text-decoration: none; display: inline-block; border-radius: 10px; }
+  .box { max-width: 900px; margin: 20px auto; background: #1e293b; padding: 20px; border-radius: 20px; border: 2px solid #38bdf8; }
+</style>
+<script>
+  var uData = {
+    1: ["P1 - Unité 1 : Ambiances du quotidien", "Vocabulaire : Une ambiance qui fait plaisir ! (p. 6)|Compréhension de l'oral : Un lieu où on se sent bien ! (p. 7)|Actes de parole : Je vois, je sens, j'aime ! (p. 8)|Production de l'oral : Une ambiance qui donne envie ! (p. 9)|Lecture et compréhension : Une ambiance agréable et chaleureuse ! (p. 10)|Vocabulaire : Sons, couleurs et lumières (p. 13)|Lecture et compréhension : Une ambiance joyeuse et festive ! (p. 14)|Outils de langue : Bien placer, bien accorder, bien décrire ! (p. 17)|Production de l'écrit : Rédiger un post de blog (p. 18)|Consolidation : (p. 20)"],
+    2: ["P1 - Unité 2 : Moments qui comptent", "Vocabulaire : Des souvenirs qui comptent (p. 23)|Compréhension de l'oral : Des moments inoubliables (p. 24)|Actes de parole : Mes plus beaux souvenirs (p. 25)|Production de l'oral : Un souvenir, une émotion ! (p. 26)|Lecture et compréhension : Le jour que je n'oublierai jamais ! (p. 27)|Vocabulaire : Gravé dans la mémoire (p. 30)|Lecture et compréhension : Des souvenirs qui restent pour toujours ! (p. 31)|Outils de langue : Souvenirs à travers le temps (p. 34)|Production de l'écrit : Mon carnet de souvenirs (p. 35)|Consolidation : (p. 37)|Arrêt-bilan : (p. 39)"],
+    3: ["P2 - Unité 3 : Des habitudes qui nous font du bien", "Vocabulaire : S'organiser pour mieux réussir (p. 43)|Compréhension de l'oral : Réussir c'est avoir de bonnes habitudes ! (p. 44)|Actes de parole : Petit à petit, tout rentre dans l'ordre ! (p. 45)|Production de l'oral : De bonnes habitudes, un quotidien meilleur ! (p. 46)|Lecture et compréhension : Les premiers pas vers la réussite (p. 47)|Vocabulaire : Voir le bon côté des choses ! (p. 50)|Lecture et compréhension : Les petits pas qui mènent loin (p. 51)|Outils de langue : Se concentrer, se motiver, se dépasser ! (p. 54)|Production de l'écrit : Mes habitudes pour réussir (p. 55)|Consolidation : (p. 57)"],
+    4: ["P2 - Unité 4 : Mon temps, un trésor !", "Vocabulaire : Gérer son temps pour réaliser ses rêves ! (p. 60)|Compréhension de l'oral : Organiser notre temps pour mieux réussir ! (p. 61)|Actes de parole : Exprimer une recommandation, un conseil (p. 62)|Production de l'oral : Échangeons nos conseils pour bien gérer le temps ! (p. 63)|Lecture et compréhension : Ton temps est précieux : utilise-le bien ! (p. 64)|Vocabulaire : Plus d'organisation, de meilleurs moments de travail ! (p. 67)|Lecture et compréhension : Ton temps est précieux : utilise-le bien ! (p. 68)|Outils de langue : Volonté et organisation, progrès assuré (p. 71)|Production de l'écrit : Construisons notre plan pour bien organiser notre temps ! (p. 72)|Consolidation : (p. 74)|Arrêt-bilan : (p. 76)"],
+    5: ["P3 - Unité 5 : Les autres et moi", "Vocabulaire : Les mots qui comptent ! (p. 80)|Compréhension de l'oral : À chacun sa voix, une même voie (p. 81)|Actes de parole : Et toi, quelles valeurs te guident ? (p. 82)|Production de l'oral : À chacun son avis ! (p. 83)|Lecture et compréhension : Les valeurs, un trésor commun (p. 84)|Vocabulaire : Des mots qui comptent ! (p. 87)|Lecture et compréhension : Une élève, un coach et des leçons de vie ! (p. 88)|Outils de langue : Choisis ta valeur ! (p. 91)|Production de l'écrit : Une élève, un coach et des leçons de vie ! (p. 92)|Consolidation : (p. 94)"],
+    6: ["P3 - Unité 6 : Villes mythiques", "Vocabulaire : Ce sont des sites... historiques ! (p. 97)|Compréhension de l'oral : Et si on écoutait l'histoire des grottes d'Hercule ? (p. 98)|Actes de parole : Sur les traces de l'histoire (p. 99)|Production de l'oral : Parle d'un monument qui t'a marqué (p. 100)|Lecture et compréhension : Ma visite à Volubilis (p. 101)|Vocabulaire : Des lieux qui racontent le passé (p. 104)|Lecture et compréhension : Voyage au cœur de l'histoire (p. 105)|Outils de langue : Des pronoms pour situer (p. 108)|Production de l'écrit : Décrire un site historique (p. 109)|Consolidation : (p. 111)|Arrêt-bilan : (p. 113)"],
+    7: ["P4 - Unité 7 : Figures du monde", "Vocabulaire : Connaitre le monde, connaitre ses figures ! (p. 116)|Compréhension de l'oral : L'histoire d'une réussite (p. 117)|Actes de parole : Inspire-toi des esprits brillants ! (p. 118)|Production de l'oral : Parlons de ces personnalités ! (p. 119)|Lecture et compréhension : Voilà un modèle à suivre ! (p. 120)|Vocabulaire : Comment sont les personnalités inspirantes ? (p. 123)|Lecture et compréhension : Comment sont les personnalités inspirantes ? (p. 124)|Outils de langue : Parlons du passé ! (p. 127)|Production de l'écrit : Apprenons à mieux connaitre cette personnalité ! (p. 128)|Consolidation : (p. 130)"],
+    8: ["P4 - Unité 8 : Défis climatiques", "Vocabulaire : Le climat change... les mots aussi ! (p. 133)|Compréhension de l'oral : Je tends l'oreille : qu'est-ce qu'on explique ? (p. 134)|Actes de parole : J'observe et je décris ! (p. 135)|Production de l'oral : Je décris un phénomène climatique (p. 136)|Lecture et compréhension : Quand le feu détruit la vie ! (p. 137)|Vocabulaire : La terre a soif ! (p. 140)|Lecture et compréhension : L'eau, une ressource de plus en plus rare ! (p. 141)|Outils de langue : Les expressions qui expliquent (p. 144)|Production de l'écrit : Rédiger pour expliquer (p. 145)|Consolidation : (p. 147)|Arrêt-bilan : (p. 149)"],
+    9: ["P5 - Unité 9 : Créations écolo", "Vocabulaire : Transformer pour moins polluer (p. 152)|Compréhension de l'oral : Créer sans polluer (p. 153)|Actes de parole : Des conseils pour agir (p. 154)|Production de l'oral : Des consignes pour agir (p. 155)|Lecture et compréhension : Les bons gestes à retenir (p. 156)|Vocabulaire : Pistes pour agir autrement (p. 159)|Lecture et compréhension : Des idées simples qui changent tout ! (p. 160)|Outils de langue : Dis, conseille, explique ! (p. 163)|Production de l'écrit : Transforme un objet pour protéger la planète (p. 164)|Consolidation : (p. 166)"],
+    10: ["P5 - Unité 10 : Ados responsables", "Vocabulaire : Des mots et des actes ! (p. 169)|Compréhension de l'oral : Je défends mes idées ! (p. 170)|Actes de parole : Des paroles et des actes ! (p. 171)|Production de l'oral : Je m'engage et je partage ! (p. 172)|Lecture et compréhension : Une ado, mille engagements ! (p. 173)|Vocabulaire : Des mots et des actes ! (p. 176)|Lecture et compréhension : L'engagement n'a pas d'âge (p. 177)|Outils de langue : Je connecte mes idées ! (p. 180)|Production de l'écrit : Découvrez mon engagement ! (p. 181)|Consolidation : (p. 183)|Arrêt-bilan : (p. 185)"]
+  };
+  function openU(n) {
+    document.getElementById('fr_home').style.display = 'none';
+    document.getElementById('u_view').style.display = 'block';
+    document.getElementById('u_title').innerText = uData[n][0];
+    var list = uData[n][1].split('|'), html = '';
+    for (var i = 0; i < list.length; i++) { html += '<button class="lesson-btn">• ' + list[i] + '</button>'; }
+    document.getElementById('u_list').innerHTML = html;
+  }
+  function backHome() {
+    document.getElementById('u_view').style.display = 'none';
+    document.getElementById('fr_home').style.display = 'block';
+  }
+</script>
+</head>
+<body>
+<div class="header"><h1>🇫🇷 Langue Française - 1AC (P1 à P5)</h1></div>
+<div id="fr_home" class="box">
+  <a class="back-btn" href="index.html">🔙 الرجوع للمواد</a>
+  <h2>Choisis l'Unité (1 à 10) :</h2>
+  <button class="unit-btn" onclick="openU(1)">P1 - Unité 1 : Ambiances du quotidien</button>
+  <button class="unit-btn" onclick="openU(2)">P1 - Unité 2 : Moments qui comptent</button>
+  <button class="unit-btn" onclick="openU(3)">P2 - Unité 3 : Des habitudes qui nous font du bien</button>
+  <button class="unit-btn" onclick="openU(4)">P2 - Unité 4 : Mon temps, un trésor !</button>
+  <button class="unit-btn" onclick="openU(5)">P3 - Unité 5 : Les autres et moi</button>
+  <button class="unit-btn" onclick="openU(6)">P3 - Unité 6 : Villes mythiques</button>
+  <button class="unit-btn" onclick="openU(7)">P4 - Unité 7 : Figures du monde</button>
+  <button class="unit-btn" onclick="openU(8)">P4 - Unité 8 : Défis climatiques</button>
+  <button class="unit-btn" onclick="openU(9)">P5 - Unité 9 : Créations écolo</button>
+  <button class="unit-btn" onclick="openU(10)">P5 - Unité 10 : Ados responsables</button>
+</div>
+<div id="u_view" class="box" style="display: none;">
+  <button class="back-btn" onclick="backHome()">🔙 Retour aux Unités</button>
+  <h2 id="u_title"></h2>
+  <div id="u_list"></div>
+</div>
+</body>
+</html>
+

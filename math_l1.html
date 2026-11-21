@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<style>
+  body { background: #0f172a; color: white; font-family: Arial; max-width: 880px; margin: 20px auto; padding: 15px; line-height: 1.9; }
+  .back { display: inline-block; background: #ef4444; color: white; padding: 10px 20px; border-radius: 10px; text-decoration: none; margin-bottom: 15px; font-weight: bold; }
+  .card { background: #1e293b; border: 2px solid #38bdf8; border-radius: 15px; padding: 20px; }
+  .rule { background: #0f172a; padding: 15px; border-radius: 10px; border-left: 5px solid #22c55e; margin: 12px 0; }
+  .q { background: #0f172a; padding: 15px; border-radius: 10px; border-left: 5px solid #eab308; margin: 12px 0; }
+  select { padding: 5px 8px; border-radius: 6px; border: 2px solid #38bdf8; background: #1e293b; color: #fde047; font-weight: bold; font-size: 15px; cursor: pointer; }
+  .t-page { display: none; }
+</style>
+<script>
+  function showT() {
+    document.querySelectorAll('.t-page').forEach(p => p.style.display = 'none');
+    document.getElementById('note').innerText = "";
+    var el = document.getElementById(location.hash.replace('#', '') || 't1');
+    if (el) el.style.display = 'block';
+  }
+  function verifier() {
+    var ok = 0, total = 0;
+    document.querySelectorAll('.t-page').forEach(function(page) {
+      if (page.style.display === 'block') {
+        page.querySelectorAll('select[data-rep]').forEach(function(sel) {
+          total++;
+          if (sel.value === sel.getAttribute('data-rep')) { sel.style.borderColor = "#22c55e"; sel.style.background = "#14532d"; ok++; }
+          else { sel.style.borderColor = "#ef4444"; sel.style.background = "#7f1d1d"; }
+        });
+      }
+    });
+    document.getElementById('note').innerText = "🎯 نتيجتك : " + ok + " / " + total;
+  }
+  window.onload = showT; window.onhashchange = showT;
+</script>
+</head>
+<body>
+  <a class="back" href="math.html">🔙 Retour aux Mathématiques</a>
+
+  <!-- Tâche 1 -->
+  <div id="t1" class="t-page card" dir="rtl" style="text-align:right;">
+    <h1>📐 Tâche 1 : Identifier les nombres inférieurs à 0 (p. 8)</h1>
+    <div class="rule">
+      <b>1. الشرح المبسط :</b><br>
+      الأعداد فـ الرياضيات مقسومة على الصفر (0) بحال الميزان أو المحرار (Thermomètre):<br>
+      • <b>الأعداد الموجبة (Positifs) :</b> كبر من 0 (قدامها + أو والو) : <b>+5 ، 12 ، +3,5</b> (ربح الفلوس، الصعود فـ الدروج).<br>
+      • <b>الأعداد السالبة (Négatifs) :</b> صغر من 0 (ديما قدامها -) : <b>-4 ، -10 ، -0,5</b> (البرد تحت الصفر، المصعد لـ Sous-sol).<br>
+      • <b>الصفر (0) :</b> موجب وسالب فـ نفس الوقت.
+    </div>
+    <div class="q">
+      <b>2. سلسلة من 6 أسئلة بالاختيارات :</b><br><br>
+      <b>السؤال 1 : ما هي الأعداد الأصغر من الصفر من بين (-12 ; +7 ; 0 ; -0,8 ; 45 ; -100 ; +1,5 ; -3) ؟</b><br>
+      <select data-rep="1"><option value="">-- اختر الجواب --</option><option value="1">-12 ; -0,8 ; -100 ; -3</option><option value="2">+7 ; 0 ; 45 ; +1,5</option><option value="3">-12 ; 0 ; -100 ; -3</option></select><br><br>
+
+      <b>السؤال 2 : ترجم الوضعيات إلى أعداد نسبية :</b><br>
+      1. 6 درجات تحت الصفر : <select data-rep="-6"><option value="">اختر</option><option value="-6">-6</option><option value="+6">+6</option></select> &nbsp;|&nbsp;
+      2. الطابق الرابع : <select data-rep="+4"><option value="">اختر</option><option value="+4">+4</option><option value="-4">-4</option></select><br>
+      3. عمق 15 متراً : <select data-rep="-15"><option value="">اختر</option><option value="-15">-15</option><option value="+15">+15</option></select> &nbsp;|&nbsp;
+      4. سحب 200 درهم : <select data-rep="-200"><option value="">اختر</option><option value="-200">-200</option><option value="+200">+200</option></select><br><br>
+
+      <b>السؤال 3 : قارن بالرمز المناسب (&lt; أو &gt;) :</b><br>
+      <span dir="ltr">• -9 <select data-rep="<"><option value="">?</option><option value="<">&lt;</option><option value=">">&gt;</option></select> 0 &nbsp;|&nbsp;
+      • +4 <select data-rep=">"><option value="">?</option><option value="<">&lt;</option><option value=">">&gt;</option></select> 0 &nbsp;|&nbsp;
+      • -0,1 <select data-rep="<"><option value="">?</option><option value="<">&lt;</option><option value=">">&gt;</option></select> 0 &nbsp;|&nbsp;
+      • 18 <select data-rep=">"><option value="">?</option><option value="<">&lt;</option><option value=">">&gt;</option></select> 0</span><br><br>
+
+      <b>السؤال 4 : أجب بصحيح (Vrai) أو خطأ (Faux) :</b><br>
+      1. العدد -25 أكبر من 0 : <select data-rep="Faux"><option value="">اختر</option><option value="Vrai">Vrai</option><option value="Faux">Faux</option></select> &nbsp;|&nbsp;
+      2. العدد 14 موجب : <select data-rep="Vrai"><option value="">اختر</option><option value="Vrai">Vrai</option><option value="Faux">Faux</option></select><br>
+      3. الصفر موجب وسالب : <select data-rep="Vrai"><option value="">اختر</option><option value="Vrai">Vrai</option><option value="Faux">Faux</option></select> &nbsp;|&nbsp;
+      4. كل عدد فيه (-) صغر من 0 : <select data-rep="Vrai"><option value="">اختر</option><option value="Vrai">Vrai</option><option value="Faux">Faux</option></select><br><br>
+
+      <b>السؤال 5 : أوجد الدخيل (L'intrus) :</b><br>
+      • القائمة أ (-5 ; -12 ; +3 ; -1 ; -50) : <select data-rep="+3"><option value="">اختر</option><option value="+3">+3</option><option value="-12">-12</option><option value="-50">-50</option></select><br>
+      • القائمة ب (+8 ; 19 ; +2,5 ; -4 ; 100) : <select data-rep="-4"><option value="">اختر</option><option value="-4">-4</option><option value="+2,5">+2,5</option><option value="100">100</option></select><br><br>
+
+      <b>السؤال 6 : نتائج أمين (ربح 10، خسر 5، خسر 12، ربح 8) :</b><br>
+      <select data-rep="ok"><option value="">-- اختر النتائج والجولات الأصغر من 0 --</option><option value="ok">+10 ; -5 ; -12 ; +8 (الأصغر من 0: -5 و -12)</option><option value="no">-10 ; +5 ; +12 ; -8 (الأصغر من 0: -10 و -8)</option></select>
+    </div>
+  </div>
+
+  <!-- Tâche 2 -->
+  <div id="t2" class="t-page card" dir="rtl" style="text-align:right;">
+    <h1>📐 Tâche 2 : Représenter les nombres sur une droite numérique (p. 10)</h1>
+    <div class="rule">
+      <b>1. الشرح المبسط :</b><br>
+      • <b>الأصل (L'origine) :</b> يمثل <b>0</b> في الوسط | <b>اليمين :</b> الأعداد الموجبة (+) | <b>اليسار :</b> الأعداد السالبة (-).<br>
+      • <b>أفصول نقطة :</b> العدد تحت النقطة مثل <b>A(-3)</b> | <b>المسافة عن الصفر :</b> شحال من تدريجة بعيد العدد على 0 (ديما موجبة).
+    </div>
+    <div class="q">
+      <b>2. سلسلة من 6 أسئلة بالاختيارات :</b><br><br>
+      <b>السؤال 1 : أتمم بالكلمة المناسبة :</b><br>
+      1. أصل المستقيم يمثل <select data-rep="الصفر"><option value="">اختر</option><option value="الصفر">الصفر</option><option value="اليمين">اليمين</option></select> &nbsp;|&nbsp;
+      2. السالبة توجد على <select data-rep="اليسار"><option value="">اختر</option><option value="اليسار">اليسار</option><option value="اليمين">اليمين</option></select><br>
+      3. الموجبة توجد على <select data-rep="اليمين"><option value="">اختر</option><option value="اليمين">اليمين</option><option value="اليسار">اليسار</option></select> &nbsp;|&nbsp;
+      4. موقع النقطة يسمى <select data-rep="أفصول"><option value="">اختر</option><option value="أفصول">أفصول</option><option value="أصل">أصل</option></select><br><br>
+
+      <b>السؤال 2 : حدد أفصول كل نقطة :</b><br>
+      1. A يمين الصفر بـ 4 : <select data-rep="A(+4)"><option value="">اختر</option><option value="A(+4)">A(+4)</option><option value="A(-4)">A(-4)</option></select> &nbsp;|&nbsp;
+      2. B يسار الصفر بـ 2 : <select data-rep="B(-2)"><option value="">اختر</option><option value="B(-2)">B(-2)</option><option value="B(+2)">B(+2)</option></select><br>
+      3. C في الأصل : <select data-rep="C(0)"><option value="">اختر</option><option value="C(0)">C(0)</option><option value="C(1)">C(1)</option></select> &nbsp;|&nbsp;
+      4. D يسار الصفر بـ 7 : <select data-rep="D(-7)"><option value="">اختر</option><option value="D(-7)">D(-7)</option><option value="D(+7)">D(+7)</option></select><br><br>
+
+      <b>السؤال 3 : أجب بـ Vrai أو Faux :</b><br>
+      1. -5 يمين -2 : <select data-rep="Faux"><option value="">اختر</option><option value="Vrai">Vrai</option><option value="Faux">Faux</option></select> &nbsp;|&nbsp;
+      2. M(-3) يسار بـ 3 : <select data-rep="Vrai"><option value="">اختر</option><option value="Vrai">Vrai</option><option value="Faux">Faux</option></select><br>
+      3. -1 أقرب صحيح سالب لـ 0 : <select data-rep="Vrai"><option value="">اختر</option><option value="Vrai">Vrai</option><option value="Faux">Faux</option></select> &nbsp;|&nbsp;
+      4. E(+6) و F(-6) نفس المسافة : <select data-rep="Vrai"><option value="">اختر</option><option value="Vrai">Vrai</option><option value="Faux">Faux</option></select><br><br>
+
+      <b>السؤال 4 : تحركنا من 0 بـ 3 يميناً ثم 5 يساراً، نقف على :</b>
+      <select data-rep="-2"><option value="">اختر</option><option value="-2">-2</option><option value="+2">+2</option><option value="-8">-8</option></select><br><br>
+      <b>السؤال 5 : تمرين الرسم في دفترك 📓 :</b> مثّل : <span dir="ltr" style="color:#38bdf8;">A(+3) ; B(-2) ; C(-4,5) ; D(+1,5) ; E(-6)</span><br><br>
+      <b>السؤال 6 : لغز الأعداد المتقابلة :</b>
+      أفصول K : <select data-rep="-4,5"><option value="">اختر</option><option value="-4,5">-4,5</option><option value="+4,5">+4,5</option></select> &nbsp;|&nbsp;
+      أفصول L : <select data-rep="+4,5"><option value="">اختر</option><option value="+4,5">+4,5</option><option value="-4,5">-4,5</option></select>
+    </div>
+  </div>
+   <!-- Tâche 3 -->
+  <div id="t3" class="t-page card">
+    <h1>📐 Tâche 3 : Reconnaître la valeur absolue d'un nombre (p. 12)</h1>
+    <div class="rule">
+      <b>1. Cours et Explication :</b><br>
+      • <b>Définition :</b> La valeur absolue <b>|x|</b> est la distance à zéro (toujours positive ou nulle) : <b>|-7| = 7</b> ; <b>|+12| = 12</b> ; <b>|0| = 0</b>.<br>
+      • <b>Nombres opposés :</b> Deux nombres opposés ont la même valeur absolue mais des signes contraires (ex : |-5| = 5 et |+5| = 5).
+    </div>
+    <div class="q">
+      <b>2. Série de 6 exercices :</b><br><br>
+      <b>Ex 1 : Calcule :</b>
+
+      |-9| = <select data-rep="9"><option value="">?</option><option value="9">9</option><option value="-9">-9</option></select> |
+      |+14| = <select data-rep="14"><option value="">?</option><option value="14">14</option><option value="-14">-14</option></select> |
+      |-0,75| = <select data-rep="0,75"><option value="">?</option><option value="0,75">0,75</option><option value="-0,75">-0,75</option></select><br>
+      |23| = <select data-rep="23"><option value="">?</option><option value="23">23</option><option value="-23">-23</option></select> |
+      |0| = <select data-rep="0"><option value="">?</option><option value="0">0</option><option value="1">1</option></select> |
+      |-100| = <select data-rep="100"><option value="">?</option><option value="100">100</option><option value="-100">-100</option></select><br><br>
+
+      <b>Ex 2 : Complète :</b><br>
+      1. La valeur absolue est sa <select data-rep="distance"><option value="">?</option><option value="distance">distance</option><option value="opposés">opposés</option></select> à <select data-rep="zéro"><option value="">?</option><option value="zéro">zéro</option><option value="positive">positive</option></select>.<br>
+      2. Elle est toujours <select data-rep="positive"><option value="">?</option><option value="positive">positive</option><option value="négative">négative</option></select>. 3. -8 et +8 sont <select data-rep="opposés"><option value="">?</option><option value="opposés">opposés</option><option value="égaux">égaux</option></select>.<br><br>
+
+      <b>Ex 3 : Vrai ou Faux :</b>
+
+      |-6| = -6 : <select data-rep="Faux"><option value="">?</option><option value="Vrai">Vrai</option><option value="Faux">Faux</option></select> |
+      |+4| = |-4| : <select data-rep="Vrai"><option value="">?</option><option value="Vrai">Vrai</option><option value="Faux">Faux</option></select> |
+      Valeur absolue négative : <select data-rep="Faux"><option value="">?</option><option value="Vrai">Vrai</option><option value="Faux">Faux</option></select> |
+
+      |x|=5 ⇒ x=5 ou -5 : <select data-rep="Vrai"><option value="">?</option><option value="Vrai">Vrai</option><option value="Faux">Faux</option></select><br><br>
+
+      <b>Ex 4 : Symbole (&lt;, &gt;, =) :</b>
+
+      |-12| <select data-rep="="><option value="">?</option><option value="<">&lt;</option><option value=">">&gt;</option><option value="=">=</option></select> |+12| |
+      |-8| <select data-rep=">"><option value="">?</option><option value="<">&lt;</option><option value=">">&gt;</option><option value="=">=</option></select> |+3| |
+      |-2,5| <select data-rep="<"><option value="">?</option><option value="<">&lt;</option><option value=">">&gt;</option><option value="=">=</option></select> |-7| |
+      |0| <select data-rep="<"><option value="">?</option><option value="<">&lt;</option><option value=">">&gt;</option><option value="=">=</option></select> |-1|<br><br>
+
+      <b>Ex 5 : Nombre caché :</b>
+      1. Négatif, |x|=11 : <select data-rep="-11"><option value="">?</option><option value="-11">-11</option><option value="+11">+11</option></select> |
+      2. Positif, |x|=4,5 : <select data-rep="4,5"><option value="">?</option><option value="4,5">4,5</option><option value="-4,5">-4,5</option></select> |
+      3. Deux nombres de |x|=9 : <select data-rep="-9 et +9"><option value="">?</option><option value="-9 et +9">-9 et +9</option><option value="9 et 0">9 et 0</option></select><br><br>
+
+      <b>Ex 6 : Problème A(-4) et B(+4) :</b>
+
+      |-4| = <select data-rep="4"><option value="">?</option><option value="4">4</option><option value="-4">-4</option></select> |
+      |+4| = <select data-rep="4"><option value="">?</option><option value="4">4</option><option value="-4">-4</option></select> |
+      Ils sont à la <select data-rep="même"><option value="">?</option><option value="même">même</option><option value="différente">différente</option></select> distance de O(0).
+    </div>
+  </div>
+
+  <!-- Tâche 4 -->
+  <div id="t4" class="t-page card">
+    <h1>📐 Tâche 4 : Comparer des nombres relatifs (p. 14)</h1>
+    <div class="rule">
+      <b>1. Cours :</b> Positif &gt; Négatif (+2 &gt; -100) | Deux positifs : le plus loin de 0 (+15 &gt; +9) | Deux négatifs : le plus proche de 0 (-3 &gt; -10).
+    </div>
+    <div class="q">
+      <b>2. Série de 6 exercices :</b><br><br>
+      <b>Ex 1 : Symbole (&lt; ou &gt;) :</b>
+      +7 <select data-rep=">"><option value="">?</option><option value="<">&lt;</option><option value=">">&gt;</option></select> -15 |
+      -4 <select data-rep=">"><option value="">?</option><option value="<">&lt;</option><option value=">">&gt;</option></select> -9 |
+      0 <select data-rep=">"><option value="">?</option><option value="<">&lt;</option><option value=">">&gt;</option></select> -6 |
+      -12,5 <select data-rep="<"><option value="">?</option><option value="<">&lt;</option><option value=">">&gt;</option></select> -2,5 |
+      +14 <select data-rep="<"><option value="">?</option><option value="<">&lt;</option><option value=">">&gt;</option></select> +19 |
+      -0,1 <select data-rep=">"><option value="">?</option><option value="<">&lt;</option><option value=">">&gt;</option></select> -0,8<br><br>
+
+      <b>Ex 2 : Vrai ou Faux :</b>
+      -20 &gt; -5 : <select data-rep="Faux"><option value="">?</option><option value="Vrai">Vrai</option><option value="Faux">Faux</option></select> |
+      +1 &gt; -1000 : <select data-rep="Vrai"><option value="">?</option><option value="Vrai">Vrai</option><option value="Faux">Faux</option></select> |
+      0 &lt; -2 : <select data-rep="Faux"><option value="">?</option><option value="Vrai">Vrai</option><option value="Faux">Faux</option></select> |
+      Plus à droite = plus grand : <select data-rep="Vrai"><option value="">?</option><option value="Vrai">Vrai</option><option value="Faux">Faux</option></select><br><br>
+
+      <b>Ex 3 : Ordre croissant (-5 ; +8 ; -12 ; 0 ; +2 ; -1) :</b><br>
+      <select data-rep="ok"><option value="">-- Choisis le bon ordre --</option><option value="ok">-12 &lt; -5 &lt; -1 &lt; 0 &lt; +2 &lt; +8</option><option value="no">-1 &lt; -5 &lt; -12 &lt; 0 &lt; +2 &lt; +8</option></select><br><br>
+
+      <b>Ex 4 : Ordre décroissant (+3,5 ; -4,2 ; -0,5 ; +10 ; -9 ; +1,2) :</b><br>
+      <select data-rep="ok"><option value="">-- Choisis le bon ordre --</option><option value="ok">+10 &gt; +3,5 &gt; +1,2 &gt; -0,5 &gt; -4,2 &gt; -9</option><option value="no">+10 &gt; +3,5 &gt; +1,2 &gt; -9 &gt; -4,2 &gt; -0,5</option></select><br><br>
+
+      <b>Ex 5 : Encadrement :</b>
+      1. -6,4 : <select data-rep="ok"><option value="">?</option><option value="ok">-7 &lt; -6,4 &lt; -6</option><option value="no">-6 &lt; -6,4 &lt; -5</option></select> |
+      2. +2,7 : <select data-rep="ok"><option value="">?</option><option value="ok">+2 &lt; +2,7 &lt; +3</option><option value="no">+1 &lt; +2,7 &lt; +2</option></select> |
+      3. -0,5 : <select data-rep="ok"><option value="">?</option><option value="ok">-1 &lt; -0,5 &lt; 0</option><option value="no">0 &lt; -0,5 &lt; +1</option></select> |
+      4. -11,1 : <select data-rep="ok"><option value="">?</option><option value="ok">-12 &lt; -11,1 &lt; -11</option><option value="no">-11 &lt; -11,1 &lt; -10</option></select><br><br>
+
+      <b>Ex 6 : Villes (Ifrane -6°C ; Midelt -2°C ; Oukaimeden -9°C ; Azrou +1°C) :</b><br>
+      1. Plus froide : <select data-rep="Oukaimeden"><option value="">?</option><option value="Oukaimeden">Oukaimeden (-9°C)</option><option value="Midelt">Midelt (-2°C)</option></select> |
+      2. Moins froide : <select data-rep="Azrou"><option value="">?</option><option value="Azrou">Azrou (+1°C)</option><option value="Ifrane">Ifrane (-6°C)</option></select><br>
+      3. De la plus froide à la plus chaude : <select data-rep="ok"><option value="">?</option><option value="ok">-9°C &lt; -6°C &lt; -2°C &lt; +1°C</option><option value="no">-2°C &lt; -6°C &lt; -9°C &lt; +1°C</option></select>
+    </div>
+  </div>
+  <!-- Consolidation 1 -->
+  <div id="c1" class="t-page card" style="border-color:#eab308;">
+    <h1 style="color:#eab308;" dir="rtl" style="text-align:right;">🏆 Consolidation 1 : ملخص ودعم شامل للدرس الأول (p. 16)</h1>
+    <div class="rule" dir="rtl" style="text-align:right;">
+      <b>1. ملخص شامل للدرس الأول :</b><br>
+      • <b>T1 :</b> الأصغر من 0 مسبوقة بـ (-) مثل -5، والأكبر من 0 مسبوقة بـ (+) أو بدون إشارة.<br>
+      • <b>T2 :</b> الصفر (0) هو الأصل؛ الموجبة على اليمين والسالبة على اليسار. أفصول A يكتب A(-3).<br>
+      • <b>T3 :</b> القيمة المطلقة |-6| = 6 هي المسافة عن 0 (ديما موجبة). العددان -6 و +6 متقابلان.<br>
+      • <b>T4 :</b> الموجب كبر من السالب (+1 &gt; -50). بين سالبين الكبير هو الأقرب لـ 0 (-2 &gt; -9).
+    </div>
+    <div class="q">
+      <b>2. سلسلة الدعم والتقويم (6 تمارين) :</b><br><br>
+      <b>Ex 1 : Vrai ou Faux :</b>
+      1. -14 &gt; 0 : <select data-rep="Faux"><option value="">?</option><option value="Vrai">Vrai</option><option value="Faux">Faux</option></select> |
+      2. M(-5) à gauche de O : <select data-rep="Vrai"><option value="">?</option><option value="Vrai">Vrai</option><option value="Faux">Faux</option></select> |
+      3. |-8,5| = -8,5 : <select data-rep="Faux"><option value="">?</option><option value="Vrai">Vrai</option><option value="Faux">Faux</option></select> |
+      4. -15 &gt; -3 : <select data-rep="Faux"><option value="">?</option><option value="Vrai">Vrai</option><option value="Faux">Faux</option></select> |
+      5. +12 et -12 même |x| : <select data-rep="Vrai"><option value="">?</option><option value="Vrai">Vrai</option><option value="Faux">Faux</option></select><br><br>
+
+      <b>Ex 2 : Droite numérique :</b>
+      A(3cm gauche) : <select data-rep="A(-3)"><option value="">?</option><option value="A(-3)">A(-3)</option><option value="A(+3)">A(+3)</option></select> |
+      B(4,5cm droite) : <select data-rep="B(+4,5)"><option value="">?</option><option value="B(+4,5)">B(+4,5)</option><option value="B(-4,5)">B(-4,5)</option></select> |
+      C(6cm gauche) : <select data-rep="C(-6)"><option value="">?</option><option value="C(-6)">C(-6)</option><option value="C(+6)">C(+6)</option></select> |
+      Plus éloigné de O : <select data-rep="C"><option value="">?</option><option value="C">Point C</option><option value="B">Point B</option></select><br><br>
+
+      <b>Ex 3 : Opposé et |x| :</b>
+      • -14 : Opp=<select data-rep="+14"><option value="">?</option><option value="+14">+14</option><option value="-14">-14</option></select>, |-14|=<select data-rep="14"><option value="">?</option><option value="14">14</option><option value="-14">-14</option></select> |
+      • +9,5 : Opp=<select data-rep="-9,5"><option value="">?</option><option value="-9,5">-9,5</option><option value="+9,5">+9,5</option></select>, |+9,5|=<select data-rep="9,5"><option value="">?</option><option value="9,5">9,5</option><option value="-9,5">-9,5</option></select><br>
+      • 0 : Opp=<select data-rep="0"><option value="">?</option><option value="0">0</option><option value="1">1</option></select>, |0|=<select data-rep="0"><option value="">?</option><option value="0">0</option><option value="1">1</option></select> |
+      • -0,25 : Opp=<select data-rep="+0,25"><option value="">?</option><option value="+0,25">+0,25</option><option value="-0,25">-0,25</option></select>, |-0,25|=<select data-rep="0,25"><option value="">?</option><option value="0,25">0,25</option><option value="-0,25">-0,25</option></select><br><br>
+
+      <b>Ex 4 : Symbole (&lt;, &gt;, =) :</b>
+      -18 <select data-rep="<"><option value="">?</option><option value="<">&lt;</option><option value=">">&gt;</option><option value="=">=</option></select> +2 |
+      -7 <select data-rep=">"><option value="">?</option><option value="<">&lt;</option><option value=">">&gt;</option><option value="=">=</option></select> -11 |
+
+      |-15| <select data-rep="="><option value="">?</option><option value="<">&lt;</option><option value=">">&gt;</option><option value="=">=</option></select> +15 |
+      0 <select data-rep=">"><option value="">?</option><option value="<">&lt;</option><option value=">">&gt;</option><option value="=">=</option></select> -0,5 |
+
+      |-4| <select data-rep="<"><option value="">?</option><option value="<">&lt;</option><option value=">">&gt;</option><option value="=">=</option></select> |-9| |
+      -3,4 <select data-rep=">"><option value="">?</option><option value="<">&lt;</option><option value=">">&gt;</option><option value="=">=</option></select> -3,8<br><br>
+
+      <b>Ex 5 : Rangement :</b>
+      1. Croissant (-4,5 ; +6 ; -12 ; 0 ; -1 ; +2,5) : <select data-rep="ok"><option value="">-- Choisis --</option><option value="ok">-12 &lt; -4,5 &lt; -1 &lt; 0 &lt; +2,5 &lt; +6</option><option value="no">-1 &lt; -4,5 &lt; -12 &lt; 0 &lt; +2,5 &lt; +6</option></select><br>
+      2. Décroissant (+11 ; -3 ; -15 ; +1 ; -0,2 ; -8) : <select data-rep="ok"><option value="">-- Choisis --</option><option value="ok">+11 &gt; +1 &gt; -0,2 &gt; -3 &gt; -8 &gt; -15</option><option value="no">+11 &gt; +1 &gt; -15 &gt; -8 &gt; -3 &gt; -0,2</option></select><br><br>
+
+      <b>Ex 6 : Sous-marin (Lundi: -120m ; Mardi: -85m ; Mercredi: -250m ; Jeudi: -40m) :</b><br>
+      1. Plus proche surface : <select data-rep="Jeudi"><option value="">?</option><option value="Jeudi">Jeudi (-40m)</option><option value="Mercredi">Mercredi (-250m)</option></select> |
+      2. Profondeur max : <select data-rep="Mercredi"><option value="">?</option><option value="Mercredi">Mercredi (-250m)</option><option value="Lundi">Lundi (-120m)</option></select><br>
+      3. |-250| = <select data-rep="250"><option value="">?</option><option value="250">250 m</option><option value="-250">-250 m</option></select> |
+      4. Croissant : <select data-rep="ok"><option value="">?</option><option value="ok">-250m &lt; -120m &lt; -85m &lt; -40m</option><option value="no">-40m &lt; -85m &lt; -120m &lt; -250m</option></select>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin:20px 0;">
+    <button onclick="verifier()" style="background:#22c55e; color:#0f172a; font-weight:bold; font-size:18px; padding:12px 30px; border:none; border-radius:10px; cursor:pointer;">✅ تصحيح الإجابات (Vérifier)</button>
+    <p id="note" style="font-size:20px; font-weight:bold; color:#fde047;"></p>
+  </div>
+</body>
+</html>
+

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Chapitre 6 : La lumière</title>
+<style>
+  body { background: #0f172a; color: white; font-family: Arial, sans-serif; max-width: 900px; margin: 20px auto; padding: 15px; line-height: 1.9; }
+  .back { display: inline-block; background: #ef4444; color: white; padding: 10px 20px; border-radius: 10px; text-decoration: none; margin-bottom: 15px; font-weight: bold; }
+  .card { background: #1e293b; border: 2px solid #38bdf8; border-radius: 15px; padding: 22px; margin-bottom: 20px; }
+  .rule { background: #0f172a; padding: 18px; border-radius: 10px; border-left: 5px solid #22c55e; margin: 15px 0; font-size: 16px; }
+  .q { background: #0f172a; padding: 18px; border-radius: 10px; border-left: 5px solid #eab308; margin: 15px 0; font-size: 16px; }
+  select { padding: 6px 10px; border-radius: 6px; border: 2px solid #38bdf8; background: #1e293b; color: #fde047; font-weight: bold; font-size: 15px; cursor: pointer; margin: 3px 0; }
+  .btn-verif { background: #22c55e; color: #0f172a; border: none; padding: 14px 30px; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 15px; }
+  .btn-verif:hover { background: #16a34a; color: white; }
+  #note { font-size: 22px; font-weight: bold; color: #fde047; margin-top: 15px; }
+  h1 { color: #38bdf8; font-size: 22px; border-bottom: 1px solid #334155; padding-bottom: 10px; }
+</style>
+<script>
+  function showT() {
+    var pages = document.querySelectorAll('.t-page');
+    if (pages.length === 0) return;
+    var hash = window.location.hash.replace('#', '');
+    var target = document.getElementById(hash) || pages;
+    pages.forEach(function(p) {
+      p.style.display = (p === target) ? 'block' : 'none';
+    });
+    var noteEl = document.getElementById('note');
+    if (noteEl) noteEl.innerText = "";
+  }
+  function verifier() {
+    var ok = 0, total = 0;
+    document.querySelectorAll('.t-page').forEach(function(page) {
+      if (page.style.display !== 'none') {
+        page.querySelectorAll('select[data-rep]').forEach(function(sel) {
+          total++;
+          if (sel.value === sel.getAttribute('data-rep')) { sel.style.borderColor = "#22c55e"; sel.style.background = "#14532d"; ok++; }
+          else { sel.style.borderColor = "#ef4444"; sel.style.background = "#7f1d1d"; }
+        });
+      }
+    });
+    document.getElementById('note').innerText = "🎯 Votre note : " + ok + " / " + total;
+  }
+  window.addEventListener('DOMContentLoaded', showT);
+  window.addEventListener('hashchange', showT);
+</script>
+</head>
+<body>
+  <a class="back" href="pc.html">🔙 Retour à la Physique-Chimie</a>
+
+  <!-- Tâche 1 -->
+  <div id="t1" class="t-page card">
+    <h1>💡 Tâche 1 : Identifier la nature du milieu de propagation de la lumière</h1>
+    <div class="rule" dir="rtl" style="text-align:right;">
+      <b>📌 1. ملخص الدرس والشرح المفصل (أوساط انتشار الضوء - Les milieux de propagation) :</b><br>
+      • على عكس الصوت، <b>ينتشر الضوء في الفراغ وفي الأوساط المادية الشفافة</b> بسرعة هائلة تبلغ حوالي <span dir="ltr"><b>c = 300 000 km/s = 3 × 10⁸ m/s</b></span>.<br>
+      • تنقسم الأوساط من حيث سماحها بمرور الضوء إلى <b>3 أنواع رئيسية</b> :<br>
+      • <b>1. الوسط الشفاف (Milieu transparent) :</b> يسمح بمرور الضوء كلياً ويمكننا من <b>رؤية الأجسام الموجودة خلفه بوضوح تام</b> (مثل: الزجاج الأملس، الهواء، الماء الصافي، الفراغ).<br>
+      • <b>2. الوسط نصف الشفاف (Milieu translucide) :</b> يسمح بمرور جزء من الضوء فقط، فنرى الأجسام الموجودة خلفه <b>بشكل ضبابي وغير واضح</b> (مثل: الزجاج المحبب/المصنفر، الورق المزيت، الضباب).<br>
+      • <b>3. الوسط المعتم (Milieu opaque) :</b> <b>لا يسمح بمرور الضوء نهائياً</b> ولا نرى ما يوجد خلفه (مثل: الخشب، الحديد، الورق المقوى، الجدار).<br><br>
+      <b>💡 أمثلة تطبيقية (Exemples) :</b><br>
+      1. ضوء الشمس يصل إلينا عبر الفضاء (الفراغ) ثم الغلاف الجوي (الهواء) لأن كليهما وسط شفاف.<br>
+      2. نافذة الحمام تُصنع من زجاج نصف شفاف (<span dir="ltr">Verre dépoli</span>) لتمرير الإضاءة ومنع الرؤية الواضحة.
+    </div>
+    <div class="q">
+      <b>✍️ 2. Exercices d'application (Questions types d'évaluation) :</b><br><br>
+      <b>Exercice 1 (Classer différents milieux optiques) :</b><br>
+      • Le verre lisse d'une vitre propre est un milieu : <select data-rep="transp"><option value="">-- Choisir --</option><option value="transp">Transparent</option><option value="translu">Translucide</option><option value="opaque">Opaque</option></select><br>
+      • Une feuille de papier calque ou du brouillard épais est un milieu : <select data-rep="translu"><option value="">-- Choisir --</option><option value="translu">Translucide</option><option value="transp">Transparent</option><option value="opaque">Opaque</option></select><br>
+      • Une plaque en bois ou en carton est un milieu : <select data-rep="opaque"><option value="">-- Choisir --</option><option value="opaque">Opaque</option><option value="transp">Transparent</option></select><br><br>
+      <b>Exercice 2 (Propagation dans le vide) :</b><br>
+      • La lumière peut-elle se propager dans le vide (l'espace) ? <select data-rep="oui"><option value="">?</option><option value="oui">Oui, contrairement au son (c = 300 000 km/s)</option><option value="non">Non, il lui faut obligatoirement de l'air</option></select>
+    </div>
+  </div>
+
+  <!-- Tâche 2 -->
+  <div id="t2" class="t-page card">
+    <h1>💡 Tâche 2 : Appliquer le principe de la propagation rectiligne de la lumière pour vérifier l'alignement des objets</h1>
+    <div class="rule" dir="rtl" style="text-align:right;">
+      <b>📌 1. ملخص الدرس والشرح المفصل (مبدأ الانتشار المستقيمي للضوء) :</b><br>
+      • <b>نص المبدأ (Principe de propagation rectiligne) :</b> في وسط شفاف ومتجانس (Milieu transparent et homogène)، <b>ينتشر الضوء وفق خطوط مستقيمة</b> تُسمى <b>الأشعة الضوئية (Rayons lumineux)</b>.<br>
+      • <b>تمثيل الشعاع الضوئي :</b> يُمثل بخط مستقيم يحمل <b>سهماً</b> يدل على منحى انتشار الضوء (من المنبع الضوئي نحو العين أو الشاشة).<br>
+      • <b>تطبيقات الانتشار المستقيمي :</b><br>
+      &nbsp;&nbsp;1. <b>التحقق من استقامية النقط (Alignement des objets) :</b> لكي ترى العين منبعاً ضوئياً عبر ثلاثة حواجز مثقوبة، يجب أن تكون الثقوب الثلاثة والعين والمنبع على <b>استقامة واحدة (Alignés)</b>.<br>
+      &nbsp;&nbsp;2. <b>العلبة المظلمة (La chambre noire) :</b> تعطي على الشاشة صورة <b>مقلوبة (Renversée)</b> للجسم المضيء بسبب تقاطع الأشعة الضوئية المستقيمية عند ثقب العلبة (الحجاب).<br><br>
+      <b>💡 أمثلة تطبيقية (Exemples) :</b><br>
+      1. يستخدم البناءون والنجارون النظر بالعين المجردة للتحقق من استقامة جدار أو لوح خشبي اعتماداً على الانتشار المستقيمي للضوء.<br>
+      2. حزمة ضوء الليزر في الهواء المليء بالغبار تظهر على شكل خط مستقيم تماماً.
+    </div>
+    <div class="q">
+      <b>✍️ 2. Exercices d'application (Questions types d'évaluation) :</b><br><br>
+      <b>Exercice 1 (Expérience des trois écrans percés) :</b><br>
+      Un élève place une bougie allumée devant trois cartons percés d'un petit trou chacun (T₁, T₂, T₃) et observe de l'autre côté.<br>
+      • À quelle condition l'élève voit-il la flamme de la bougie ? <select data-rep="align"><option value="">-- Choisir --</option><option value="align">Les trous T₁, T₂, T₃, la flamme et l'œil doivent être alignés</option><option value="grand">Les trous doivent être très grands</option></select><br>
+      • Quel principe physique cette expérience met-elle en évidence ? <select data-rep="rect"><option value="">-- Choisir --</option><option value="rect">La propagation rectiligne de la lumière dans un milieu transparent et homogène</option><option value="reflex">La réflexion de la lumière</option></select><br><br>
+      <b>Exercice 2 (La chambre noire) :</b><br>
+      • Comment est l'image d'une bougie observée sur l'écran translucide d'une chambre noire ? <select data-rep="renv"><option value="">?</option><option value="renv">Renversée (مقلوبة)</option><option value="droite">Droite (معتدلة)</option></select>
+    </div>
+  </div>
+  <!-- Tâche 3 -->
+  <div id="t3" class="t-page card">
+    <h1>💡 Tâche 3 : Étudier l'effet des facteurs influençant l'ombre portée d'un objet opaque</h1>
+    <div class="rule" dir="rtl" style="text-align:right;">
+      <b>📌 1. ملخص الدرس والشرح المفصل (تكون الظلال والعوامل المؤثرة في الظل المحمول - Les ombres) :</b><br>
+      • عند إضاءة <b>جسم معتم (Objet opaque)</b> بواسطة <b>منبع ضوئي نقطي (Source ponctuelle)</b> أمام شاشة، تتكون <b>3 مناطق للظل</b> نتيجة الانتشار المستقيمي للضوء:<br>
+      &nbsp;&nbsp;1. <b>الظل الخاص (L'ombre propre) :</b> هو الجزء المظلم الموجود على الجسم المعتم نفسه (في الجهة المقابلة للمنبع الضوئي).<br>
+      &nbsp;&nbsp;2. <b>مخروط الظل (Le cône d'ombre) :</b> هو المنطقة المظلمة الموجودة في الفضاء بين الجسم المعتم والشاشة.<br>
+      &nbsp;&nbsp;3. <b>الظل المحمول (L'ombre portée) :</b> هو البقعة المظلمة التي تتكون على الشاشة.<br>
+      • <b>ملاحظة :</b> إذا كان المنبع الضوئي <b>غير نقطي (Source étendue / كبيرة)</b>، يتكون على الشاشة منطقة مظلمة في الوسط (<b>الظل المحمول</b>) تحيط بها منطقة نصف مظلمة تُسمى <b>شبه الظل المحمول (La pénombre portée)</b>.<br>
+      • <b>العوامل المؤثرة في حجم الظل المحمول على الشاشة :</b><br>
+      &nbsp;&nbsp;- <b>تقريب الجسم المعتم من المنبع الضوئي (أو إبعاد الشاشة) :</b> <b>يزداد حجم الظل المحمول</b> (يكبر الظل).<br>
+      &nbsp;&nbsp;- <b>إبعاد الجسم المعتم عن المنبع الضوئي (أو تقريب الشاشة) :</b> <b>ينقص حجم الظل المحمول</b> (يصغر الظل).<br><br>
+      <b>💡 أمثلة تطبيقية (Exemples) :</b><br>
+      1. عندما تقرب يدك من مصباح الهاتف المضيء، يصبح ظل يدك كبيراً جداً على الحائط.<br>
+      2. عندما تقرب يدك من الحائط وتبعدها عن المصباح، يصبح ظلها صغيراً وواضحاً.
+    </div>
+    <div class="q">
+      <b>✍️ 2. Exercices d'application (Questions types d'évaluation) :</b><br><br>
+      <b>Exercice 1 (Identifier les différentes zones d'ombre) :</b><br>
+      On éclaire une balle opaque avec une lampe ponctuelle devant un écran blanc.<br>
+      • Comment appelle-t-on la zone sombre située directement sur l'écran ? <select data-rep="portee"><option value="">-- Choisir --</option><option value="portee">L'ombre portée</option><option value="propre">L'ombre propre</option></select><br>
+      • Comment appelle-t-on la zone non éclairée située sur la balle elle-même ? <select data-rep="propre"><option value="">-- Choisir --</option><option value="propre">L'ombre propre</option><option value="cone">Le cône d'ombre</option></select><br><br>
+      <b>Exercice 2 (Facteurs influençant la taille de l'ombre portée) :</b><br>
+      • Si on rapproche la balle opaque de la source lumineuse (sans bouger l'écran), que fait la taille de son ombre portée ? <select data-rep="aug"><option value="">-- Choisir --</option><option value="aug">Elle augmente (l'ombre devient plus grande)</option><option value="dim">Elle diminue</option></select><br>
+      • Si on utilise une source lumineuse étendue (large), quelle zone supplémentaire apparaît autour de l'ombre portée ? <select data-rep="pen"><option value="">-- Choisir --</option><option value="pen">La pénombre portée (شبه الظل)</option><option value="faisceau">Un rayon laser</option></select>
+    </div>
+  </div>
+
+  <!-- Tâche 4 -->
+  <div id="t4" class="t-page card">
+    <h1>💡 Tâche 4 : Expliquer les phénomènes d'éclipse par la formation de l'ombre</h1>
+    <div class="rule" dir="rtl" style="text-align:right;">
+      <b>📌 1. ملخص الدرس والشرح المفصل (ظاهرتا الكسوف والخسوف - Les éclipses) :</b><br>
+      • تُفسر ظاهرتا <b>كسوف الشمس</b> و<b>خسوف القمر</b> بمبدأ <b>الانتشار المستقيمي للضوء</b> وتكوّن <b>الظلال</b> في الفضاء، حيث تلعب الشمس دور المنبع الضوئي، بينما الأرض والقمر جسمان معتماً.<br>
+      • <b>1. كسوف الشمس (L'éclipse de Soleil) :</b><br>
+      &nbsp;&nbsp;- <b>الشرط :</b> يحدث نهاراً عندما يكون <b>القمر (La Lune)</b> موجوداً <b>بين الشمس والأرض</b> وعلى <b>استقامة واحدة (Alignés : Soleil - Lune - Terre)</b>.<br>
+      &nbsp;&nbsp;- <b>التفسير :</b> يحجب القمر ضوء الشمس عن الأرض، فيسقط مخروط ظل القمر على منطقة صغيرة من سطح الأرض؛ السكان الموجودون في منطقة <b>الظل المحمول</b> يرون <b>كسوفاً كلياً (Éclipse totale)</b>، والموجودون في <b>شبه الظل</b> يرون <b>كسوفاً جزئياً (Éclipse partielle)</b>.<br>
+      • <b>2. خسوف القمر (L'éclipse de Lune) :</b><br>
+      &nbsp;&nbsp;- <b>الشرط :</b> يحدث ليلاً عندما تكون <b>الأرض (La Terre)</b> موجودة <b>بين الشمس والقمر</b> وعلى <b>استقامة واحدة (Alignés : Soleil - Terre - Lune)</b>.<br>
+      &nbsp;&nbsp;- <b>التفسير :</b> تحجب الأرض ضوء الشمس عن القمر، فيدخل القمر في <b>مخروط ظل الأرض</b> ويختفي ضوؤه مؤقتاً.<br><br>
+      <b>💡 أمثلة تطبيقية (Exemples) :</b><br>
+      1. كسوف الشمس لا يدوم سوى دقائق معدودة ولا يُرى إلا من شريط ضيق على الأرض لأن القمر أصغر بكثير من الأرض.<br>
+      2. خسوف القمر يدوم أطول (قد يصل لأكثر من ساعة) ويُرى من أي مكان يكون فيه الليل على الأرض لأن ظل الأرض كبير.
+    </div>
+    <div class="q">
+      <b>✍️ 2. Exercices d'application (Questions types d'évaluation) :</b><br><br>
+      <b>Exercice 1 (Distinguer l'éclipse de Soleil et l'éclipse de Lune) :</b><br>
+      • Quel est l'alignement des astres lors d'une <b>éclipse de Soleil</b> ? <select data-rep="slt"><option value="">-- Choisir --</option><option value="slt">Soleil - Lune - Terre (la Lune est au milieu)</option><option value="stl">Soleil - Terre - Lune</option></select><br>
+      • Quel est l'alignement des astres lors d'une <b>éclipse de Lune</b> ? <select data-rep="stl"><option value="">-- Choisir --</option><option value="stl">Soleil - Terre - Lune (la Terre est au milieu)</option><option value="slt">Soleil - Lune - Terre</option></select><br><br>
+      <b>Exercice 2 (Type d'éclipse observée) :</b><br>
+      • Lors d'une éclipse de Soleil, que voit un observateur situé dans la zone d'ombre portée de la Lune sur Terre ? <select data-rep="tot"><option value="">-- Choisir --</option><option value="tot">Une éclipse totale de Soleil</option><option value="part">Une éclipse partielle de Soleil</option></select>
+    </div>
+  </div>
+
+  <div style="text-align: center;">
+    <button class="btn-verif" onclick="verifier()">✅ Vérifier / تصحيح</button>
+    <div id="note"></div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leçon 5 : Opérations sur les expressions littérales - Math 1AC</title>
+<link rel="preconnect" href="https://googleapis.com">
+<link rel="preconnect" href="https://gstatic.com" crossorigin>
+<link href="https://googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root { --bg-dark: #090d16; --card-bg: #1e293b; --primary: #38bdf8; --secondary: #818cf8; --accent: #34d399; --danger: #f87171; --text-main: #f8fafc; --text-muted: #94a3b8; }
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
+  body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.7; }
+  .top-nav { background: #0f172a; padding: 14px 20px; border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+  .nav-btn { background: rgba(56, 189, 248, 0.15); color: #38bdf8; text-decoration: none; padding: 6px 14px; border-radius: 10px; font-size: 14px; font-weight: 700; border: 1px solid rgba(56, 189, 248, 0.3); }
+  .container { max-width: 850px; margin: 25px auto; padding: 0 15px; }
+  .lesson-header { background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(129, 140, 248, 0.15)); border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 18px; padding: 22px; text-align: center; margin-bottom: 25px; }
+  .period-tag { display: inline-block; background: #0284c7; color: white; padding: 3px 12px; border-radius: 12px; font-size: 12px; font-weight: 700; margin-bottom: 8px; }
+  .lesson-header h1 { font-size: 21px; font-weight: 900; color: #38bdf8; direction: ltr; }
+  .card { background: var(--card-bg); border: 1px solid #334155; border-radius: 16px; padding: 20px; margin-bottom: 18px; }
+  .task-badge { display: inline-block; background: rgba(52, 211, 153, 0.15); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.4); padding: 3px 12px; border-radius: 8px; font-size: 13px; font-weight: 800; margin-bottom: 10px; direction: ltr; }
+  .card h2 { font-size: 18px; margin-bottom: 10px; }
+  .math-formula { direction: ltr; text-align: center; font-size: 17px; font-weight: 800; color: #38bdf8; background: #0f172a; padding: 10px; border-radius: 8px; margin: 8px 0; font-family: 'Courier New', monospace; }
+  .example-box { background: rgba(129, 140, 248, 0.1); border: 1px solid rgba(129, 140, 248, 0.3); padding: 12px; border-radius: 10px; margin-top: 10px; direction: ltr; text-align: left; font-size: 15px; }
+  .quiz-section { background: var(--card-bg); border: 2px solid #38bdf8; border-radius: 18px; padding: 22px; margin-top: 30px; }
+  .question-box { background: #0f172a; border: 1px solid #334155; border-radius: 12px; padding: 15px; margin-bottom: 14px; direction: ltr; text-align: left; }
+  .options label { display: block; background: #1e293b; border: 1px solid #334155; padding: 9px 12px; border-radius: 8px; margin-top: 6px; cursor: pointer; }
+  .btn-submit { width: 100%; padding: 15px; border: none; border-radius: 14px; background: linear-gradient(90deg, #38bdf8, #818cf8); color: #090d16; font-size: 17px; font-weight: 900; cursor: pointer; margin-top: 10px; }
+  .score-display { display: none; margin-top: 20px; padding: 16px; border-radius: 14px; text-align: center; font-size: 18px; font-weight: 800; background: #0f172a; border: 2px solid #34d399; color: #34d399; }
+  .correct-ans { border-color: #34d399 !important; background: rgba(52, 211, 153, 0.15) !important; }
+  .wrong-ans { border-color: #f87171 !important; background: rgba(248, 113, 113, 0.15) !important; }
+  footer { text-align: center; padding: 25px; color: var(--text-muted); font-size: 13px; }
+</style>
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a href="math.html" class="nav-btn">➡ دروس الرياضيات</a>
+    <span style="font-weight: 800;">Leçon 5</span>
+    <a href="math_l6.html" class="nav-btn">الدرس 6 ⬅</a>
+  </nav>
+
+  <main class="container">
+    <div class="lesson-header">
+      <span class="period-tag">SEMESTRE 1 - PÉRIODE 2</span>
+      <h1>Leçon 5 : Opérations sur les expressions littérales</h1>
+      <p>العمليات على التعابير الحرفية (Tâche 1 إلى Tâche 6)</p>
+    </div>
+
+    <div class="card">
+      <span class="task-badge">Tâche 1 : Additionner et soustraire des expressions littérales</span>
+      <h2>1. جمع وطرح التعابير الحرفية</h2>
+      <p>عند حذف الأقواس المسبوقة بإشارة <strong>(+)</strong> لا تتغير إشارات الحدود داخل القوس. أما إذا كانت مسبوقة بإشارة <strong>(-)</strong> فنغير إشارة جميع الحدود الموجودة داخل القوس.</p>
+      <div class="math-formula">a + (b - c) = a + b - c &nbsp;&nbsp;|&nbsp;&nbsp; a - (b - c) = a - b + c</div>
+      <div class="example-box">
+        <strong>Exemple :</strong><br>
+        A = (3x + 5) - (2x - 4) = 3x + 5 - 2x + 4 = <strong>x + 9</strong>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="task-badge">Tâche 2 & 3 : Multiplier et diviser ax et (ax + b) par un nombre</span>
+      <h2>2. ضرب وقسمة تعبير حرفي على عدد</h2>
+      <p>نطبق قاعدة النشر (La distributivité) بضرب أو قسمة كل حد على العدد المعلوم.</p>
+      <div class="math-formula">k × (ax + b) = k×ax + k×b &nbsp;&nbsp;|&nbsp;&nbsp; (ax + b) ÷ k = (ax ÷ k) + (b ÷ k)</div>
+      <div class="example-box">
+        <strong>Exemples :</strong><br>
+        • 4 × (3x) = <strong>12x</strong><br>
+        • 3 × (2x - 5) = 3×2x - 3×5 = <strong>6x - 15</strong><br>
+        • (10x + 6) ÷ 2 = <strong>5x + 3</strong>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="task-badge">Tâche 4 : Simplifier m(ax + b) + n(cx + d)</span>
+      <h2>3. نشر وتبسيط تعبير مركب</h2>
+      <p>ننشر كل قوس على حدة ثم نجمع الحدود المتشابهة (الأعداد المجهولة معاً والأعداد المعلومة معاً).</p>
+      <div class="example-box">
+        <strong>Exemple :</strong><br>
+        B = 2(3x + 1) + 4(x - 2)<br>
+        B = 6x + 2 + 4x - 8 = <strong>10x - 6</strong>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="task-badge">Tâche 5 & 6 : Modéliser par une égalité ou une inégalité</span>
+      <h2>4. ترييض وضعية بمتساوية أو متفاوتة</h2>
+      <p>نحول النص إلى تعبير رياضي باستعمال مجهول <span dir="ltr">x</span>: نستخدم الرمز <strong>(=)</strong> للمتساوية، والرموز <strong>(&lt; , &gt; , ≤ , ≥)</strong> للمتفاوتة.</p>
+      <div class="example-box">
+        <strong>Exemples :</strong><br>
+        • "Le double d'un nombre ajouté à 5 est égal à 17" ➔ <strong>2x + 5 = 17</strong><br>
+        • "Le triple d'un nombre est inférieur à 20" ➔ <strong>3x &lt; 20</strong>
+      </div>
+    </div>
+
+    <section class="quiz-section">
+      <h2 style="text-align:center; color:#38bdf8; margin-bottom:15px;">✍️ Exercices Interactifs</h2>
+      <form id="quizForm">
+        <div class="question-box" id="q1-box">
+          <div>1) Simplifier : A = (5x + 2) - (3x - 1)</div>
+          <div class="options">
+            <label><input type="radio" name="q1" value="a"> 2x + 1</label>
+            <label><input type="radio" name="q1" value="b"> 2x + 3</label>
+            <label><input type="radio" name="q1" value="c"> 8x + 3</label>
+          </div>
+        </div>
+        <div class="question-box" id="q2-box">
+          <div>2) Développer : B = 4(2x - 3)</div>
+          <div class="options">
+            <label><input type="radio" name="q2" value="a"> 8x - 12</label>
+            <label><input type="radio" name="q2" value="b"> 8x - 3</label>
+            <label><input type="radio" name="q2" value="c"> 6x - 7</label>
+          </div>
+        </div>
+        <div class="question-box" id="q3-box">
+          <div>3) Simplifier : C = 2(x + 4) + 3(x - 1)</div>
+          <div class="options">
+            <label><input type="radio" name="q3" value="a"> 5x + 3</label>
+            <label><input type="radio" name="q3" value="b"> 5x + 5</label>
+            <label><input type="radio" name="q3" value="c"> 6x + 5</label>
+          </div>
+        </div>
+        <div class="question-box" id="q4-box">
+          <div>4) Calculer : (15x - 9) ÷ 3</div>
+          <div class="options">
+            <label><input type="radio" name="q4" value="a"> 5x - 9</label>
+            <label><input type="radio" name="q4" value="b"> 5x - 3</label>
+            <label><input type="radio" name="q4" value="c"> 12x - 6</label>
+          </div>
+        </div>
+        <div class="question-box" id="q5-box">
+          <div>5) Modéliser : "La somme d'un nombre x et de 7 dépasse 15"</div>
+          <div class="options">
+            <label><input type="radio" name="q5" value="a"> x + 7 &gt; 15</label>
+            <label><input type="radio" name="q5" value="b"> x + 7 = 15</label>
+            <label><input type="radio" name="q5" value="c"> 7x &gt; 15</label>
+          </div>
+        </div>
+        <button type="button" class="btn-submit" onclick="checkQuiz()">تصحيح التمارين ✅</button>
+      </form>
+      <div class="score-display" id="scoreDisplay"></div>
+    </section>
+  </main>
+
+  <footer>منصة <strong>خطوة للنجاح (Khatwa 1AC BIOF)</strong> © 2026</footer>
+
+  <script>
+    function checkQuiz() {
+      const answers = { q1: 'b', q2: 'a', q3: 'b', q4: 'b', q5: 'a' };
+      let score = 0;
+      for (let q in answers) {
+        const box = document.getElementById(q + '-box');
+        box.classList.remove('correct-ans', 'wrong-ans');
+        const sel = document.querySelector(`input[name="${q}"]:checked`);
+        if (sel && sel.value === answers[q]) { score++; box.classList.add('correct-ans'); }
+        else { box.classList.add('wrong-ans'); }
+      }
+      const d = document.getElementById('scoreDisplay');
+      d.style.display = 'block';
+      d.innerHTML = `النتيجة : ${score} / 5 ➔ النقطة : <strong>${(score * 4).toFixed(2)} / 20</strong>`;
+    }
+  </script>
+</body>
+</html>

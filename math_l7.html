@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leçon 7 : Concepts de base de la géométrie - Math 1AC</title>
+<link rel="preconnect" href="https://googleapis.com">
+<link rel="preconnect" href="https://gstatic.com" crossorigin>
+<link href="https://googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root { --bg-dark: #090d16; --card-bg: #1e293b; --primary: #38bdf8; --secondary: #818cf8; --accent: #34d399; --danger: #f87171; --text-main: #f8fafc; --text-muted: #94a3b8; }
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
+  body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.8; }
+  .top-nav { background: #0f172a; padding: 14px 20px; border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+  .nav-btn { background: rgba(56, 189, 248, 0.15); color: #38bdf8; text-decoration: none; padding: 6px 14px; border-radius: 10px; font-size: 14px; font-weight: 700; border: 1px solid rgba(56, 189, 248, 0.3); }
+  .container { max-width: 880px; margin: 25px auto; padding: 0 15px; }
+  .lesson-header { background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(129, 140, 248, 0.15)); border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 18px; padding: 25px; text-align: center; margin-bottom: 25px; }
+  .period-tag { display: inline-block; background: #0284c7; color: white; padding: 4px 14px; border-radius: 12px; font-size: 12px; font-weight: 700; margin-bottom: 8px; }
+  .lesson-header h1 { font-size: 22px; font-weight: 900; color: #38bdf8; direction: ltr; }
+  .card { background: var(--card-bg); border: 1px solid #334155; border-radius: 16px; padding: 22px; margin-bottom: 20px; }
+  .task-badge { display: inline-block; background: rgba(52, 211, 153, 0.15); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.4); padding: 4px 12px; border-radius: 8px; font-size: 13px; font-weight: 800; margin-bottom: 12px; direction: ltr; }
+  .card h2 { font-size: 19px; color: #f8fafc; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 8px; }
+  .card ul { padding-right: 20px; margin-bottom: 12px; }
+  .card li { margin-bottom: 6px; }
+  .math-formula { direction: ltr; text-align: center; font-size: 16px; font-weight: 800; color: #38bdf8; background: #0f172a; padding: 12px; border-radius: 10px; margin: 10px 0; font-family: 'Courier New', monospace; border: 1px solid rgba(56, 189, 248, 0.25); }
+  .example-box { background: rgba(129, 140, 248, 0.1); border: 1px solid rgba(129, 140, 248, 0.3); padding: 14px; border-radius: 10px; margin-top: 12px; direction: ltr; text-align: left; font-size: 15px; }
+  .note-box { background: rgba(250, 204, 21, 0.1); border-right: 4px solid #facc15; padding: 12px 16px; border-radius: 8px; margin-top: 10px; font-size: 14px; color: #fef08a; }
+  .quiz-section { background: var(--card-bg); border: 2px solid #38bdf8; border-radius: 18px; padding: 24px; margin-top: 30px; }
+  .question-box { background: #0f172a; border: 1px solid #334155; border-radius: 12px; padding: 16px; margin-bottom: 15px; direction: ltr; text-align: left; }
+  .options label { display: block; background: #1e293b; border: 1px solid #334155; padding: 10px 14px; border-radius: 8px; margin-top: 8px; cursor: pointer; }
+  .btn-submit { width: 100%; padding: 15px; border: none; border-radius: 14px; background: linear-gradient(90deg, #38bdf8, #818cf8); color: #090d16; font-size: 17px; font-weight: 900; cursor: pointer; margin-top: 10px; }
+  .score-display { display: none; margin-top: 20px; padding: 18px; border-radius: 14px; text-align: center; font-size: 18px; font-weight: 800; background: #0f172a; border: 2px solid #34d399; color: #34d399; }
+  .correct-ans { border-color: #34d399 !important; background: rgba(52, 211, 153, 0.15) !important; }
+  .wrong-ans { border-color: #f87171 !important; background: rgba(248, 113, 113, 0.15) !important; }
+  footer { text-align: center; padding: 25px; color: var(--text-muted); font-size: 13px; }
+</style>
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a href="math.html" class="nav-btn">➡ دروس الرياضيات</a>
+    <span style="font-weight: 800;">Leçon 7 (13 Tâches)</span>
+    <a href="math_l8.html" class="nav-btn">الدرس 8 ⬅</a>
+  </nav>
+
+  <main class="container">
+    <div class="lesson-header">
+      <span class="period-tag">SEMESTRE 2 - PÉRIODE 3</span>
+      <h1>Leçon 7 : Les concepts de base de la géométrie dans le plan</h1>
+      <p>المفاهيم الأساسية للهندسة في المستوى (شرح مفصل لجميع المهام Tâche 1 إلى 13)</p>
+    </div>
+
+    <!-- Tâche 1 -->
+    <div class="card">
+      <span class="task-badge">Tâche 1 : Reconnaître et construire les objets géométriques de base</span>
+      <h2>1. الكائنات الهندسية الأساسية وترميزها</h2>
+      <ul>
+        <li><strong>النقطة (Le point) :</strong> نرمز لها بحرف كبير مثل <span dir="ltr">A, B, M</span>.</li>
+        <li><strong>المستقيم (La droite) :</strong> غير محدود من الجهتين، نرمز له بـ <span dir="ltr">(AB)</span> أو <span dir="ltr">(d)</span>. من نقطتين مختلفتين يمر مستقيم وحيد.</li>
+        <li><strong>نصف المستقيم (La demi-droite) :</strong> محدود من جهة واحدة (الأصل)، نرمز له بـ <span dir="ltr">[AB)</span> أصله <span dir="ltr">A</span> ويمر من <span dir="ltr">B</span>.</li>
+        <li><strong>القطعة (Le segment) :</strong> محدودة من الجهتين، نرمز لها بـ <span dir="ltr">[AB]</span> وطولها يكتب بدون معقوفات <span dir="ltr">AB</span>.</li>
+        <li><strong>الانتماء والاستقامية :</strong> نكتب <span dir="ltr">M ∈ (d)</span> إذا كانت النقطة تنتمي للمستقيم، و <span dir="ltr">N ∉ (d)</span> إذا كانت لا تنتمي. النقط المستقيمية (Points alignés) هي نقط تنتمي لنفس المستقيم.</li>
+      </ul>
+    </div>
+
+    <!-- Tâche 2 -->
+    <div class="card">
+      <span class="task-badge">Tâche 2 : Reconnaître et calculer la mesure des angles</span>
+      <h2>2. الزوايا وأنواعها وحساب قياساتها</h2>
+      <ul>
+        <li><strong>زاوية منعدمة (Angle nul) :</strong> قياسها <span dir="ltr">0°</span>.</li>
+        <li><strong>زاوية حادة (Angle aigu) :</strong> قياسها محصور بين <span dir="ltr">0°</span> و <span dir="ltr">90°</span>.</li>
+        <li><strong>زاوية قائمة (Angle droit) :</strong> قياسها يساوي <span dir="ltr">90°</span>.</li>
+        <li><strong>زاوية منفرجة (Angle obtus) :</strong> قياسها محصور بين <span dir="ltr">90°</span> و <span dir="ltr">180°</span>.</li>
+        <li><strong>زاوية مستقيمية (Angle plat) :</strong> قياسها يساوي <span dir="ltr">180°</span>.</li>
+      </ul>
+      <div class="math-formula">
+        Angles complémentaires : A + B = 90° &nbsp;|&nbsp; Angles supplémentaires : A + B = 180°
+      </div>
+      <div class="note-box">
+        <strong>خاصية هامة :</strong> زاويتان متقابلتان بالرأس (Angles opposés par le sommet) لهما نفس القياس دائماً.
+      </div>
+    </div>
+
+    <!-- Tâche 3 & 4 -->
+    <div class="card">
+      <span class="task-badge">Tâche 3 & 4 : Polygones et distance entre deux droites parallèles</span>
+      <h2>3. المضلعات والمسافة بين مستقيمين متوازيين</h2>
+      <ul>
+        <li><strong>المضلعات (Les polygones) :</strong> شكل هندسي مغلق مكون من عدة أضلاع: المثلث (Triangle - 3 أضلاع)، الرباعي (Quadrilatère - 4 أضلاع)، الخماسي (Pentagone - 5)، السداسي (Hexagone - 6).</li>
+        <li><strong>مجموع زوايا مثلث :</strong> في أي مثلث <span dir="ltr">ABC</span>، مجموع قياسات زواياه يساوي <span dir="ltr">180°</span>.</li>
+        <li><strong>المسافة بين مستقيمين متوازيين (Tâche 4) :</strong> إذا كان <span dir="ltr">(D1) // (D2)</span>، فإن المسافة بينهما هي طول القطعة العمودية المشتركة بين المستقيمين، وهي مسافة ثابتة في جميع النقط.</li>
+      </ul>
+    </div>
+
+    <!-- Tâche 5 & 6 -->
+    <div class="card">
+      <span class="task-badge">Tâche 5 & 6 : Médiatrice d'un segment et Bissectrice d'un angle</span>
+      <h2>4. واسط قطعة ومنصف زاوية</h2>
+      <ul>
+        <li><strong>واسط قطعة (La médiatrice d'un segment) [Tâche 5] :</strong> هو المستقيم العمودي على القطعة <span dir="ltr">[AB]</span> في منتصفها <span dir="ltr">I</span>. كل نقطة تنتمي إلى واسط قطعة تكون متساوية المسافة عن طرفيها (<span dir="ltr">MA = MB</span>).</li>
+        <li><strong>منصف زاوية (La bissectrice d'un angle) [Tâche 6] :</strong> هو نصف المستقيم الذي يمر من رأس الزاوية ويقسمها إلى زاويتين متقايستين (لهما نفس القياس).</li>
+      </ul>
+    </div>
+
+    <!-- Tâche 7 & 8 -->
+    <div class="card">
+      <span class="task-badge">Tâche 7 & 8 : Construction des droites perpendiculaires</span>
+      <h2>5. إنشاء المستقيم العمودي (بالمزواة أو بالبركار)</h2>
+      <p>من نقطة معلومة <span dir="ltr">M</span> (سواء كانت تنتمي للمستقيم <span dir="ltr">(d)</span> في <strong>Tâche 7</strong> أو خارجة عنه في <strong>Tâche 8</strong>)، يمر مستقيم وحيد عمودي على المستقيم <span dir="ltr">(d)</span>. نرمز للتعامد بـ <span dir="ltr">(Δ) ⊥ (d)</span>.</p>
+    </div>
+
+    <!-- Tâche 9 & 10 -->
+    <div class="card">
+      <span class="task-badge">Tâche 9 & 10 : Le cercle, angle au centre et angle inscrit</span>
+      <h2>6. الدائرة، الزاوية المركزية والزاوية المحيطية</h2>
+      <ul>
+        <li><strong>عناصر الدائرة (Tâche 9) :</strong> المركز (Centre <span dir="ltr">O</span>)، الشعاع (Rayon <span dir="ltr">R</span>)، القطر (Diamètre <span dir="ltr">D = 2R</span>)، الوتر (Corde : قطعة طرفاها على الدائرة).</li>
+        <li><strong>الزاوية المركزية (Angle au centre) :</strong> رأسها هو مركز الدائرة <span dir="ltr">O</span>.</li>
+        <li><strong>الزاوية المحيطية (Angle inscrit) :</strong> رأسها ينتمي إلى الدائرة وضلعاها يقطعان الدائرة.</li>
+      </ul>
+      <div class="math-formula">
+        Angle au centre = 2 × Angle inscrit &nbsp;(إذا كانا يحصران نفس القوس)
+      </div>
+      <div class="example-box">
